@@ -1,24 +1,99 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="./css/styles.css">
-  </head>
-  <body>
-      <header>
-        <div id="logo">
-          Andrew's To Do List App
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Home</title>
+  <link href="https://fonts.googleapis.com/css?family=Mansalva|Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/e5d243858b.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-light" cz-shortcut-listen="true">
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Sign up</h2>
+    <p class="lead">Please enter your details below to sign up</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 order-md-1">
+      <form class="needs-validation" novalidate="">
+
+        <div class="mb-3">
+          <label for="email">Email </label>
+          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+          <div class="invalid-feedback">
+            Please enter a valid email address for shipping updates.
+          </div>
         </div>
-        <nav>
-          <ul>
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./public.html">Public Lists</a></li>
-            <li><a href="./login.html">Login</a></li>
-            <li><a href="./join.html">Join</a></li>
-            <li><a href="./about.html">About</a></li>
-          </ul>
-        </nav>
-      </header>
-  </body>
+
+        <div class="mb-3">
+          <label for="password">Password </label>
+          <input type="email" class="form-control" id="password">
+          <div class="invalid-feedback">
+            Please enter a valid password.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="confirmPassword">Confirm Password </label>
+          <input type="email" class="form-control" id="confirmPassword">
+          <div class="invalid-feedback">
+            Please enter a valid password.
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col mb-3">
+            <label for="fullName">Full name</label>
+            <input type="text" class="form-control" id="fullName" placeholder="" value="" required="">
+            <div class="invalid-feedback">
+              Valid name is required.
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="mb-3">
+          <label for="city">City</label>
+          <input type="text" class="form-control" id="city" required="">
+          <div class="invalid-feedback">
+            Please enter valid city.
+          </div>
+        </div>
+        
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="terms">
+          <label class="custom-control-label" for="terms">Please tick to accept the Terms and Conditions</label>
+        </div>
+
+        <hr class="mb-4">
+
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Sign up</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">© 2019 AJF Plc</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="/docs/4.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
+        crossorigin="anonymous"></script>
+<script src="form-validation.js"></script>
+
+</body>
 </html>

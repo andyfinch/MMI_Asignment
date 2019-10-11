@@ -7,22 +7,18 @@ header #logo {
   font-family: 'Mansalva', cursive; }
 header nav {
   text-align: center; }
-
-header nav ul {
-  list-style: none;
-  padding: 0; }
-
-header nav ul li {
-  display: inline-block;
-  background-color: #7b9bf5;
-  padding: 0.5em;
-  text-transform: uppercase; }
-
-header nav ul li a {
-  color: white;
-  text-decoration: none; }
-
-header nav ul li a i {
-  margin-right: 5px; }
+  header nav ul {
+    list-style: none;
+    padding: 0; }
+    header nav ul li {
+      display: inline-block;
+      background-color: #7b9bf5;
+      padding: 0.5em;
+      text-transform: uppercase; }
+      header nav ul li a {
+        color: white;
+        text-decoration: none; }
+        header nav ul li a i {
+          margin-right: 6px; }
 
 /*# sourceMappingURL=styles.css.map */
