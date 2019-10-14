@@ -1,1 +1,59 @@
-@import 'layouts/header.scss'
+@import 'layouts/header.scss';
+
+
+.sidenav {
+  height: 100%;
+  /*width: 160px;*/
+  position: fixed !important;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #CBF3F0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+
+.btn-primary {
+  color: #fff;
+  background-color: #2EC4B6 !important;
+  border-color: #2EC4B6 !important;
+}
+
+body.bg-light {
+  background-color: #f0f8ff !important;
+}
+
+.bg-light {
+  /*background-color: #effbff !important;*/
+  background-color: #2EC4B6 !important;
+}
+
+.backgroud-gradient {
+  background: rgb(144, 206, 176);
+  background: linear-gradient(193deg, rgba(144, 206, 176, 1) 0%, rgba(255, 255, 255, 1) 64%);
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.learning-image{
+  height: 100%;
+  width: 100%;
+  background-image: url(../images/list-logo.png);
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: contain;
+}
+
+.user-profile
+{
+  font-size: 2em;
+  margin-right: 10px;
+  color: white;
+}
+
+/*
+.form-control {
+  background-color: rgba(203,243,240,0.2);
+}*/

@@ -1,28 +1,276 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <title>Home</title>
-    <link href="https://fonts.googleapis.com/css?family=Mansalva|Roboto:300,400,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/e5d243858b.js" crossorigin="anonymous"></script>
-  </head>
-  <body>
-      <header>
-        <div id="logo">
-          Andrew's To Do List App
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Home</title>
+  <!--<link href="https://fonts.googleapis.com/css?family=Mansalva|Roboto:300,400,500&display=swap" rel="stylesheet">-->
+  <link rel="stylesheet" href="./bootstrap/bootstrap.css">
+  <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="https://kit.fontawesome.com/e5d243858b.js" crossorigin="anonymous"></script>
+</head>
+<body class="backgroud-gradient" cz-shortcut-listen="true">
+<header class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-lightx">
+    <a class="navbar-brand" href="./index.html">
+      <img src="./images/list-logo.png" width="30" height="30" class="d-inline-block align-top"
+           alt="">
+      RevisionIT
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a href="./dashboard.html" class="nav-link">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./topic.html">Create Topic</a>
+        </li>
+        <!--<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+     aria-haspopup="true" aria-expanded="false">
+    Dropdown
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</li>-->
+        <!--<li class="nav-item">
+  <a class="nav-link disabled" href="#">Disabled</a>
+</li>-->
+      </ul>
+      <!--<form class="form-inline my-2 my-lg-0">
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>-->
+    </div>
+
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <!--<a class="nav-link" href="./login.html">Sign in</a>-->
+          <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#signinModal">
+            Sign in
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#signupModal">
+            Sign up
+          </button>
+          <!--<a class="nav-link" href="./join.html">Sign up</a>-->
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+</header>
+<div class="container">
+
+  <div class="row pt-5 h-100" style="margin-top: 10em">
+    <div class="col-4 offset-1">
+      <div class=""><h1 class="">The best revision content site for students</h1>
+        <p class="">RevisionIT is designed to allow students to create revision content, annotate it, edit it and know it.<br></p>
+        <button class="btn btn-primary btn-lg btn-block" type="submit" data-toggle="modal" data-target="#signupModal">Sign up</button></div>
+    </div>
+
+    <div class="col-5 offset-2">
+      <div class="learning-image">
+      </div>
+    </div>
+
+  </div>
+  
+  
+</div>
+
+<footer class="my-5 pt-5 text-muted text-center text-small" style="position: absolute; bottom: 0; width: 100%">
+  <div>
+  <p class="mb-1">© 2019 AJF Plc</p>
+  <ul class="list-inline">
+    <li class="list-inline-item"><a href="#">Privacy</a></li>
+    <li class="list-inline-item"><a href="#">Terms</a></li>
+    <li class="list-inline-item"><a href="#">Support</a></li>
+  </ul>
+  </div>
+</footer>
+
+<!-- Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+     <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>-->
+      <div class="modal-body">
+        <div class="container">
+          <div class="text-center">
+            <h2>Sign up</h2>
+            <p class="lead">Please enter your details below to sign up</p>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 order-md-1">
+              <form class="needs-validation" novalidate="">
+
+                <div class="mb-3">
+                  <label for="email">Email </label>
+                  <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                  <div class="invalid-feedback">
+                    Please enter a valid email address for shipping updates.
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="password">Password </label>
+                  <input type="email" class="form-control" id="password">
+                  <div class="invalid-feedback">
+                    Please enter a valid password.
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="confirmPassword">Confirm Password </label>
+                  <input type="email" class="form-control" id="confirmPassword">
+                  <div class="invalid-feedback">
+                    Please enter a valid password.
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col mb-3">
+                    <label for="fullName">Full name</label>
+                    <input type="text" class="form-control" id="fullName" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                      Valid name is required.
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="mb-3">
+                  <label for="city">City</label>
+                  <input type="text" class="form-control" id="city" required="">
+                  <div class="invalid-feedback">
+                    Please enter valid city.
+                  </div>
+                </div>
+
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="terms">
+                  <label class="custom-control-label" for="terms">Please tick to accept the Terms and Conditions</label>
+                </div>
+
+              </form>
+            </div>
+          </div>
         </div>
-        <nav>
-          <ul>
-            <li><a href="./index.html"><i class="fas fa-home"></i>Home</a></li>
-            <li><a href="./login.html"><i class="fas fa-user"></i>Login</a></li>
-            <li><a href="./join.html"><i class="fas fa-user-plus"></i>Join</a></li>
-            <li><a href="./topic.html"><i class="fas fa-question"></i>About</a></li>
-            <li><a href="./contact.html"><i class="fas fa-table"></i>Contact</a></li>
-          </ul>
-        </nav>
-      </header>
-  </body>
+      </div>
+      <div class="modal-footer">
+        <button onclick="runSignup()" type="button" class="btn btn-primary">
+          <span class="signupSpinner d-none spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Sign up</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>-->
+      <div class="modal-body">
+        <div class="container">
+          <div class="text-center">
+            <h2>Sign in</h2>
+            <p class="lead">Please enter your details below to sign up</p>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 order-md-1">
+              <form class="needs-validation" novalidate="">
+
+                <div class="mb-3">
+                  <label for="signinemail">Email </label>
+                  <input type="email" class="form-control" id="signinemail" placeholder="you@example.com">
+                  <div class="invalid-feedback">
+                    Please enter a valid email address for shipping updates.
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="signinpassword">Password </label>
+                  <input type="password" class="form-control" id="signinpassword">
+                  <div class="invalid-feedback">
+                    Please enter a valid password.
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button onclick="runSignin()" type="button" class="btn btn-primary">
+          <span class="signinSpinner d-none spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Sign in</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="./bootstrap/jquery.js"></script>
+<script src="./bootstrap/popper.js"></script>
+<script src="./bootstrap/bootstrap.bundle.js"></script>
+<script>
+  function runSignin()
+  {
+    $('.signinSpinner').toggleClass('d-none');
+    setTimeout(function () {
+      $('.signinSpinner').toggleClass('d-none');
+      // Something you want delayed.
+      document.location.href = "./dashboard.html"
+    }, 1000); // How long do you want the delay to be (in milliseconds)?
+
+  }
+
+  function runSignup() {
+    $('.signupSpinner').toggleClass('d-none');
+    setTimeout(function () {
+      $('.signupSpinner').toggleClass('d-none');
+      // Something you want delayed.
+      document.location.href = "./dashboard.html"
+    }, 1000); // How long do you want the delay to be (in milliseconds)?
+
+  }
+</script>
+<!--<script src="form-validation.js"></script>-->
+
+</body>
 </html>

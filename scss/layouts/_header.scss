@@ -1,4 +1,4 @@
-header  {
+headerx  {
       #logo {
   text-align: center;
   font-size: 30px;
@@ -32,4 +32,13 @@ header  {
       }
     }
   }
+}
+
+.uni-background {
+  background-color: #f1cdd7;
+  height: 100%;
+  background-image: url(../images/uni-background.jpg);
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: cover;
 }
