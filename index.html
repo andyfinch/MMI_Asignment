@@ -5,7 +5,74 @@
   <meta charset="utf-8">
   <title>Home</title>
   <!--<link href="https://fonts.googleapis.com/css?family=Mansalva|Roboto:300,400,500&display=swap" rel="stylesheet">-->
-  <!--<link rel="stylesheet" href="./bootstrap/bootstrap.css">-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
   <link rel="stylesheet" href="./css/styles.css">
@@ -211,19 +278,19 @@
 
           <div class="row">
             <div class="col-md-12 order-md-1">
-              <form class="needs-validation" novalidate="">
+              <form id="signinform" class="needs-validation" novalidate="">
 
                 <div class="mb-3">
                   <label for="signinemail">Email </label>
-                  <input type="email" class="form-control" id="signinemail" placeholder="you@example.com">
+                  <input type="email" class="form-control" id="signinemail" placeholder="you@example.com" required>
                   <div class="invalid-feedback">
-                    Please enter a valid email address for shipping updates.
+                    Please enter a valid email address.
                   </div>
                 </div>
 
                 <div class="mb-3">
                   <label for="signinpassword">Password </label>
-                  <input type="password" class="form-control" id="signinpassword">
+                  <input type="password" class="form-control" id="signinpassword" required>
                   <div class="invalid-feedback">
                     Please enter a valid password.
                   </div>
@@ -251,12 +318,16 @@
 <script>
   function runSignin()
   {
-    $('.signinSpinner').toggleClass('d-none');
-    setTimeout(function () {
+    if (validateForm($('#signinform')[0]))
+    {
       $('.signinSpinner').toggleClass('d-none');
-      // Something you want delayed.
-      document.location.href = "./dashboard.html"
-    }, 1000); // How long do you want the delay to be (in milliseconds)?
+      setTimeout(function () {
+        $('.signinSpinner').toggleClass('d-none');
+        // Something you want delayed.
+        document.location.href = "./dashboard.html"
+      }, 1000); // How long do you want the delay to be (in milliseconds)?
+    }
+
 
   }
 
@@ -269,6 +340,24 @@
     }, 1000); // How long do you want the delay to be (in milliseconds)?
 
   }
+
+  function validateForm(form)
+  {
+    let isValid = form.checkValidity();
+
+    if (isValid === false) {
+      console.log('not valid');
+    }
+    else
+    {
+      console.log("valid");
+    }
+    form.classList.add('was-validated');
+
+    return isValid;
+  }
+
+
 </script>
 <!--<script src="form-validation.js"></script>-->
 
