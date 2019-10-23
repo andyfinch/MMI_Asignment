@@ -5,16 +5,20 @@
   <meta charset="utf-8">
   <title>Home</title>
   <!--<link href="https://fonts.googleapis.com/css?family=Mansalva|Roboto:300,400,500&display=swap" rel="stylesheet">-->
-  <link rel="stylesheet" href="./css/styles.css">
+  <!--<link rel="stylesheet" href="./bootstrap/bootstrap.css">-->
   <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="./css/styles.css">
   <script src="https://kit.fontawesome.com/e5d243858b.js" crossorigin="anonymous"></script>
 </head>
-<body class="bg-light" cz-shortcut-listen="true">
-
-<header class="container-fluid">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+<body class="background-gradient" cz-shortcut-listen="true">
+<header class="container-fluid mb-5">
+  <nav class="navbar navbar-expand-lg navbar-light bg-lightx">
+    <a class="navbar-brand" href="./index.html">
+      <img src="./images/list-logo.png" width="30" height="30" class="d-inline-block align-top"
+           alt="">
+      RevisionIT
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -23,128 +27,133 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a href="./index.html" class="nav-link">Home <span class="sr-only">(current)</span></a>
+          <a href="./dashboard.html" class="nav-link">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./topic.html">Create Topic</a>
-        </li>
-        <!--<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-             aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>-->
-        <!--<li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>-->
-      </ul>
-      <!--<form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>-->
-    </div>
 
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-      <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="./login.html">Sign in</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./join.html">Sign up</a>
+          <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#topicModal">
+            Create Topic
+          </button>
         </li>
       </ul>
+
+      <a href="./profile.html"><i class="user-profile fas fa-user-circle"></i></a>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
+
     </div>
+
+
   </nav>
 </header>
-
-<div class="container">
-
-  <!--<header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
-    <div id="logo">
-      Andrew's To Do List App
-    </div>
-    <nav class="navbar-nav-scroll">
-      <ul class="navbar-nav bd-navbar-nav flex-row">
-        <li class="nav-item"><a class="nav-link" href="./index.html"><i class="fas fa-home"></i>Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="./login.html"><i class="fas fa-user"></i>Login</a></li>
-        <li class="nav-item"><a class="nav-link" href="./join.html"><i class="fas fa-user-plus"></i>Join</a></li>
-        <li class="nav-item"><a class="nav-link" href="./topic.html"><i class="fas fa-question"></i>About</a></li>
-        <li class="nav-item"><a class="nav-link" href="./contact.html"><i class="fas fa-table"></i>Contact</a></li>
-      </ul>
-    </nav>
-  </header>-->
-
-
-
-  
-  <div class="py-5 text-center">
-    <h2>Topic</h2>
-    <p class="lead">Create a new topic</p>
-  </div>
-
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-12 order-md-1">
-      <form class="needs-validation" novalidate="">
-
-        <div class="mb-3">
-          <label for="title">Title </label>
-          <input type="text" class="form-control" id="title">
-          <div class="invalid-feedback">
-            Please enter a valid title.
-          </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          Insertion Sort
         </div>
-
-        <div class="mb-3">
-          <label for="category">Categorise </label>
-          <input type="text" class="form-control" id="category">
-          <!--todo change to dropdown-->
-          <div class="invalid-feedback">
-            Please enter a valid category.
-          </div>
+        <div class="card-body">
+          <h5 class="card-title">How Insertion Sort works</h5>
+          <p class="card-text">Moves from Left to Right. Number to be sorted is compared to right element and moves to
+            that position is higher. Keeps going until not higher.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
-
-        <div class="mb-3">
-          <label for="content">Content </label>
-          <textarea type="text" class="form-control" id="content"></textarea>
-          <div class="invalid-feedback">
-            Please enter valid content.
-          </div>
-        </div>
-
-        <hr class="mb-4">
-
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Create</button>
-      </form>
+      </div>
     </div>
   </div>
+</div>
 
-  <footer class="my-5 pt-5 text-muted text-center text-small">
+
+<footer class="my-5 pt-5 text-muted text-center text-small" style="position: relative; bottom: 0; width: 100%">
+  <div>
     <p class="mb-1">© 2019 AJF Plc</p>
     <ul class="list-inline">
       <li class="list-inline-item"><a href="#">Privacy</a></li>
       <li class="list-inline-item"><a href="#">Terms</a></li>
       <li class="list-inline-item"><a href="#">Support</a></li>
     </ul>
-  </footer>
+  </div>
+</footer>
+
+<!-- Modal -->
+<div class="modal fade" id="topicModal" tabindex="-1" role="dialog" aria-labelledby="topicModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+   <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+     <span aria-hidden="true">&times;</span>
+   </button>
+ </div>-->
+      <div class="modal-body">
+
+
+        <div class="container">
+          <div class="text-center">
+            <h2>Topic</h2>
+            <p class="lead">Create a new topic</p>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 order-md-1">
+              <form class="needs-validation" novalidate="">
+
+                <div class="mb-3">
+                  <label for="title">Title </label>
+                  <input type="text" class="form-control" id="title">
+                  <div class="invalid-feedback">
+                    Please enter a valid title.
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="description">Description </label>
+                  <input type="text" class="form-control" id="description">
+                  <div class="invalid-feedback">
+                    Please enter a valid title.
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="category">Categorise </label>
+                  <input type="text" class="form-control" id="category">
+                  <!--todo change to dropdown-->
+                  <div class="invalid-feedback">
+                    Please enter a valid category.
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="content">Content </label>
+                  <textarea rows="15" type="text" class="form-control" id="content"></textarea>
+                  <div class="invalid-feedback">
+                    Please enter valid content.
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Create</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="/docs/4.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
-        crossorigin="anonymous"></script>
-<script src="form-validation.js"></script>
+
+
+<script src="./bootstrap/jquery.js"></script>
+<script src="./bootstrap/popper.js"></script>
+<script src="./bootstrap/bootstrap.bundle.js"></script>
+<!--<script src="form-validation.js"></script>-->
 
 </body>
 </html>
