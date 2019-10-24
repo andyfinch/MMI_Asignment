@@ -12,7 +12,9 @@
   <script src="https://kit.fontawesome.com/e5d243858b.js" crossorigin="anonymous"></script>
 </head>
 <body class="background-gradient" cz-shortcut-listen="true">
-<header class="container-fluid">
+  <?php include 'header.php'; ?>
+<!--<header class="container-fluid">
+   <?php include 'header.php'; ?>
   <nav class="navbar navbar-expand-lg navbar-light bg-lightx">
     <a class="navbar-brand" href="./index.html">
       <img src="./images/list-logo.png" width="30" height="30" class="d-inline-block align-top"
@@ -47,7 +49,7 @@
 
 
   </nav>
-</header>
+</header>-->
 
 <div class="container">
   <div class="row">
