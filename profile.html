@@ -50,7 +50,7 @@
   </nav>
 </header>
 <div class="container">
- 
+
   <div class="row mt-5">
 
 
@@ -65,7 +65,7 @@
       </div>
 
 
-      
+
     </div>
 
     <div class="col-md-8">
@@ -95,7 +95,7 @@
 
             <div class="mb-3">
               <label for="email">Email </label>
-              <input disabled type="email" class="form-control" id="email">
+              <input disabled type="email" class="form-control editable" id="email">
               <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
               </div>
@@ -103,7 +103,7 @@
 
             <div class="mb-3">
               <label for="password">Password </label>
-              <input disabled type="email" class="form-control" id="password">
+              <input disabled type="email" class="form-control editable" id="password">
               <div class="invalid-feedback">
                 Please enter a valid password.
               </div>
@@ -111,7 +111,7 @@
 
             <div class="mb-3">
               <label for="confirmPassword">Confirm Password </label>
-              <input disabled type="email" class="form-control" id="confirmPassword">
+              <input disabled type="email" class="form-control editable" id="confirmPassword">
               <div class="invalid-feedback">
                 Please enter a valid password.
               </div>
@@ -120,7 +120,7 @@
             <div class="row">
               <div class="col mb-3">
                 <label for="fullName">Full name</label>
-                <input disabled type="text" class="form-control" id="fullName" placeholder="" value="" required="">
+                <input disabled type="text" class="form-control editable" id="fullName" placeholder="" value="" required="">
                 <div class="invalid-feedback">
                   Valid name is required.
                 </div>
@@ -130,12 +130,12 @@
 
             <div class="mb-3">
               <label for="city">City</label>
-              <input disabled type="text" class="form-control" id="city" required="">
+              <input disabled type="text" class="form-control editable" id="city" required="">
               <div class="invalid-feedback">
                 Please enter valid city.
               </div>
             </div>
-            
+
 
 
             <div class="modal-footer d-none">
@@ -181,14 +181,14 @@
   {
 
 
-    $('#form input').removeAttr('disabled');
+    $('#form input.editable').removeAttr('disabled');
     $('#form .modal-footer.d-none').removeClass('d-none')
   }
 
   function cancelEdit() {
 
     $('#form')[0].reset();
-    $('#form input').prop('disabled', true);
+    $('#form input.editable').prop('disabled', true);
     $('#form .modal-footer').toggleClass('d-none')
   }
 
@@ -199,7 +199,7 @@
       $('.toast').toast('show');
       $('.signinSpinner').toggleClass('d-none');
       // Something you want delayed.
-      $('#form input').prop('disabled', true);
+      $('#form input.editable').prop('disabled', true);
       $('#form .modal-footer').addClass('d-none')
     }, 1000); // How long do you want the delay to be (in milliseconds)?
 
@@ -220,7 +220,7 @@
 <div class="toast" data-autohide="true" data-delay="3000" data-animation="true" style="position: fixed; top: 1em; right: 1em">
   <div class="toast-header">
     <strong class="mr-auto text-primary">Profile Saved</strong>
-    
+
     <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
   </div>
   <div class="toast-body">
