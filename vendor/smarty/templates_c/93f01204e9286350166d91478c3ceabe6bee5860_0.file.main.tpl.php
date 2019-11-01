@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-10-25 15:20:35
+/* Smarty version 3.1.33, created on 2019-10-28 09:04:32
   from 'C:\wamp64\www\MMI_Assignment\views\layouts\main.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5db312c3e6f9d0_65933471',
+  'unifunc' => 'content_5db6af204aaf84_69845658',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '93f01204e9286350166d91478c3ceabe6bee5860' => 
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\layouts\\main.tpl',
-      1 => 1572016820,
+      1 => 1572017880,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5db312c3e6f9d0_65933471 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5db6af204aaf84_69845658 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
-?>
+echo '<?php
+';?>require_once(__DIR__ . '/includes/boot.include.php');
+<?php echo '?>';?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -265,7 +268,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
     </div>
 </div>
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6081134815db312c3e69b68_02799418', "body");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11831173505db6af204a6660_91500615', "body");
 ?>
 
 
@@ -327,12 +330,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6081134815db312c3e
 </html>
 <?php }
 /* {block "body"} */
-class Block_6081134815db312c3e69b68_02799418 extends Smarty_Internal_Block
+class Block_11831173505db6af204a6660_91500615 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'body' => 
   array (
-    0 => 'Block_6081134815db312c3e69b68_02799418',
+    0 => 'Block_11831173505db6af204a6660_91500615',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="52862c20-1360-49bc-9220-c31fe192d616" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/main.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/main.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/dashboard.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/dashboard.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/163c9a5312c0cad1df65c0d69c5da444f07b4b2e_0.file.dashboard.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/163c9a5312c0cad1df65c0d69c5da444f07b4b2e_0.file.dashboard.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/93f01204e9286350166d91478c3ceabe6bee5860_0.file.main.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/93f01204e9286350166d91478c3ceabe6bee5860_0.file.main.tpl.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -155,7 +155,8 @@
       <workItem from="1571041180751" duration="21086000" />
       <workItem from="1571383992690" duration="5321000" />
       <workItem from="1571817026346" duration="14375000" />
-      <workItem from="1571999345854" duration="11998000" />
+      <workItem from="1571999345854" duration="12071000" />
+      <workItem from="1572360988924" duration="660000" />
     </task>
     <servers />
   </component>
@@ -176,7 +177,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
