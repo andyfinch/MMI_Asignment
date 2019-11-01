@@ -2,6 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52862c20-1360-49bc-9220-c31fe192d616" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/classes/topic.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/classes/user.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/dashboard.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/login.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/main.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/profile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/includes/autoloader.include.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/163c9a5312c0cad1df65c0d69c5da444f07b4b2e_0.file.dashboard.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/163c9a5312c0cad1df65c0d69c5da444f07b4b2e_0.file.dashboard.tpl.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/93f01204e9286350166d91478c3ceabe6bee5860_0.file.main.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/93f01204e9286350166d91478c3ceabe6bee5860_0.file.main.tpl.php" afterDir="false" />
@@ -62,7 +69,8 @@
     <option name="jreName" value="1.6 Jrockit" />
     <option name="skipTests" value="true" />
   </component>
-  <component name="ProjectId" id="1Sgy4ZiM9417y35T45fZGOjSspc" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="ProjectId" id="1SxyFdVigfqYXmESYNfucOvXwSW" />
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="GoToClass.includeLibraries" value="false" />
@@ -76,16 +84,19 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571913212575" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="XML" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/classes" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\MMI_Assignment\classes" />
+      <recent name="C:\wamp64\www\MMI_Assignment\controllers" />
+      <recent name="C:\wamp64\www\MMI_Assignment\vendor\smarty\plugins" />
       <recent name="C:\Users\finchaj\OneDrive - University of Suffolk\Uni\Mobile Multimedia and Internet\Assignment\MMI_Asignment" />
       <recent name="C:\Users\finchaj\OneDrive - University of Suffolk\Uni\Mobile Multimedia and Internet\Assignment\MMI_Asignment\images" />
     </key>
