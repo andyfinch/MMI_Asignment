@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-10-31 15:59:22
+/* Smarty version 3.1.33, created on 2019-11-01 09:53:18
   from 'C:\wamp64\www\MMI_Assignment\views\pages\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dbb04da7567b8_99066710',
+  'unifunc' => 'content_5dbc008e873263_11750212',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '52a4acf047d2f899a8e53b368104f94e4379c9ad' => 
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\pages\\login.tpl',
-      1 => 1572537560,
+      1 => 1572601994,
       2 => 'file',
     ),
   ),
@@ -20,32 +20,32 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dbb04da7567b8_99066710 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dbc008e873263_11750212 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8935657125dbb04da744e07_77752046', "body");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_5226231995dbc008e85c6f5_49662722', "body");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16863499125dbb04da747cd5_90873698', "modals");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2212261165dbc008e85fae9_25407176', "modals");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1274479315dbb04da74f887_63886392', "scripts");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21263365465dbc008e8688c1_00314474', "scripts");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layouts/main.tpl");
 }
 /* {block "body"} */
-class Block_8935657125dbb04da744e07_77752046 extends Smarty_Internal_Block
+class Block_5226231995dbc008e85c6f5_49662722 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'body' => 
   array (
-    0 => 'Block_8935657125dbb04da744e07_77752046',
+    0 => 'Block_5226231995dbc008e85c6f5_49662722',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -73,12 +73,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "body"} */
 /* {block "modals"} */
-class Block_16863499125dbb04da747cd5_90873698 extends Smarty_Internal_Block
+class Block_2212261165dbc008e85fae9_25407176 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'modals' => 
   array (
-    0 => 'Block_16863499125dbb04da747cd5_90873698',
+    0 => 'Block_2212261165dbc008e85fae9_25407176',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -245,12 +245,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "modals"} */
 /* {block "scripts"} */
-class Block_1274479315dbb04da74f887_63886392 extends Smarty_Internal_Block
+class Block_21263365465dbc008e8688c1_00314474 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'scripts' => 
   array (
-    0 => 'Block_1274479315dbb04da74f887_63886392',
+    0 => 'Block_21263365465dbc008e8688c1_00314474',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -258,6 +258,69 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
   <?php echo '<script'; ?>
 >
+
+      $(function () {
+          // Variable to hold request
+          var request;
+
+// Bind to the submit event of our form
+          $("form").submit(function (event) {
+
+              // Prevent default posting of form - put here to work in case of errors
+              event.preventDefault();
+
+              // Abort any pending request
+              if (request) {
+                  request.abort();
+              }
+              // setup some local variables
+              var $form = $(this);
+
+              // Let's select and cache all the fields
+              var $inputs = $form.find("input, select, button, textarea");
+
+              // Serialize the data in the form
+              var serializedData = $form.serialize();
+
+              // Let's disable the inputs for the duration of the Ajax request.
+              // Note: we disable elements AFTER the form data has been serialized.
+              // Disabled form elements will not be serialized.
+              $inputs.prop("disabled", true);
+
+              // Fire off the request to /form.php
+              request = $.ajax({
+                  url: "index.php",
+                  type: "post",
+                  data: serializedData
+              });
+
+              // Callback handler that will be called on success
+              request.done(function (response, textStatus, jqXHR) {
+                  // Log a message to the console
+                  console.log("Hooray, it worked!");
+                  //$('#signupModal .modal-content').replaceWith($('#signupModal .modal-content', response));
+
+              });
+
+              // Callback handler that will be called on failure
+              request.fail(function (jqXHR, textStatus, errorThrown) {
+                  // Log the error to the console
+                  console.error(
+                      "The following error occurred: " +
+                      textStatus, errorThrown
+                  );
+              });
+
+              // Callback handler that will be called regardless
+              // if the request failed or succeeded
+              request.always(function () {
+                  // Reenable the inputs
+                  $inputs.prop("disabled", false);
+              });
+
+          });
+      });
+
       function runSignin() {
           if (validateForm($('#signinform')[0])) {
               $('.signinSpinner').toggleClass('d-none');

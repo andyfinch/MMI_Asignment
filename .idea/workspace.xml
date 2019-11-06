@@ -2,16 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52862c20-1360-49bc-9220-c31fe192d616" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/classes/topic.class.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/user.class.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/dashboard.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/main.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/profile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/includes/autoloader.include.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/classes/errors.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/163c9a5312c0cad1df65c0d69c5da444f07b4b2e_0.file.dashboard.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/163c9a5312c0cad1df65c0d69c5da444f07b4b2e_0.file.dashboard.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/user.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/user.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/autoloader.include.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/autoloader.include.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/boot.include.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/boot.include.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/52a4acf047d2f899a8e53b368104f94e4379c9ad_0.file.login.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/52a4acf047d2f899a8e53b368104f94e4379c9ad_0.file.login.tpl.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/93f01204e9286350166d91478c3ceabe6bee5860_0.file.main.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/93f01204e9286350166d91478c3ceabe6bee5860_0.file.main.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/main.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/main.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/login.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/login.tpl" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,8 +85,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571913212575" />
-    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="XML" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/classes" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/Change Language" value="JSON" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JSON&#10;XML" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -94,11 +97,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\MMI_Assignment" />
       <recent name="C:\wamp64\www\MMI_Assignment\classes" />
       <recent name="C:\wamp64\www\MMI_Assignment\controllers" />
       <recent name="C:\wamp64\www\MMI_Assignment\vendor\smarty\plugins" />
       <recent name="C:\Users\finchaj\OneDrive - University of Suffolk\Uni\Mobile Multimedia and Internet\Assignment\MMI_Asignment" />
-      <recent name="C:\Users\finchaj\OneDrive - University of Suffolk\Uni\Mobile Multimedia and Internet\Assignment\MMI_Asignment\images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -168,6 +171,9 @@
       <workItem from="1571817026346" duration="14375000" />
       <workItem from="1571999345854" duration="12071000" />
       <workItem from="1572360988924" duration="660000" />
+      <workItem from="1572597593787" duration="20346000" />
+      <workItem from="1572857797519" duration="4492000" />
+      <workItem from="1573052531419" duration="5268000" />
     </task>
     <servers />
   </component>
