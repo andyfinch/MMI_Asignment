@@ -7,16 +7,16 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
   'unifunc' => 'content_5dbaea0808f684_20083194',
   'has_nocache_code' => false,
-  'file_dependency' => 
+  'file_dependency' =>
   array (
-    '163c9a5312c0cad1df65c0d69c5da444f07b4b2e' => 
+    '163c9a5312c0cad1df65c0d69c5da444f07b4b2e' =>
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\pages\\dashboard.tpl',
       1 => 1572530693,
       2 => 'file',
     ),
   ),
-  'includes' => 
+  'includes' =>
   array (
   ),
 ),false)) {
@@ -25,11 +25,11 @@ $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
-<?php 
+<?php
 $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16029948035dbaea08087597_67079049', "body");
 ?>
 
-<?php 
+<?php
 $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6716052825dbaea0808d888_15528836', "modals");
 ?>
 
@@ -40,7 +40,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6716052825dbaea080
 class Block_16029948035dbaea08087597_67079049 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
-  'body' => 
+  'body' =>
   array (
     0 => 'Block_16029948035dbaea08087597_67079049',
   ),
@@ -120,7 +120,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\MMI_Assignm
 class Block_6716052825dbaea0808d888_15528836 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
-  'modals' => 
+  'modals' =>
   array (
     0 => 'Block_6716052825dbaea0808d888_15528836',
   ),

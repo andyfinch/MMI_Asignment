@@ -1,7 +1,3 @@
-<?php
-require_once(__DIR__ . '/includes/boot.include.php');
-?>
-
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
