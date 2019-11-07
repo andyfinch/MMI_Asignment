@@ -20,6 +20,7 @@
 {/block}
 {block name="modals"}
 <form class="needs-validation" novalidate="" method="post" action="index.php">
+    <input type="hidden" name="action" value="signup">
  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered" role="document">
@@ -105,7 +106,10 @@
                  </div>
              </div>
              <div class="modal-footer">
-                 <button type="submit" class="btn btn-primary">Sign up</button>
+                 <button type="submit" class="btn btn-primary">Sign up
+                     <span class="signupSpinner d-none spinner-border spinner-border-sm" role="status"
+                           aria-hidden="true"></span>
+                 </button>
                  <!--<button onclick="runSignup()" type="button" class="btn btn-primary">
                      <span class="signupSpinner d-none spinner-border spinner-border-sm" role="status"
                            aria-hidden="true"></span>
@@ -188,6 +192,8 @@
               // Prevent default posting of form - put here to work in case of errors
               event.preventDefault();
 
+              $('.signupSpinner').toggleClass('d-none');
+
               // Abort any pending request
               if (request) {
                   request.abort();
@@ -217,6 +223,31 @@
               request.done(function (response, textStatus, jqXHR) {
                   // Log a message to the console
                   console.log("Hooray, it worked!");
+
+                  $('.errorMessage').remove();
+                  $('.errorHighlight').removeClass('errorHighlight');
+                  //alert(response);
+                  let errors = JSON.parse(response);
+                  console.log(errors);
+                  if ( errors.length>0)
+                  {
+                      for (const error of errors) {
+                          $('#' + error.name).addClass('errorHighlight');
+                          if ( error.message)
+                          {
+                              $('#' + error.name).after("<div class='errorMessage'>" + error.message + "</div>");
+                          }
+
+
+                          console.log(error);
+                      }
+                  }
+                  else
+                  {
+                      //document.location.href = "./index.php?p=dashboard"
+                  }
+
+
                   //$('#signupModal .modal-content').replaceWith($('#signupModal .modal-content', response));
 
               });
@@ -235,6 +266,7 @@
               request.always(function () {
                   // Reenable the inputs
                   $inputs.prop("disabled", false);
+                  $('.signupSpinner').toggleClass('d-none');
               });
 
           });

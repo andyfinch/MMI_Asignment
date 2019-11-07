@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-01 09:53:18
+/* Smarty version 3.1.33, created on 2019-11-07 12:13:31
   from 'C:\wamp64\www\MMI_Assignment\views\pages\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dbc008e873263_11750212',
+  'unifunc' => 'content_5dc40a6b5adc77_90365163',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '52a4acf047d2f899a8e53b368104f94e4379c9ad' => 
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\pages\\login.tpl',
-      1 => 1572601994,
+      1 => 1573128807,
       2 => 'file',
     ),
   ),
@@ -20,32 +20,32 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dbc008e873263_11750212 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dc40a6b5adc77_90365163 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_5226231995dbc008e85c6f5_49662722', "body");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7843299755dc40a6b596ee1_83971010', "body");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2212261165dbc008e85fae9_25407176', "modals");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_13790187755dc40a6b59a228_45223920', "modals");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21263365465dbc008e8688c1_00314474', "scripts");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_717665835dc40a6b5a2752_10094233', "scripts");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layouts/main.tpl");
 }
 /* {block "body"} */
-class Block_5226231995dbc008e85c6f5_49662722 extends Smarty_Internal_Block
+class Block_7843299755dc40a6b596ee1_83971010 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'body' => 
   array (
-    0 => 'Block_5226231995dbc008e85c6f5_49662722',
+    0 => 'Block_7843299755dc40a6b596ee1_83971010',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -73,18 +73,19 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "body"} */
 /* {block "modals"} */
-class Block_2212261165dbc008e85fae9_25407176 extends Smarty_Internal_Block
+class Block_13790187755dc40a6b59a228_45223920 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'modals' => 
   array (
-    0 => 'Block_2212261165dbc008e85fae9_25407176',
+    0 => 'Block_13790187755dc40a6b59a228_45223920',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <form class="needs-validation" novalidate="" method="post" action="index.php">
+    <input type="hidden" name="action" value="signup">
  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered" role="document">
@@ -171,7 +172,10 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                  </div>
              </div>
              <div class="modal-footer">
-                 <button type="submit" class="btn btn-primary">Sign up</button>
+                 <button type="submit" class="btn btn-primary">Sign up
+                     <span class="signupSpinner d-none spinner-border spinner-border-sm" role="status"
+                           aria-hidden="true"></span>
+                 </button>
                  <!--<button onclick="runSignup()" type="button" class="btn btn-primary">
                      <span class="signupSpinner d-none spinner-border spinner-border-sm" role="status"
                            aria-hidden="true"></span>
@@ -245,12 +249,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "modals"} */
 /* {block "scripts"} */
-class Block_21263365465dbc008e8688c1_00314474 extends Smarty_Internal_Block
+class Block_717665835dc40a6b5a2752_10094233 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'scripts' => 
   array (
-    0 => 'Block_21263365465dbc008e8688c1_00314474',
+    0 => 'Block_717665835dc40a6b5a2752_10094233',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -268,6 +272,8 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
               // Prevent default posting of form - put here to work in case of errors
               event.preventDefault();
+
+              $('.signupSpinner').toggleClass('d-none');
 
               // Abort any pending request
               if (request) {
@@ -298,6 +304,31 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
               request.done(function (response, textStatus, jqXHR) {
                   // Log a message to the console
                   console.log("Hooray, it worked!");
+
+                  $('.errorMessage').remove();
+                  $('.errorHighlight').removeClass('errorHighlight');
+                  //alert(response);
+                  let errors = JSON.parse(response);
+                  console.log(errors);
+                  if ( errors.length>0)
+                  {
+                      for (const error of errors) {
+                          $('#' + error.name).addClass('errorHighlight');
+                          if ( error.message)
+                          {
+                              $('#' + error.name).after("<div class='errorMessage'>" + error.message + "</div>");
+                          }
+
+
+                          console.log(error);
+                      }
+                  }
+                  else
+                  {
+                      //document.location.href = "./index.php?p=dashboard"
+                  }
+
+
                   //$('#signupModal .modal-content').replaceWith($('#signupModal .modal-content', response));
 
               });
@@ -316,6 +347,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
               request.always(function () {
                   // Reenable the inputs
                   $inputs.prop("disabled", false);
+                  $('.signupSpinner').toggleClass('d-none');
               });
 
           });

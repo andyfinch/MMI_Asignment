@@ -4,13 +4,14 @@ class User
 {
     protected $Conn;
 
-    public function _construct($Conn)
+    public function __construct($Conn)
     {
         $this->Conn = $Conn;
     }
 
     public function createUser($user_data)
     {
+        var_dump($user_data);
         $sec_password = password_hash($user_data['password'], PASSWORD_DEFAULT);
 
         $query = "INSERT INTO users (email, password, name) VALUES (:user_email, :user_pass, :user_name)";
@@ -19,7 +20,7 @@ class User
         return $stmt->execute(array(
             'email' => $user_data['email'],
             'password' => $sec_password,
-            'name' => $user_data['fullName']
+            'name' => $user_data['userName']
             ));
 
 
