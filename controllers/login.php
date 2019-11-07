@@ -1,16 +1,5 @@
 <?php
 
-/*$errorClass = new Errors();
-$errorClass->addMessage('email', 'too short');
-$errorClass->addMessage('email', 'too big');
-$errorClass->addMessage('userName', 'too long');
-$errorClass->addMessage('userName', 'too wide');
-$errorClass->getJSON();*/
-//echo json_encode($errorClass->fieldsInError);
-//echo json_encode($errorClass);
-//echo json_encode(array_values($errorClass->fieldsInError));
-//var_dump($errorClass);
-
 if($_POST) {
 
     $errorClass = new Errors();
@@ -66,7 +55,7 @@ if($_POST) {
     }
 
 
-    $errorClass->getJSON();
+
 
     if ( !$errorClass->hasErrors())
     {
@@ -77,12 +66,27 @@ if($_POST) {
             $attempt = $User->createUser($_POST);
 
             if ($attempt) {
-                header("Location: index.php?p=dashboard");
-                exit();
+                //header("Location: index.php?p=dashboard");
+                //exit();
             } else {
                 $smarty->assign('error', "An error occured, please try again later.");
 
             }
+        }
+        else {
+            $User = new User($Conn);
+            $user_data = $User->loginUser($_POST['userName'], $_POST['password']);
+
+            if($user_data) {
+                $_SESSION['is_loggedin'] = true;
+                $_SESSION['user_data'] = $user_data;
+                //header("Location: index.php?p=account");
+                //exit();
+            }else{
+                $smarty->assign('error', "Incorrect Email/Password");
+                $errorClass->addMessage('userName', 'Incorrect Email/Password');
+            }
+
         }
     }
 
@@ -92,7 +96,7 @@ if($_POST) {
 
     }
 
-
+    $errorClass->getJSON();
 
 
     /*else{

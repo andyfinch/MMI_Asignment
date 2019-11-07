@@ -19,7 +19,7 @@
       </div>
 {/block}
 {block name="modals"}
-<form class="needs-validation" novalidate="" method="post" action="index.php">
+<form id="signUpForm" class="needs-validation" novalidate="" method="post" action="index.php">
     <input type="hidden" name="action" value="signup">
  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
@@ -59,7 +59,7 @@
 
                              <div class="mb-3">
                                  <label for="password">Password </label>
-                                 <input type="email" class="form-control" id="password" name="password">
+                                 <input type="password" class="form-control" id="password" name="password">
                                  <div class="invalid-feedback">
                                      Please enter a valid password.
                                  </div>
@@ -67,7 +67,7 @@
 
                              <div class="mb-3">
                                  <label for="confirmPassword">Confirm Password </label>
-                                 <input type="email" class="form-control" id="confirmPassword" name="confirmPassword">
+                                 <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
                                  <div class="invalid-feedback">
                                      Please enter a valid password.
                                  </div>
@@ -124,6 +124,8 @@
 </form>
 
  <!-- Modal -->
+<form class="needs-validation" novalidate="" method="post" action="index.php">
+    <input type="hidden" name="action" value="signin">
  <div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered" role="document">
@@ -146,17 +148,16 @@
                              <form id="signinform" class="needs-validation" novalidate="">
 
                                  <div class="mb-3">
-                                     <label for="signinemail">Email </label>
-                                     <input type="email" class="form-control" id="signinemail"
-                                            placeholder="you@example.com" required>
+                                     <label for="userName">User Name </label>
+                                     <input type="text" class="form-control" id="userName" name="userName" required>
                                      <div class="invalid-feedback">
-                                         Please enter a valid email address.
+                                         Please enter a valid User Name.
                                      </div>
                                  </div>
 
                                  <div class="mb-3">
                                      <label for="signinpassword">Password </label>
-                                     <input type="password" class="form-control" id="signinpassword" required>
+                                     <input type="password" class="form-control" id="password" name="password" required>
                                      <div class="invalid-feedback">
                                          Please enter a valid password.
                                      </div>
@@ -168,109 +169,123 @@
                  </div>
              </div>
              <div class="modal-footer">
-                 <button onclick="runSignin()" type="button" class="btn btn-primary">
+                 <button type="submit" class="btn btn-primary">Sign in
+                     <span class="signupSpinner d-none spinner-border spinner-border-sm" role="status"
+                           aria-hidden="true"></span>
+                 </button>
+                 <!--<button onclick="runSignin()" type="button" class="btn btn-primary">
                      <span class="signinSpinner d-none spinner-border spinner-border-sm" role="status"
                            aria-hidden="true"></span>
                      Sign in
-                 </button>
+                 </button>-->
                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
              </div>
          </div>
      </div>
  </div>
+</form>
 {/block}
 {block name="scripts"}
   <script>
 
       $(function () {
-          // Variable to hold request
-          var request;
 
-// Bind to the submit event of our form
-          $("form").submit(function (event) {
-
-              // Prevent default posting of form - put here to work in case of errors
-              event.preventDefault();
-
-              $('.signupSpinner').toggleClass('d-none');
-
-              // Abort any pending request
-              if (request) {
-                  request.abort();
-              }
-              // setup some local variables
-              var $form = $(this);
-
-              // Let's select and cache all the fields
-              var $inputs = $form.find("input, select, button, textarea");
-
-              // Serialize the data in the form
-              var serializedData = $form.serialize();
-
-              // Let's disable the inputs for the duration of the Ajax request.
-              // Note: we disable elements AFTER the form data has been serialized.
-              // Disabled form elements will not be serialized.
-              $inputs.prop("disabled", true);
-
-              // Fire off the request to /form.php
-              request = $.ajax({
-                  url: "index.php",
-                  type: "post",
-                  data: serializedData
-              });
-
-              // Callback handler that will be called on success
-              request.done(function (response, textStatus, jqXHR) {
-                  // Log a message to the console
-                  console.log("Hooray, it worked!");
-
-                  $('.errorMessage').remove();
-                  $('.errorHighlight').removeClass('errorHighlight');
-                  //alert(response);
-                  let errors = JSON.parse(response);
-                  console.log(errors);
-                  if ( errors.length>0)
-                  {
-                      for (const error of errors) {
-                          $('#' + error.name).addClass('errorHighlight');
-                          if ( error.message)
-                          {
-                              $('#' + error.name).after("<div class='errorMessage'>" + error.message + "</div>");
-                          }
-
-
-                          console.log(error);
-                      }
-                  }
-                  else
-                  {
-                      //document.location.href = "./index.php?p=dashboard"
-                  }
-
-
-                  //$('#signupModal .modal-content').replaceWith($('#signupModal .modal-content', response));
-
-              });
-
-              // Callback handler that will be called on failure
-              request.fail(function (jqXHR, textStatus, errorThrown) {
-                  // Log the error to the console
-                  console.error(
-                      "The following error occurred: " +
-                      textStatus, errorThrown
-                  );
-              });
-
-              // Callback handler that will be called regardless
-              // if the request failed or succeeded
-              request.always(function () {
-                  // Reenable the inputs
-                  $inputs.prop("disabled", false);
-                  $('.signupSpinner').toggleClass('d-none');
-              });
-
+          $('.modal').on('hidden.bs.modal', function (e) {
+              $('.errorMessage', this).remove();
+              $('.errorHighlight', this).removeClass('errorHighlight');
+              $(':input', this).val('');
           });
-      });
+          signUpForm.init();
+
+
+          // Variable to hold request
+//           var request;
+//
+// // Bind to the submit event of our form
+//           $("form").submit(function (event) {
+//
+//               // Prevent default posting of form - put here to work in case of errors
+//               event.preventDefault();
+//
+//               $('.signupSpinner').toggleClass('d-none');
+//
+//               // Abort any pending request
+//               if (request) {
+//                   request.abort();
+//               }
+//               // setup some local variables
+//               var $form = $(this);
+//
+//               // Let's select and cache all the fields
+//               var $inputs = $form.find("input, select, button, textarea");
+//
+//               // Serialize the data in the form
+//               var serializedData = $form.serialize();
+//
+//               // Let's disable the inputs for the duration of the Ajax request.
+//               // Note: we disable elements AFTER the form data has been serialized.
+//               // Disabled form elements will not be serialized.
+//               $inputs.prop("disabled", true);
+//
+//               // Fire off the request to /form.php
+//               request = $.ajax({
+//                   url: "index.php",
+//                   type: "post",
+//                   data: serializedData
+//               });
+//
+//               // Callback handler that will be called on success
+//               request.done(function (response, textStatus, jqXHR) {
+//                   // Log a message to the console
+//                   console.log("Hooray, it worked!");
+//
+//                   $('.errorMessage').remove();
+//                   $('.errorHighlight').removeClass('errorHighlight');
+//                   //alert(response);
+//                   let errors = JSON.parse(response);
+//                   console.log(errors);
+//                   if ( errors.length>0)
+//                   {
+//                       for (const error of errors) {
+//                           $('#' + error.name).addClass('errorHighlight');
+//                           if ( error.message)
+//                           {
+//                               $('#' + error.name).after("<div class='errorMessage'>" + error.message + "</div>");
+//                           }
+//
+//
+//                           console.log(error);
+//                       }
+//                   }
+//                   else
+//                   {
+//                       document.location.href = "./index.php?p=dashboard"
+//                   }
+//
+//
+//                   //$('#signupModal .modal-content').replaceWith($('#signupModal .modal-content', response));
+//
+//               });
+//
+//               // Callback handler that will be called on failure
+//               request.fail(function (jqXHR, textStatus, errorThrown) {
+//                   // Log the error to the console
+//                   console.error(
+//                       "The following error occurred: " +
+//                       textStatus, errorThrown
+//                   );
+//               });
+//
+//               // Callback handler that will be called regardless
+//               // if the request failed or succeeded
+//               request.always(function () {
+//                   // Reenable the inputs
+//                   $inputs.prop("disabled", false);
+//                   $('.signupSpinner').toggleClass('d-none');
+//               });
+//
+//           });
+        });
 
       function runSignin() {
           if (validateForm($('#signinform')[0])) {
