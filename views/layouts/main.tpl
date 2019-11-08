@@ -75,6 +75,7 @@
 <script src="./bootstrap/jquery.js"></script>
 <script src="./bootstrap/popper.js"></script>
 <script src="./bootstrap/bootstrap.bundle.js"></script><!--TODO-->
+<script src="./js/scripts.js"></script>
 {block name="scripts"}{/block}
 <!--<script src="form-validation.js"></script>-->
 

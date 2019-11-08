@@ -7670,4 +7670,13 @@ body.bg-light {
   margin-right: 10px;
   color: white; }
 
+.errorMessage {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545; }
+
+.errorHighlight {
+  border: 1px solid #ff0000; }
+
 /*# sourceMappingURL=styles.css.map */
