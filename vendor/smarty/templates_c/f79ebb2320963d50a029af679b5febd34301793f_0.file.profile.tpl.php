@@ -1,15 +1,66 @@
-{extends file="layouts/main.tpl"}
-{block name="body"}
+<?php
+/* Smarty version 3.1.33, created on 2019-11-11 16:21:43
+  from 'C:\wamp64\www\MMI_Assignment\views\pages\profile.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5dc98a97aed4a8_79820808',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'f79ebb2320963d50a029af679b5febd34301793f' => 
+    array (
+      0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\pages\\profile.tpl',
+      1 => 1573489274,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5dc98a97aed4a8_79820808 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_loadInheritance();
+$_smarty_tpl->inheritance->init($_smarty_tpl, true);
+?>
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1006952505dc98a97ac2b27_66353382', "body");
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2642438665dc98a97ae3f50_33370646', "scripts");
+?>
+
+<?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layouts/main.tpl");
+}
+/* {block "body"} */
+class Block_1006952505dc98a97ac2b27_66353382 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'body' => 
+  array (
+    0 => 'Block_1006952505dc98a97ac2b27_66353382',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
     <div class="row mt-5">
 
 
         <div class="col-md-4">
 
             <div class="card border-secondary" style="width: 18rem;">
-                <img class="card-img-top" src="https://robohash.org/{$smarty.session.user_data.full_name}?size=150x150" alt="Card image cap">
+                <img class="card-img-top" src="https://robohash.org/<?php echo $_SESSION['user_data']['full_name'];?>
+?size=150x150" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">{$smarty.session.user_data.full_name}</h5>
-                    <p class="card-text">{$smarty.session.user_data.user_name}</p>
+                    <h5 class="card-title"><?php echo $_SESSION['user_data']['full_name'];?>
+</h5>
+                    <p class="card-text"><?php echo $_SESSION['user_data']['user_name'];?>
+</p>
                 </div>
             </div>
 
@@ -35,9 +86,11 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <label for="userName">User Name </label>
-                            <input disabled type="text" class="form-control" value="{$smarty.session.user_data.user_name}">
+                            <input disabled type="text" class="form-control" value="<?php echo $_SESSION['user_data']['user_name'];?>
+">
                             <input type="hidden" class="form-control" id="userName" name="userName"
-                                   value="{$smarty.session.user_data.user_name}">
+                                   value="<?php echo $_SESSION['user_data']['user_name'];?>
+">
                             <div class="invalid-feedback">
                                 Please enter a valid user name.
                             </div>
@@ -45,34 +98,20 @@
 
                         <div class="mb-3">
                             <label for="email">Email </label>
-                            <input disabled type="email" class="form-control editable" name="email" id="email" value="{$smarty.session.user_data.email}">
+                            <input disabled type="email" class="form-control editable" name="email" id="email" value="<?php echo $_SESSION['user_data']['email'];?>
+">
                             <div class="invalid-feedback">
                                 Please enter a valid email address for shipping updates.
                             </div>
                         </div>
 
-                        {*<div class="mb-3">
-                            <label for="password">Password </label>
-                            <input disabled type="password" class="form-control editable" id="password" name="password" value="{$smarty.session.user_data.password}">
-                            <div class="invalid-feedback">
-                                Please enter a valid password.
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="confirmPassword">Confirm Password </label>
-                            <input disabled type="email" class="form-control editable" id="confirmPassword" name="confirmPassword"
-                                   value="{$smarty.session.user_data.password}">
-                            <div class="invalid-feedback">
-                                Please enter a valid password.
-                            </div>
-                        </div>*}
-
+                        
                         <div class="row">
                             <div class="col mb-3">
                                 <label for="fullName">Full name</label>
                                 <input disabled type="text" class="form-control editable" id="fullName" name="fullName"
-                                       value="{$smarty.session.user_data.full_name}" required="">
+                                       value="<?php echo $_SESSION['user_data']['full_name'];?>
+" required="">
                                 <div class="invalid-feedback">
                                     Valid name is required.
                                 </div>
@@ -83,7 +122,8 @@
                         <div class="mb-3">
                             <label for="city">City</label>
                             <input disabled type="text" class="form-control editable" id="city" name="city"
-                                   value="{$smarty.session.user_data.city}" required="">
+                                   value="<?php echo $_SESSION['user_data']['city'];?>
+" required="">
                             <div class="invalid-feedback">
                                 Please enter valid city.
                             </div>
@@ -107,10 +147,24 @@
             </form>
         </div>
     </div>
-{/block}
+<?php
+}
+}
+/* {/block "body"} */
+/* {block "scripts"} */
+class Block_2642438665dc98a97ae3f50_33370646 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'scripts' => 
+  array (
+    0 => 'Block_2642438665dc98a97ae3f50_33370646',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-{block name="scripts"}
-    <script>
+    <?php echo '<script'; ?>
+>
         postAjax.init();
 
         function editForm() {
@@ -128,17 +182,24 @@
         }
 
 
-    </script>
-    {if $message}
-        <script>
+    <?php echo '</script'; ?>
+>
+    <?php if ($_smarty_tpl->tpl_vars['message']->value) {?>
+        <?php echo '<script'; ?>
+>
 
             $(function () {
-                var message = '{$message}';
+                var message = '<?php echo $_smarty_tpl->tpl_vars['message']->value;?>
+';
                 //$('.toast .toast-header .content').text(message);
                 $('.toast .toast-body').text(message);
                 $('.toast').toast('show');
 
             });
-        </script>
-    {/if}
-{/block}
+        <?php echo '</script'; ?>
+>
+    <?php }
+}
+}
+/* {/block "scripts"} */
+}

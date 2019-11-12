@@ -21,8 +21,10 @@ function smarty_function_getTopics($params, Smarty_Internal_Template $template)
         echo $e->getMessage();
         exit();
     }
-
-    $stmt = $Conn->query('SELECT * FROM test');
+    $user_id = $_SESSION['user_data']['id'];
+    $query = "SELECT * FROM topics where user_id = :user_id";
+    $stmt = $Conn->prepare($query);
+    $stmt->execute(array(':user_id' => $user_id));
     $result = $stmt->fetchAll();
 
     echo '<table class="table table-striped"> <thead>
@@ -36,9 +38,9 @@ function smarty_function_getTopics($params, Smarty_Internal_Template $template)
 
     foreach($result as $row){
         echo '<tr>';
-        echo '<td>'.$row["Title"].'</td>';
-        echo '<td>'.$row["Description"].'</td>';
-        echo '<td>'.$row["Created"].'</td>';
+        echo '<td>'.$row["title"].'</td>';
+        echo '<td>'.$row["description"].'</td>';
+        echo '<td>'.$row["created"].'</td>';
         echo '</tr>';
     }
     echo '</tbody></table>';

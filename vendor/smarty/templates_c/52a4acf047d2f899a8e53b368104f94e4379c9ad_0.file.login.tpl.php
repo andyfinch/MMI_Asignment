@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-07 15:49:25
+/* Smarty version 3.1.33, created on 2019-11-11 09:35:49
   from 'C:\wamp64\www\MMI_Assignment\views\pages\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dc43d05044685_38485310',
+  'unifunc' => 'content_5dc92b7509b456_16662377',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '52a4acf047d2f899a8e53b368104f94e4379c9ad' => 
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\pages\\login.tpl',
-      1 => 1573141714,
+      1 => 1573464853,
       2 => 'file',
     ),
   ),
@@ -20,32 +20,32 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dc43d05044685_38485310 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dc92b7509b456_16662377 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2471504545dc43d0502bda2_13323490', "body");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6727805835dc92b7508cb86_06524022', "body");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18734188165dc43d0502ebb7_73892057', "modals");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3845054275dc92b7508f343_29358315', "modals");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10537532055dc43d05037085_80114886', "scripts");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17365055225dc92b75096844_36350662', "scripts");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layouts/main.tpl");
 }
 /* {block "body"} */
-class Block_2471504545dc43d0502bda2_13323490 extends Smarty_Internal_Block
+class Block_6727805835dc92b7508cb86_06524022 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'body' => 
   array (
-    0 => 'Block_2471504545dc43d0502bda2_13323490',
+    0 => 'Block_6727805835dc92b7508cb86_06524022',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -73,12 +73,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "body"} */
 /* {block "modals"} */
-class Block_18734188165dc43d0502ebb7_73892057 extends Smarty_Internal_Block
+class Block_3845054275dc92b7508f343_29358315 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'modals' => 
   array (
-    0 => 'Block_18734188165dc43d0502ebb7_73892057',
+    0 => 'Block_3845054275dc92b7508f343_29358315',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -116,14 +116,6 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                              </div>
 
                              <div class="mb-3">
-                                 <label for="email">Email </label>
-                                 <input type="email" class="form-control" id="email" placeholder="you@example.com" name="email">
-                                 <div class="invalid-feedback">
-                                     Please enter a valid email address for shipping updates.
-                                 </div>
-                             </div>
-
-                             <div class="mb-3">
                                  <label for="password">Password </label>
                                  <input type="password" class="form-control" id="password" name="password">
                                  <div class="invalid-feedback">
@@ -133,9 +125,18 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
                              <div class="mb-3">
                                  <label for="confirmPassword">Confirm Password </label>
-                                 <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
+                                 <input type="password" class="form-control" id="confirmPassword"
+                                        name="confirmPassword">
                                  <div class="invalid-feedback">
                                      Please enter a valid password.
+                                 </div>
+                             </div>
+
+                             <div class="mb-3">
+                                 <label for="email">Email </label>
+                                 <input type="email" class="form-control" id="email" placeholder="you@example.com" name="email">
+                                 <div class="invalid-feedback">
+                                     Please enter a valid email address for shipping updates.
                                  </div>
                              </div>
 
@@ -153,14 +154,14 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
                              <div class="mb-3">
                                  <label for="city">City</label>
-                                 <input type="text" class="form-control" id="city" required="">
+                                 <input type="text" class="form-control" id="city" name="city" required="">
                                  <div class="invalid-feedback">
                                      Please enter valid city.
                                  </div>
                              </div>
 
                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="terms">
+                                 <input type="checkbox" class="custom-control-input" id="terms" name="terms">
                                  <label class="custom-control-label" for="terms">Please tick to accept the Terms and
                                      Conditions</label>
                              </div>
@@ -215,7 +216,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
                                  <div class="mb-3">
                                      <label for="userName">User Name </label>
-                                     <input type="text" class="form-control" id="userName" name="userName" required>
+                                     <input type="text" class="form-control" id="userNameSignin" name="userName" required>
                                      <div class="invalid-feedback">
                                          Please enter a valid User Name.
                                      </div>
@@ -223,7 +224,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
                                  <div class="mb-3">
                                      <label for="signinpassword">Password </label>
-                                     <input type="password" class="form-control" id="password" name="password" required>
+                                     <input type="password" class="form-control" id="passwordSignin" name="password" required>
                                      <div class="invalid-feedback">
                                          Please enter a valid password.
                                      </div>
@@ -255,12 +256,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "modals"} */
 /* {block "scripts"} */
-class Block_10537532055dc43d05037085_80114886 extends Smarty_Internal_Block
+class Block_17365055225dc92b75096844_36350662 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'scripts' => 
   array (
-    0 => 'Block_10537532055dc43d05037085_80114886',
+    0 => 'Block_17365055225dc92b75096844_36350662',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -272,103 +273,15 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
       $(function () {
 
           $('.modal').on('hidden.bs.modal', function (e) {
-              $('.errorMessage', this).remove();
-              $('.errorHighlight', this).removeClass('errorHighlight');
+              $('.errorMessage').remove();
+              $('.errorHighlight').removeClass('errorHighlight');
               $(':input', this).val('');
           });
-          signUpForm.init();
+          postAjax.init();
 
-
-          // Variable to hold request
-//           var request;
-//
-// // Bind to the submit event of our form
-//           $("form").submit(function (event) {
-//
-//               // Prevent default posting of form - put here to work in case of errors
-//               event.preventDefault();
-//
-//               $('.signupSpinner').toggleClass('d-none');
-//
-//               // Abort any pending request
-//               if (request) {
-//                   request.abort();
-//               }
-//               // setup some local variables
-//               var $form = $(this);
-//
-//               // Let's select and cache all the fields
-//               var $inputs = $form.find("input, select, button, textarea");
-//
-//               // Serialize the data in the form
-//               var serializedData = $form.serialize();
-//
-//               // Let's disable the inputs for the duration of the Ajax request.
-//               // Note: we disable elements AFTER the form data has been serialized.
-//               // Disabled form elements will not be serialized.
-//               $inputs.prop("disabled", true);
-//
-//               // Fire off the request to /form.php
-//               request = $.ajax({
-//                   url: "index.php",
-//                   type: "post",
-//                   data: serializedData
-//               });
-//
-//               // Callback handler that will be called on success
-//               request.done(function (response, textStatus, jqXHR) {
-//                   // Log a message to the console
-//                   console.log("Hooray, it worked!");
-//
-//                   $('.errorMessage').remove();
-//                   $('.errorHighlight').removeClass('errorHighlight');
-//                   //alert(response);
-//                   let errors = JSON.parse(response);
-//                   console.log(errors);
-//                   if ( errors.length>0)
-//                   {
-//                       for (const error of errors) {
-//                           $('#' + error.name).addClass('errorHighlight');
-//                           if ( error.message)
-//                           {
-//                               $('#' + error.name).after("<div class='errorMessage'>" + error.message + "</div>");
-//                           }
-//
-//
-//                           console.log(error);
-//                       }
-//                   }
-//                   else
-//                   {
-//                       document.location.href = "./index.php?p=dashboard"
-//                   }
-//
-//
-//                   //$('#signupModal .modal-content').replaceWith($('#signupModal .modal-content', response));
-//
-//               });
-//
-//               // Callback handler that will be called on failure
-//               request.fail(function (jqXHR, textStatus, errorThrown) {
-//                   // Log the error to the console
-//                   console.error(
-//                       "The following error occurred: " +
-//                       textStatus, errorThrown
-//                   );
-//               });
-//
-//               // Callback handler that will be called regardless
-//               // if the request failed or succeeded
-//               request.always(function () {
-//                   // Reenable the inputs
-//                   $inputs.prop("disabled", false);
-//                   $('.signupSpinner').toggleClass('d-none');
-//               });
-//
-//           });
         });
 
-      function runSignin() {
+      /*function runSignin() {
           if (validateForm($('#signinform')[0])) {
               $('.signinSpinner').toggleClass('d-none');
               setTimeout(function () {
@@ -402,24 +315,13 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
           form.classList.add('was-validated');
 
           return isValid;
-      }
+      }*/
 
 
   <?php echo '</script'; ?>
 >
 
-<?php if ($_smarty_tpl->tpl_vars['error']->value) {?>
-
-<?php echo '<script'; ?>
->
-    console.log("hello");
-    $(function() {
-        $("#signupModal").modal("show");
-    });
-<?php echo '</script'; ?>
->
-
-<?php }
+<?php
 }
 }
 /* {/block "scripts"} */
