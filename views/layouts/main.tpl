@@ -76,14 +76,11 @@
     {/if}
     {block name="nav"}{/block}
 </header>
-<div class="container">
+
 {block name="body"}{/block}
 
 
-
-</div>
-
-<footer class="my-5 pt-5 text-muted text-center text-small" style="position: absolute; bottom: 0; width: 100%">
+<footer class="my-5 pt-5 text-muted text-center text-small" style="position: relative; bottom: 0; width: 100%">
     <div>
         <p class="mb-1">&copy; 2019 AJF Plc</p>
         <ul class="list-inline">
@@ -93,7 +90,7 @@
         </ul>
     </div>
 </footer>
-<form class="needs-validation" novalidate="" method="post" action="index.php">
+<form id="contentModal" class="needs-validation" novalidate="" method="post" action="index.php">
     <input type="hidden" name="action" value="topic">
     <div class="modal fade" id="topicModal" tabindex="-1" role="dialog" aria-labelledby="topicModalLabel"
          aria-hidden="true">
@@ -138,12 +135,14 @@
 
                                     <div class="mb-3">
                                         <label for="content">Content </label>
-                                        <textarea rows="15" type="text" class="form-control" id="content"
+                                        <textarea rows="10" type="text" class="form-control" id="content"
                                                   name="content"></textarea>
                                         <div class="invalid-feedback">
                                             Please enter valid content.
                                         </div>
                                     </div>
+                                    <input type="hidden" class="form-control" id="level" name="level" value="0">
+                                    <input type="hidden" class="form-control" id="parent_id" name="parent_id" value="0">
 
                                 </form>
                             </div>

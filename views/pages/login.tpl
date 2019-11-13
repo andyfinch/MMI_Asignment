@@ -1,22 +1,25 @@
 {extends file="layouts/main.tpl"}
 {block name="body"}
-  <div class="row pt-5 h-100" style="margin-top: 10em">
-          <div class="col-4 offset-1">
-              <div class=""><h1 class="">The best revision content site for students</h1>
-                  <p class="">RevisionIT is designed to allow students to create revision content, annotate it, edit it
-                      and know it.<br></p>
-                  <button class="btn btn-primary btn-lg btn-block" type="submit" data-toggle="modal"
-                          data-target="#signupModal">Sign up
-                  </button>
-              </div>
-          </div>
+    <div class="container">
+        <div class="row pt-5 h-100" style="margin-top: 10em">
+            <div class="col-4 offset-1">
+                <div class=""><h1 class="">The best revision content site for students</h1>
+                    <p class="">RevisionIT is designed to allow students to create revision content, annotate it, edit
+                        it
+                        and know it.<br></p>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit" data-toggle="modal"
+                            data-target="#signupModal">Sign up
+                    </button>
+                </div>
+            </div>
 
-          <div class="col-5 offset-2">
-              <div class="learning-image">
-              </div>
-          </div>
+            <div class="col-5 offset-2">
+                <div class="learning-image">
+                </div>
+            </div>
 
-      </div>
+        </div>
+    </div>
 {/block}
 {block name="modals"}
 <form id="signUpForm" class="needs-validation" novalidate="" method="post" action="index.php">

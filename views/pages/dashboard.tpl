@@ -1,119 +1,93 @@
 {extends file="layouts/main.tpl"}
 {block name="body"}
-<div class="row">
-    <div class="col-sm-8">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">My Content</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                {buildTopicTree}
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Created</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                {foreach $topics as $topic}
-                    <tr>
-                        <td>{$topic.title}</td>
-                        <td>{$topic.description}</td>
-                        <td>{$topic.created}</td>
-                    </tr>
-                {/foreach}
-                    </tbody>
-                </table>
-                {*{
-                echo '
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Created</th>
-                    </tr>
-                    </thead>
-                    <tbody>';
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body content-tree">
+                        <h5 class="card-title">My Content</h5>
+                        <p class="card-text ">With supporting text below as a natural lead-in to additional content.</p>
+                        {buildTopicTree}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">My Content</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Created</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {foreach $topics as $topic}
+                                <tr>
+                                    <td>{$topic.title}</td>
+                                    <td>{$topic.description}</td>
+                                    <td>{$topic.created}</td>
+                                </tr>
+                            {/foreach}
+                            </tbody>
+                        </table>
 
-                    foreach($result as $row){
-                    echo '
-                    <tr>';
-                        echo '
-                        <td>'.$row["title"].'</td>
-                        ';
-                        echo '
-                        <td>'.$row["description"].'</td>
-                        ';
-                        echo '
-                        <td>'.$row["created"].'</td>
-                        ';
-                        echo '
-                    </tr>
-                    ';
-                    }
-                    echo '
-                    </tbody>
-                </table>
-                ';
-                }*}
-                {*{getTopics}*}
-
-
-
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Recent activity</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Created</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Insertion Sort</td>
+                                <td>01/01/2019 @ 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Insertion Sort</td>
+                                <td>01/01/2019 @ 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Insertion Sort</td>
+                                <td>01/01/2019 @ 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Insertion Sort</td>
+                                <td>01/01/2019 @ 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Insertion Sort</td>
+                                <td>01/01/2019 @ 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Insertion Sort</td>
+                                <td>01/01/2019 @ 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Insertion Sort</td>
+                                <td>01/01/2019 @ 19:00</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <a href="#" class="btn btn-primary">Go somewhereX</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-4">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Recent activity</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Created</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Insertion Sort</td>
-                        <td>01/01/2019 @ 19:00</td>
-                    </tr>
-                    <tr>
-                        <td>Insertion Sort</td>
-                        <td>01/01/2019 @ 19:00</td>
-                    </tr>
-                    <tr>
-                        <td>Insertion Sort</td>
-                        <td>01/01/2019 @ 19:00</td>
-                    </tr>
-                    <tr>
-                        <td>Insertion Sort</td>
-                        <td>01/01/2019 @ 19:00</td>
-                    </tr>
-                    <tr>
-                        <td>Insertion Sort</td>
-                        <td>01/01/2019 @ 19:00</td>
-                    </tr>
-                    <tr>
-                        <td>Insertion Sort</td>
-                        <td>01/01/2019 @ 19:00</td>
-                    </tr>
-                    <tr>
-                        <td>Insertion Sort</td>
-                        <td>01/01/2019 @ 19:00</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <a href="#" class="btn btn-primary">Go somewhereX</a>
-            </div>
-        </div>
-    </div>
-</div>
 {/block}
 {block name="modals"}
 {*<form class="needs-validation" novalidate="" method="post" action="index.php">

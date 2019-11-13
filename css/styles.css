@@ -7679,4 +7679,11 @@ body.bg-light {
 .errorHighlight {
   border: 1px solid #ff0000; }
 
+.content-tree ul ul {
+  margin-left: 1em; }
+.content-tree .list-group-item {
+  padding: 5px 20px; }
+.content-tree .tree-active {
+  background-color: #e8f5ee; }
+
 /*# sourceMappingURL=styles.css.map */

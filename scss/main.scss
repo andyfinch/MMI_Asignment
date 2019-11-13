@@ -64,3 +64,20 @@ body {
 	border: 1px solid #ff0000;
 }
 
+.content-tree
+{
+	ul {
+		ul {
+			margin-left: 1em;
+		}
+	}
+
+	.list-group-item {
+		padding: 5px 20px;
+	}
+
+	.tree-active {
+		background-color: #e8f5ee;
+	}
+}
+

@@ -11,6 +11,7 @@
  * Purpose:  outputs a random magic answer
  * -------------------------------------------------------------
  */
+
 function smarty_function_buildTopicTree($params, Smarty_Internal_Template $template)
 {
     try {
@@ -22,100 +23,86 @@ function smarty_function_buildTopicTree($params, Smarty_Internal_Template $templ
         exit();
     }
     $user_id = $_SESSION['user_data']['id'];
-    $query = "SELECT * FROM topics where user_id = :user_id";
+    $query = "SELECT * FROM topics where user_id = :user_id order by level asc";
     $stmt = $Conn->prepare($query);
     $stmt->execute(array(':user_id' => $user_id));
     $result = $stmt->fetchAll();
 
 
     $baseArray = array();
-
-    foreach ($result as $row) {
-
-        
-        $attempt = searchArray($row["parent_id"], $baseArray);
-        if (!$attempt)
-        {
-            $employee_object = new stdClass;
-            $employee_object->id = $row["id"];
-            $employee_object->title = $row["title"];
-            $employee_object->contentArray = array();
-            $baseArray[$row["id"]] = $employee_object;
-        }
-        else{
-
-            $employee_object = new stdClass;
-            $employee_object->id = $row["id"];
-            $employee_object->title = $row["title"];
-            $employee_object->contentArray = array();
-            $attempt->contentArray[$row["id"]] = $employee_object;
-        }
-
-        
-
-    }
-    var_dump($baseArray);
-    echo json_encode($baseArray);
+    changeArray($result, $baseArray);
     recursiveArrayToList($baseArray);
 
-    echo '<table class="table table-striped"> <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Created</th>
-                        <th>Parent_ID</th>
-                    </tr>
-                    </thead>
-                    <tbody>';
-
-    foreach($result as $row){
-        echo '<tr>';
-        echo '<td>' . $row["id"] . '</td>';
-        echo '<td>'.$row["title"].'</td>';
-        echo '<td>'.$row["description"].'</td>';
-        echo '<td>'.$row["created"].'</td>';
-        echo '<td>' . $row["parent_id"] . '</td>';
-        echo '</tr>';
-    }
-    echo '</tbody></table>';
-
-   
 }
 
-
-
-function searchArray($key, $array)
+function changeArray($result, &$baseArray)
 {
-    //var_dump($array);
-    if (array_key_exists($key, $array)) // $key = 2;
-    {
-        return $array[$key];
-    } else {
+    foreach ($result as $row) {
+        $level = $row["level"];
+        $parent_id = $row["parent_id"];
+        $row_id = $row["id"];
 
-        foreach ($array as $row) {
-            if ( is_array($row))
-            {
-                return searchArray($key, $row);
+        $contentObject = array(
+            "id" => $row_id,
+            "title" => $row["title"],
+            "level" => $row["level"],
+            "parent_id" => $parent_id,
+            "contentArray" => array()
+        );
+
+        if ($level == 0) {
+            array_push($baseArray, $contentObject);
+            //$baseArray[$row_id] = $contentObject;
+        } else if ($level == 1) {
+
+            foreach ($baseArray as $key => &$value) {
+
+                if ($value['id'] === $parent_id) {
+                    array_push($value['contentArray'], $contentObject);
+                }
             }
+        } else if ($level == 2) {
+            
+             foreach ($baseArray as $key => &$value) {
+                 $contentArray = &$value['contentArray'];
+                 foreach ($contentArray as $key2 => &$value2) {
+                     $contentArray1 = &$value2['contentArray'];
+                     if ($value2['id'] === $parent_id) {
+                         array_push($contentArray1, $contentObject);
+                     }
 
+                 }
+            }
+        } else if ($level == 3) {
+
+            foreach ($baseArray as $key => &$value) {
+                $contentArray = &$value['contentArray'];
+                foreach ($contentArray as $key2 => &$value2) {
+                    $contentArray1 = &$value2['contentArray'];
+                    foreach ($contentArray1 as $key3 => &$value3) {
+                        $contentArray2 = &$value3['contentArray'];
+                        if ($value3['id'] === $parent_id) {
+                            array_push($contentArray2, $contentObject);
+                        }
+
+                    }
+
+                }
+            }
         }
 
-        return false;
 
     }
-
-    //return false;
 }
 
 function recursiveArrayToList(Array $array = array())
 {
-    echo '<ul>';
+    echo '<ul class="list-group">';
     foreach ($array as $key => $value) {
-        echo '<li>' . $key . '</li>';
+        echo '<li class="list-group-item" id="tree-' . $value['id'] . '">' . '<a href="./index.php?p=content&id=' . $value['id'] . '">' . $value['title'] . '</a>' . '</li>';
         //var_dump($value);
-        if (is_array($value->contentArray)) {
-            recursiveArrayToList($value->contentArray);
+        if (is_array($value['contentArray'])) {
+            recursiveArrayToList($value['contentArray']);
         }
     }
     echo '</ul>';
