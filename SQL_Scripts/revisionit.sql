@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 12, 2019 at 08:31 AM
+-- Generation Time: Nov 13, 2019 at 05:20 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -56,31 +56,36 @@ CREATE TABLE IF NOT EXISTS `topics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
+  `content` text NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `level` int(11) NOT NULL,
+  `parent_id` int(11) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_topics_users_user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `topics`
 --
 
-INSERT INTO `topics` (`id`, `title`, `description`, `created`, `user_id`) VALUES
-(11, 'sadsa', 'asd', '2019-11-08 15:28:11', 5),
-(12, 'test', 'trst', '2019-11-08 15:38:29', 5),
-(13, 'Sorting ', 'algorthims', '2019-11-08 15:39:48', 5),
-(14, 'a', 'a', '2019-11-08 15:41:25', 5),
-(15, 'a', 'd', '2019-11-08 15:41:39', 5),
-(16, 'user1', 'dsfdsf', '2019-11-08 15:46:47', 1),
-(17, 'User2', 'dssdfdsf', '2019-11-08 15:47:03', 2),
-(18, 'Topic2', 'Desc2', '2019-11-11 09:12:31', 1),
-(19, 'Another Topic', 'Another Desc', '2019-11-11 09:12:42', 1),
-(20, 'Yet another topic', 'yet another description', '2019-11-11 09:12:59', 1),
-(21, 'Mr', 'trst', '2019-11-11 09:14:56', 1),
-(22, 'Topic50', 'Test', '2019-11-11 16:05:51', 1),
-(23, 'Mr', 'trst', '2019-11-11 16:22:42', 1),
-(24, 'hello', 'aaaa', '2019-11-11 17:51:08', 1);
+INSERT INTO `topics` (`id`, `title`, `description`, `content`, `created`, `level`, `parent_id`, `user_id`) VALUES
+(18, 'Parent_topic_1', 'Parent_Desc_1', '', '2019-11-11 09:12:31', 0, 0, 1),
+(19, 'Child Topic 1_1', 'Child Desc 1_1', 'Test', '2019-11-11 09:12:42', 1, 18, 1),
+(20, 'Child Topic 1_2', 'Child Desc 1_2', '', '2019-11-11 09:12:59', 1, 18, 1),
+(25, 'Parent_topic_2', 'Parent_Desc_2', '', '2019-11-11 09:12:31', 0, 0, 1),
+(26, 'Child Topic 2_1', 'Child Desc 2_1', '', '2019-11-11 09:12:42', 1, 25, 1),
+(27, 'Child Topic 2_2', 'Child Desc 2_2', '', '2019-11-11 09:12:42', 1, 25, 1),
+(28, 'Child Topic 1_3', 'Child Desc 1_3', '', '2019-11-11 09:12:42', 1, 18, 1),
+(29, 'Child Topic 3_1', 'Child Desc 3_1', '', '2019-11-11 09:12:42', 2, 28, 1),
+(30, 'Child Topic 3_1', 'Child Desc 3_1', '', '2019-11-11 09:12:42', 3, 29, 1),
+(31, 'Test', 'adad', 'Test Child', '2019-11-13 15:30:59', 1, 18, 1),
+(32, 'CDS', 'New HMRC System', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2019-11-13 16:04:41', 2, 27, 1),
+(33, 'Payment', 'Payment types', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2019-11-13 16:05:43', 3, 32, 1),
+(34, 'Algorihms', 'Information on various Algorithms', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2019-11-13 16:06:54', 0, 0, 1),
+(35, 'Insertion Sort', 'How Insertion Sort Works', 'nsertion sort is a simple sorting algorithm that builds the final sorted array (or list) one item at a time. It is much less efficient on large lists than more advanced algorithms such as quicksort, heapsort, or merge sort. However, insertion sort provides several advantages:\r\n\r\nSimple implementation: Jon Bentley shows a three-line C version, and a five-line optimized version[2]\r\nEfficient for (quite) small data sets, much like other quadratic sorting algorithms\r\nMore efficient in practice than most other simple quadratic (i.e., O(n2)) algorithms such as selection sort or bubble sort\r\nAdaptive, i.e., efficient for data sets that are already substantially sorted: the time complexity is O(kn) when each element in the input is no more than k places away from its sorted position\r\nStable; i.e., does not change the relative order of elements with equal keys\r\nIn-place; i.e., only requires a constant amount O(1) of additional memory space\r\nOnline; i.e., can sort a list as it receives it', '2019-11-13 16:07:49', 1, 34, 1),
+(36, 'Bubble Sort', 'How Bubble sort works', 'nsertion sort is a simple sorting algorithm that builds the final sorted array (or list) one item at a time. It is much less efficient on large lists than more advanced algorithms such as quicksort, heapsort, or merge sort. However, insertion sort provides several advantages:\r\n\r\nSimple implementation: Jon Bentley shows a three-line C version, and a five-line optimized version[2]\r\nEfficient for (quite) small data sets, much like other quadratic sorting algorithms\r\nMore efficient in practice than most other simple quadratic (i.e., O(n2)) algorithms such as selection sort or bubble sort\r\nAdaptive, i.e., efficient for data sets that are already substantially sorted: the time complexity is O(kn) when each element in the input is no more than k places away from its sorted position\r\nStable; i.e., does not change the relative order of elements with equal keys\r\nIn-place; i.e., only requires a constant amount O(1) of additional memory space\r\nOnline; i.e., can sort a list as it receives it', '2019-11-13 16:08:21', 1, 34, 1),
+(37, 'Cost', 'Computational Cost', 'Bog O', '2019-11-13 17:00:32', 2, 36, 1);
 
 -- --------------------------------------------------------
 
@@ -104,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `user_name`, `password`, `email`, `full_name`, `city`) VALUES
-(1, 'testuser1', '$2y$10$StZtP58fnRZM5ZPJuwb3/uHAz0j2YcD02ffW.0Fpxe2ff.aB9NUA2', 'pinchy1978@googlemail.com', 'Harry a', 'Felixstowes'),
+(1, 'testuser1', '$2y$10$StZtP58fnRZM5ZPJuwb3/uHAz0j2YcD02ffW.0Fpxe2ff.aB9NUA2', 'pinchy1978@googlemail.com', 'Harry ab', 'Felixstowes'),
 (2, 'testuser2', '$2y$10$ozYVgVjxuEDZv0gagOC4m.Bdckkd4ptQTVKWHYMD1uyEYASnLDz1S', 'andrewfinch@mcpplc.com', 'Andrew Finch', 'Ipswich'),
 (3, 'testuser2', '$2y$10$LFx0F/VcddMd2Iy/T2wh0uJZ8OBQPW0Wcw0B3911DO286auev22V2', 'andrewfinch@mcpplc.com', 'Andrew Finch', 'Felixstowe'),
 (4, 'testuser2', '$2y$10$CZgoQmBLZCy0qfD4wb15deYbmz3I/zwhBcIeBEKJ38ZnKAug3yvBK', 'andrewfinch@mcpplc.com', 'Andrew Finch', 'Felixstowe'),
