@@ -40,13 +40,14 @@ class Topic
     public function getTopic($id)
     {
         $user_id = $_SESSION['user_data']['id'];
-        $query = "SELECT * FROM topics where user_id = :user_id and id = :id";
+        $query = "SELECT * FROM topics where user_id = :user_id and (id = :id or parent_id = :parent_id)";
         $stmt = $this->Conn->prepare($query);
         $stmt->execute(array(
                 ':user_id' => $user_id,
-                ':id' => $id)
+                ':id' => $id,
+                ':parent_id' => $id)
         );
-        return $result = $stmt->fetch();
+        return $result = $stmt->fetchAll();
     }
 
 }
