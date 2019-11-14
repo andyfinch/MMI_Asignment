@@ -1,22 +1,25 @@
 {extends file="layouts/main.tpl"}
 {block name="body"}
-  <div class="row pt-5 h-100" style="margin-top: 10em">
-          <div class="col-4 offset-1">
-              <div class=""><h1 class="">The best revision content site for students</h1>
-                  <p class="">RevisionIT is designed to allow students to create revision content, annotate it, edit it
-                      and know it.<br></p>
-                  <button class="btn btn-primary btn-lg btn-block" type="submit" data-toggle="modal"
-                          data-target="#signupModal">Sign up
-                  </button>
-              </div>
-          </div>
+    <div class="container">
+        <div class="row pt-5 h-100" style="margin-top: 10em">
+            <div class="col-4 offset-1">
+                <div class=""><h1 class="">The best revision content site for students</h1>
+                    <p class="">RevisionIT is designed to allow students to create revision content, annotate it, edit
+                        it
+                        and know it.<br></p>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit" data-toggle="modal"
+                            data-target="#signupModal">Sign up
+                    </button>
+                </div>
+            </div>
 
-          <div class="col-5 offset-2">
-              <div class="learning-image">
-              </div>
-          </div>
+            <div class="col-5 offset-2">
+                <div class="learning-image">
+                </div>
+            </div>
 
-      </div>
+        </div>
+    </div>
 {/block}
 {block name="modals"}
 <form id="signUpForm" class="needs-validation" novalidate="" method="post" action="index.php">
@@ -50,14 +53,6 @@
                              </div>
 
                              <div class="mb-3">
-                                 <label for="email">Email </label>
-                                 <input type="email" class="form-control" id="email" placeholder="you@example.com" name="email">
-                                 <div class="invalid-feedback">
-                                     Please enter a valid email address for shipping updates.
-                                 </div>
-                             </div>
-
-                             <div class="mb-3">
                                  <label for="password">Password </label>
                                  <input type="password" class="form-control" id="password" name="password">
                                  <div class="invalid-feedback">
@@ -67,9 +62,18 @@
 
                              <div class="mb-3">
                                  <label for="confirmPassword">Confirm Password </label>
-                                 <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
+                                 <input type="password" class="form-control" id="confirmPassword"
+                                        name="confirmPassword">
                                  <div class="invalid-feedback">
                                      Please enter a valid password.
+                                 </div>
+                             </div>
+
+                             <div class="mb-3">
+                                 <label for="email">Email </label>
+                                 <input type="email" class="form-control" id="email" placeholder="you@example.com" name="email">
+                                 <div class="invalid-feedback">
+                                     Please enter a valid email address for shipping updates.
                                  </div>
                              </div>
 
@@ -87,14 +91,14 @@
 
                              <div class="mb-3">
                                  <label for="city">City</label>
-                                 <input type="text" class="form-control" id="city" required="">
+                                 <input type="text" class="form-control" id="city" name="city" required="">
                                  <div class="invalid-feedback">
                                      Please enter valid city.
                                  </div>
                              </div>
 
                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="terms">
+                                 <input type="checkbox" class="custom-control-input" id="terms" name="terms">
                                  <label class="custom-control-label" for="terms">Please tick to accept the Terms and
                                      Conditions</label>
                              </div>
@@ -149,7 +153,7 @@
 
                                  <div class="mb-3">
                                      <label for="userName">User Name </label>
-                                     <input type="text" class="form-control" id="userName" name="userName" required>
+                                     <input type="text" class="form-control" id="userNameSignin" name="userName" required>
                                      <div class="invalid-feedback">
                                          Please enter a valid User Name.
                                      </div>
@@ -157,7 +161,7 @@
 
                                  <div class="mb-3">
                                      <label for="signinpassword">Password </label>
-                                     <input type="password" class="form-control" id="password" name="password" required>
+                                     <input type="password" class="form-control" id="passwordSignin" name="password" required>
                                      <div class="invalid-feedback">
                                          Please enter a valid password.
                                      </div>
@@ -191,103 +195,15 @@
       $(function () {
 
           $('.modal').on('hidden.bs.modal', function (e) {
-              $('.errorMessage', this).remove();
-              $('.errorHighlight', this).removeClass('errorHighlight');
+              $('.errorMessage').remove();
+              $('.errorHighlight').removeClass('errorHighlight');
               $(':input', this).val('');
           });
-          signUpForm.init();
+          postAjax.init();
 
-
-          // Variable to hold request
-//           var request;
-//
-// // Bind to the submit event of our form
-//           $("form").submit(function (event) {
-//
-//               // Prevent default posting of form - put here to work in case of errors
-//               event.preventDefault();
-//
-//               $('.signupSpinner').toggleClass('d-none');
-//
-//               // Abort any pending request
-//               if (request) {
-//                   request.abort();
-//               }
-//               // setup some local variables
-//               var $form = $(this);
-//
-//               // Let's select and cache all the fields
-//               var $inputs = $form.find("input, select, button, textarea");
-//
-//               // Serialize the data in the form
-//               var serializedData = $form.serialize();
-//
-//               // Let's disable the inputs for the duration of the Ajax request.
-//               // Note: we disable elements AFTER the form data has been serialized.
-//               // Disabled form elements will not be serialized.
-//               $inputs.prop("disabled", true);
-//
-//               // Fire off the request to /form.php
-//               request = $.ajax({
-//                   url: "index.php",
-//                   type: "post",
-//                   data: serializedData
-//               });
-//
-//               // Callback handler that will be called on success
-//               request.done(function (response, textStatus, jqXHR) {
-//                   // Log a message to the console
-//                   console.log("Hooray, it worked!");
-//
-//                   $('.errorMessage').remove();
-//                   $('.errorHighlight').removeClass('errorHighlight');
-//                   //alert(response);
-//                   let errors = JSON.parse(response);
-//                   console.log(errors);
-//                   if ( errors.length>0)
-//                   {
-//                       for (const error of errors) {
-//                           $('#' + error.name).addClass('errorHighlight');
-//                           if ( error.message)
-//                           {
-//                               $('#' + error.name).after("<div class='errorMessage'>" + error.message + "</div>");
-//                           }
-//
-//
-//                           console.log(error);
-//                       }
-//                   }
-//                   else
-//                   {
-//                       document.location.href = "./index.php?p=dashboard"
-//                   }
-//
-//
-//                   //$('#signupModal .modal-content').replaceWith($('#signupModal .modal-content', response));
-//
-//               });
-//
-//               // Callback handler that will be called on failure
-//               request.fail(function (jqXHR, textStatus, errorThrown) {
-//                   // Log the error to the console
-//                   console.error(
-//                       "The following error occurred: " +
-//                       textStatus, errorThrown
-//                   );
-//               });
-//
-//               // Callback handler that will be called regardless
-//               // if the request failed or succeeded
-//               request.always(function () {
-//                   // Reenable the inputs
-//                   $inputs.prop("disabled", false);
-//                   $('.signupSpinner').toggleClass('d-none');
-//               });
-//
-//           });
         });
 
-      function runSignin() {
+      /*function runSignin() {
           if (validateForm($('#signinform')[0])) {
               $('.signinSpinner').toggleClass('d-none');
               setTimeout(function () {
@@ -321,12 +237,12 @@
           form.classList.add('was-validated');
 
           return isValid;
-      }
+      }*/
 
 
   </script>
 
-{if $error}
+{*{if $error}
 {literal}
 <script>
     console.log("hello");
@@ -335,5 +251,5 @@
     });
 </script>
 {/literal}
-{/if}
+{/if}*}
 {/block}

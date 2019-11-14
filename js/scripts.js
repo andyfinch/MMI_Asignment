@@ -1,8 +1,9 @@
 /* Signup form */
-var signUpForm = {
+var postAjax = {
     request: null,
+    
     init: function (test) {
-        signUpForm.bind();
+        postAjax.bind();
     },
     bind: function() {
         $("form").submit(function (event) {
@@ -28,7 +29,7 @@ var signUpForm = {
             // Let's disable the inputs for the duration of the Ajax request.
             // Note: we disable elements AFTER the form data has been serialized.
             // Disabled form elements will not be serialized.
-            $inputs.prop("disabled", true);
+            //$inputs.prop("disabled", true);
 
             // Fire off the request to /form.php
             this.request = $.ajax({
@@ -44,25 +45,32 @@ var signUpForm = {
                 $('.errorMessage').remove();
                 $('.errorHighlight').removeClass('errorHighlight');
                 //alert(response);
-                let errors = JSON.parse(response);
-                console.log(errors);
-                if ( errors.length>0)
+                if ( response !== '')
                 {
-                    for (const error of errors) {
-                        $('input[name='+error.name+']').addClass('errorHighlight');
-                        if ( error.message)
+                    let jsonResponse = JSON.parse(response);
+                    let errors = jsonResponse.fieldsInError;
+                    console.log(errors);
+                    if (errors.length > 0) {
+                        for (const error of errors) {
+                            $('input[name=' + error.name + ']').addClass('errorHighlight');
+                            if (error.message) {
+                                $('input[name=' + error.name + ']').after("<div class='errorMessage'>" + error.message + "</div>");
+                            }
+
+
+                            console.log(error);
+                        }
+                    } else {
+                        console.log(jsonResponse.successMessage);
+                        console.log(jsonResponse.redirectPage);
+                        if (jsonResponse.redirectPage != null)
                         {
-                            $('input[name='+error.name+']').after("<div class='errorMessage'>" + error.message + "</div>");
+                            document.location.href = "./index.php?p=" + jsonResponse.redirectPage + "";
                         }
 
-
-                        console.log(error);
                     }
                 }
-                else
-                {
-                    document.location.href = "./index.php?p=dashboard"
-                }
+
 
 
                 //$('#signupModal .modal-content').replaceWith($('#signupModal .modal-content', response));

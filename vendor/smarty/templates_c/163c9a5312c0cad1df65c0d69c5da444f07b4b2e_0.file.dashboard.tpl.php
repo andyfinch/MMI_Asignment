@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-07 15:59:23
+/* Smarty version 3.1.33, created on 2019-11-13 17:14:03
   from 'C:\wamp64\www\MMI_Assignment\views\pages\dashboard.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dc43f5b9b4662_40301278',
+  'unifunc' => 'content_5dcc39dbb4c276_39512657',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '163c9a5312c0cad1df65c0d69c5da444f07b4b2e' => 
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\pages\\dashboard.tpl',
-      1 => 1573142358,
+      1 => 1573665237,
       2 => 'file',
     ),
   ),
@@ -20,178 +20,193 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dc43f5b9b4662_40301278 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dcc39dbb4c276_39512657 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_13358848705dc43f5b9a89e3_52625696', "body");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_4598845155dcc39dbb33603_52923316', "body");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7729878655dc43f5b9b15a5_92085798', "modals");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_560559005dcc39dbb437b2_06212560', "modals");
 ?>
 
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2319229555dcc39dbb466d4_96101248', "scripts");
+?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layouts/main.tpl");
 }
 /* {block "body"} */
-class Block_13358848705dc43f5b9a89e3_52625696 extends Smarty_Internal_Block
+class Block_4598845155dcc39dbb33603_52923316 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'body' => 
   array (
-    0 => 'Block_13358848705dc43f5b9a89e3_52625696',
+    0 => 'Block_4598845155dcc39dbb33603_52923316',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\MMI_Assignment\\vendor\\smarty\\plugins\\function.getTopics.php','function'=>'smarty_function_getTopics',),));
+$_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\MMI_Assignment\\vendor\\smarty\\plugins\\function.buildTopicTree.php','function'=>'smarty_function_buildTopicTree',),));
 ?>
 
-<div class="row">
-    <div class="col-sm-8">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">My Content</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <?php echo smarty_function_getTopics(array(),$_smarty_tpl);?>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body content-tree">
+                        <h5 class="card-title">My Content</h5>
+                        <p class="card-text ">With supporting text below as a natural lead-in to additional content.</p>
+                        <?php echo smarty_function_buildTopicTree(array(),$_smarty_tpl);?>
 
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">My Content</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Created</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['topics']->value, 'topic');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['topic']->value) {
+?>
+                                <tr>
+                                    <td><?php echo $_smarty_tpl->tpl_vars['topic']->value['title'];?>
+</td>
+                                    <td><?php echo $_smarty_tpl->tpl_vars['topic']->value['description'];?>
+</td>
+                                    <td><?php echo $_smarty_tpl->tpl_vars['topic']->value['created'];?>
+</td>
+                                </tr>
+                            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                            </tbody>
+                        </table>
 
-
-
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Recent activity</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Created</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Insertion Sort</td>
+                                <td>01/01/2019 @ 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Insertion Sort</td>
+                                <td>01/01/2019 @ 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Insertion Sort</td>
+                                <td>01/01/2019 @ 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Insertion Sort</td>
+                                <td>01/01/2019 @ 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Insertion Sort</td>
+                                <td>01/01/2019 @ 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Insertion Sort</td>
+                                <td>01/01/2019 @ 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Insertion Sort</td>
+                                <td>01/01/2019 @ 19:00</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <a href="#" class="btn btn-primary">Go somewhereX</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-4">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Recent activity</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Created</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Insertion Sort</td>
-                        <td>01/01/2019 @ 19:00</td>
-                    </tr>
-                    <tr>
-                        <td>Insertion Sort</td>
-                        <td>01/01/2019 @ 19:00</td>
-                    </tr>
-                    <tr>
-                        <td>Insertion Sort</td>
-                        <td>01/01/2019 @ 19:00</td>
-                    </tr>
-                    <tr>
-                        <td>Insertion Sort</td>
-                        <td>01/01/2019 @ 19:00</td>
-                    </tr>
-                    <tr>
-                        <td>Insertion Sort</td>
-                        <td>01/01/2019 @ 19:00</td>
-                    </tr>
-                    <tr>
-                        <td>Insertion Sort</td>
-                        <td>01/01/2019 @ 19:00</td>
-                    </tr>
-                    <tr>
-                        <td>Insertion Sort</td>
-                        <td>01/01/2019 @ 19:00</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <a href="#" class="btn btn-primary">Go somewhereX</a>
-            </div>
-        </div>
-    </div>
-</div>
 <?php
 }
 }
 /* {/block "body"} */
 /* {block "modals"} */
-class Block_7729878655dc43f5b9b15a5_92085798 extends Smarty_Internal_Block
+class Block_560559005dcc39dbb437b2_06212560 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'modals' => 
   array (
-    0 => 'Block_7729878655dc43f5b9b15a5_92085798',
+    0 => 'Block_560559005dcc39dbb437b2_06212560',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
-<div class="modal fade" id="topicModal" tabindex="-1" role="dialog" aria-labelledby="topicModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-
-                <div class="container">
-                    <div class="text-center">
-                        <h2>Topic</h2>
-                        <p class="lead">Create a new topic</p>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12 order-md-1">
-                            <form class="needs-validation" novalidate="">
-
-                                <div class="mb-3">
-                                    <label for="title">Title </label>
-                                    <input type="text" class="form-control" id="title">
-                                    <div class="invalid-feedback">
-                                        Please enter a valid title.
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="description">Description </label>
-                                    <input type="text" class="form-control" id="description">
-                                    <div class="invalid-feedback">
-                                        Please enter a valid title.
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="category">Categorise </label>
-                                    <input type="text" class="form-control" id="category">
-                                    <!--todo change to dropdown-->
-                                    <div class="invalid-feedback">
-                                        Please enter a valid category.
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="content">Content </label>
-                                    <textarea rows="15" type="text" class="form-control" id="content"></textarea>
-                                    <div class="invalid-feedback">
-                                        Please enter valid content.
-                                    </div>
-                                </div>
-
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Create</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
 <?php
 }
 }
 /* {/block "modals"} */
+/* {block "scripts"} */
+class Block_2319229555dcc39dbb466d4_96101248 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'scripts' => 
+  array (
+    0 => 'Block_2319229555dcc39dbb466d4_96101248',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+    <?php echo '<script'; ?>
+>
+        postAjax.init();
+
+    <?php echo '</script'; ?>
+>
+    <?php if ($_smarty_tpl->tpl_vars['message']->value) {?>
+        <?php echo '<script'; ?>
+>
+
+            $(function () {
+                var message = '<?php echo $_smarty_tpl->tpl_vars['message']->value;?>
+';
+                //$('.toast .toast-header .content').text(message);
+                $('.toast .toast-body').text(message);
+                $('.toast').toast('show');
+
+            });
+        <?php echo '</script'; ?>
+>
+    <?php }?>
+
+<?php
+}
+}
+/* {/block "scripts"} */
 }
