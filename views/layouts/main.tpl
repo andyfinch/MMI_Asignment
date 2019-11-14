@@ -188,6 +188,7 @@
 <script>
     $('#contentModal').on('show.bs.modal', function (event) {
 
+        console.log('ere');
         var modal = $(this).find('.modal-content');
         $(':input', modal).val('');
         $(modal).find('#level').val(0);
@@ -198,16 +199,33 @@
         var button = $(event.relatedTarget);
         var action = button.data('action');
 
+
+        if ( button.data('header'))
+        {
+            $(modal).find('.header').val(button.data('header'));
+        }
+
+        if ( button.data('id'))
+        {
+            $(modal).find('#id').val(button.data('id'));
+        }
+
+        if ( button.data('level'))
+        {
+            $(modal).find('#level').val(button.data('level'));
+        }
+
+        if ( button.data('parent_id'))
+        {
+            $(modal).find('#parent_id').val(button.data('parent_id'));
+        }
+
         if (action === 'edit')
         {
             $(modal).find('#function').val('edit');
-            $(modal).find('.header').text('Edit topic');
-            $(modal).find('#id').val(button.data('id'));
             $(modal).find('#title').val(button.data('title'));
             $(modal).find('#description').val(button.data('description'));
             $(modal).find('#content').val(button.data('content'));
-            $(modal).find('#level').val(button.data('level'));
-            $(modal).find('#parent_id').val(button.data('parent_id'));
             $(modal).find('#submit').text('Edit');
         }
 

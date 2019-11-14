@@ -46,6 +46,21 @@ class Topic
 
     }
 
+    public function deleteTopic($topic_data)
+    {
+
+        $user_id = $_SESSION['user_data']['id'];
+        $query = "DELETE from topics where id = :id and user_id = :user_id";
+        $stmt = $this->Conn->prepare($query);
+
+        return $stmt->execute(array(
+            'id' => $topic_data['id'],
+            'user_id' => $user_id
+        ));
+
+
+    }
+
     public function getTopics()
     {
         $user_id = $_SESSION['user_data']['id'];

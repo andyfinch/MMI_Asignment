@@ -95,6 +95,7 @@ function changeArray($result, &$baseArray)
     }
 }
 
+/*Source based on examaple from stackoverflow*/
 function recursiveArrayToList(Array $array = array())
 {
     echo '<ul class="list-group">';

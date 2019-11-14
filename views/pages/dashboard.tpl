@@ -7,7 +7,12 @@
                     <div class="card-body content-tree">
                         <h5 class="card-title">My Content</h5>
                         <p class="card-text ">With supporting text below as a natural lead-in to additional content.</p>
-                        {buildTopicTree}
+                        <!--{buildTopicTree}-->
+                        <ul class="list-group">
+                            {foreach $allTopics as $topic}
+                            <li class="list-group-item topic-level-{$topic.level}" id="tree-{$topic.id}"><a href="./index.php?p=content&id={$topic.id}">{$topic.title}</a></li>
+                            {/foreach}
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -25,7 +30,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {foreach $topics as $topic}
+                            {foreach $allTopics as $topic}
                                 <tr>
                                     <td><a href="./index.php?p=content&id={$topic.id}"> {$topic.title}</a></td>
                                     <td>{$topic.description}</td>
