@@ -27,7 +27,7 @@
                             <tbody>
                             {foreach $topics as $topic}
                                 <tr>
-                                    <td>{$topic.title}</td>
+                                    <td><a href="./index.php?p=content&id={$topic.id}"> {$topic.title}</a></td>
                                     <td>{$topic.description}</td>
                                     <td>{$topic.created}</td>
                                 </tr>

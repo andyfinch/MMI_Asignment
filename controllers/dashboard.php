@@ -10,7 +10,6 @@ $smarty->assign('topics', $topics);
 if ($_POST) {
 
     $response = new Response();
-    
     if ($_POST['action'] == 'topic') {
 
 
@@ -31,16 +30,31 @@ if ($_POST) {
         }
 
         //$topic = new Topic($Conn);
-
-        $attempt = $topic->createTopic($_POST);
-        if ( $attempt)
+        if ($_POST['function'] == 'create')
         {
-            $_SESSION['message'] = 'Topic created ' . $_POST['title'];;
-            $response->addSuccess('Topic created', 'dashboard');
+            $attempt = $topic->createTopic($_POST);
+            if ( $attempt)
+            {
+                $_SESSION['message'] = 'Topic created ' . $_POST['title'];;
+                $response->addSuccess('Topic created', 'dashboard');
+            }
+            else{
+                $response->addError('title', 'failed');
+            }
         }
-        else{
-            $response->addError('title', 'failed');
+        else if ($_POST['function'] == 'edit')
+        {
+            $attempt = $topic->editTopic($_POST);
+            if ( $attempt)
+            {
+                $_SESSION['message'] = 'Topic Edited ' . $_POST['title'];;
+                $response->addSuccess('Topic Edited', 'content&id=' . $_POST['id']);
+            }
+            else{
+                $response->addError('title', 'failed');
+            }
         }
+
 
 
 

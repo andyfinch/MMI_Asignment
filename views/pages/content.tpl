@@ -27,34 +27,34 @@
             </div>*}
 
             <div class="col-9">
-                {foreach $topic as $topicx}
-                <div class="card" style="margin-bottom: 1em">
+                {foreach $topics as $topic}
+                <div class="card mb-1 topic-level-{$topic.level}">
                     <div class="card-header">
-                        <h5 class="card-title">{$topicx.title}</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="card-title">{$topic.title}</h5>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <a class="text-secondary" href="#">
+                                    <i data-toggle="modal" data-target="#topicModal" data-action="edit" data-id="{$topic.id}" data-title="{$topic.title}" data-description="{$topic.description}" data-content="{$topic.content}" data-level="{$topic.level}" data-parent_id="{$topic.parent_id}" class="fas fa-edit"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!--<h5 class="card-title">{$topic.title}</h5>
+                        <div class="col-md-6 text-right">
+                            <a class="text-secondary" onclick="editForm();" href="#"><i class="fas fa-edit"></i></a>
+                        </div>-->
                     </div>
                     <div class="card-body">
-                        <h6 class="card-title">{$topicx.description}</h6>
-                        <p class="card-text">{$topicx.content}</p>
-                        <button class="btn btn-primary" onclick="setIds('{$topicx.level+1}', '{$topicx.id}')" type="submit" data-toggle="modal" data-target="#topicModal">
+                        <h6 class="card-title">{$topic.description}</h6>
+                        <p class="card-text"><pre style="font-family: inherit">{$topic.content}</pre></p>
+                        <button class="btn btn-primary" onclick="setIds('{$topic.level+1}', '{$topic.id}')" type="submit" data-toggle="modal" data-target="#topicModal">
                             Add Sub-Content
                         </button>
                     </div>
                 </div>
                 {/foreach}
 
-
-                {*<div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title">{$topic.title}</h5>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-title">{$topic.description}</h6>
-                        <p class="card-text">{$topic.content}</p>
-                        <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#topicModal">
-                            Add Sub-Content
-                        </button>
-                    </div>
-                </div>*}
             </div>
         </div>
     </div>
@@ -71,11 +71,21 @@
             $(modal).find('#parent_id').val(parent);
         }
 
+        /*function populateModal(title, description, content, level, parent)
+        {
+            var modal = $('#contentModal');
+            $(modal).find('#title').val(title);
+            $(modal).find('#description').val(description);
+            $(modal).find('#content').val(content);
+            $(modal).find('#level').val(level);
+            $(modal).find('#parent_id').val(parent);
+        }*/
+
         $(function () {
             var modal = $('#contentModal');
             $(modal).find('#level').val('{$topic.level + 1}');
             $(modal).find('#parent_id').val('{$topic.id}');
-            $('#tree-' + '{$topic[0].id}').addClass('tree-active');
+            $('#tree-' + '{$topics[0].id}').addClass('tree-active');
 
         });
 
