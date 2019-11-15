@@ -10,7 +10,7 @@
                         <!--{buildTopicTree}-->
                         <ul class="list-group">
                             {foreach $allTopics as $topic}
-                            <li class="list-group-item topic-level-{$topic.level}" id="tree-{$topic.id}"><a href="./index.php?p=content&id={$topic.id}">{$topic.title}</a></li>
+                            <li style="margin-left: {$topic.level}em" class="list-group-item" id="tree-{$topic.id}"><a href="./index.php?p=content&id={$topic.id}">{$topic.title}</a></li>
                             {/foreach}
                         </ul>
                     </div>

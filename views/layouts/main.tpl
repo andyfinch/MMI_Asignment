@@ -64,8 +64,17 @@
                 </ul>
                 {block name="rightlinks"}{/block}
                 {*<a href="./index.php?p=profile"><i class="user-profile fas fa-user-circle"></i></a>*}
-                <a href="./index.php?p=profile"><img
-                            src="https://robohash.org/{$smarty.session.user_data.full_name}?size=50x50" class="user-profile fas fa-user-circle"/></a>
+                {if $smarty.session.user_data.image_url != null}
+                    <a href="./index.php?p=profile"><img style="width: 50px; height: 50px;border-radius: 50%"
+                                src="./{$smarty.session.user_data.image_url}"
+                                class="user-profile fas fa-user-circle"/></a>
+                    {else}
+                    <a href="./index.php?p=profile"><img
+                                src="https://robohash.org/{$smarty.session.user_data.full_name}?size=50x50"
+                                class="user-profile fas fa-user-circle"/></a>
+                {/if}
+
+
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-primary btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -194,7 +203,7 @@
         $(modal).find('#level').val(0);
         $(modal).find('#parent_id').val(0);
         $(modal).find('#function').val('create');
-        $(modal).find('.header').val('Create a new topic');
+        $(modal).find('.header').text('Create a new topic');
 
         var button = $(event.relatedTarget);
         var action = button.data('action');
@@ -202,7 +211,7 @@
 
         if ( button.data('header'))
         {
-            $(modal).find('.header').val(button.data('header'));
+            $(modal).find('.header').text(button.data('header'));
         }
 
         if ( button.data('id'))

@@ -28,6 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         require_once('controllers/dashboard.php');
     } else if ($_POST['action'] == 'profile') {
         require_once('controllers/profile.php');
+    } else if ($_POST['action'] == 'image_upload') {
+        require_once('controllers/image_upload.php');
     }
 }
 

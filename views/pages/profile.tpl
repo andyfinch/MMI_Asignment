@@ -6,10 +6,23 @@
 
             <div class="col-md-4">
 
-                <div class="card border-secondary" style="width: 18rem;">
-                    <img class="card-img-top"
-                         src="https://robohash.org/{$smarty.session.user_data.full_name}?size=150x150"
-                         alt="Card image cap">
+                <div data-toggle="modal" data-target="#imageModal"
+                     class="card border-secondary" style="width: 18rem;">
+                    <a href="#" title="Change Profile Picture">
+                    {if $smarty.session.user_data.image_url != null}
+                        <img class="card-img-top"
+                             src="./{$smarty.session.user_data.image_url}"
+                             alt="Card image cap">
+                    {else}
+                        <img class="card-img-top"
+                             src="https://robohash.org/{$smarty.session.user_data.full_name}?size=150x150"
+                             alt="Card image cap">
+                    {/if}
+
+                    </a>
+
+
+
                     <div class="card-body">
                         <h5 class="card-title">{$smarty.session.user_data.full_name}</h5>
                         <p class="card-text">{$smarty.session.user_data.user_name}</p>
@@ -56,23 +69,6 @@
                                 </div>
                             </div>
 
-                            {*<div class="mb-3">
-                                <label for="password">Password </label>
-                                <input disabled type="password" class="form-control editable" id="password" name="password" value="{$smarty.session.user_data.password}">
-                                <div class="invalid-feedback">
-                                    Please enter a valid password.
-                                </div>
-                            </div>
-    
-                            <div class="mb-3">
-                                <label for="confirmPassword">Confirm Password </label>
-                                <input disabled type="email" class="form-control editable" id="confirmPassword" name="confirmPassword"
-                                       value="{$smarty.session.user_data.password}">
-                                <div class="invalid-feedback">
-                                    Please enter a valid password.
-                                </div>
-                            </div>*}
-
                             <div class="row">
                                 <div class="col mb-3">
                                     <label for="fullName">Full name</label>
@@ -112,6 +108,43 @@
 
                 </form>
             </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="topicModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <form class="full-post" action="index.php" method="post" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <input id="function" type="hidden" name="function" value="create">
+                    <div class="container">
+                        <div class="text-center">
+                            <h2>Upload profile picture</h2>
+                        </div>
+
+                        <div class="row">
+
+                                <input type="hidden" name="action" value="image_upload">
+                            <div class="form-group">
+                                <label for="upload">Select image to upload:</label>
+                                <input type="file" class="form-control-file" name="fileToUpload" id="fileToUpload">
+                            </div>                             
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="submit" type="submit" name="submit" class="btn btn-primary">Upload Image
+                        <span class="signupSpinner d-none spinner-border spinner-border-sm" role="status"
+                              aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+            </form>
         </div>
     </div>
 {/block}

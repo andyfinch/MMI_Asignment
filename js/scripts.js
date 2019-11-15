@@ -6,7 +6,7 @@ var postAjax = {
         postAjax.bind();
     },
     bind: function() {
-        $("form").submit(function (event) {
+        $("form:not('.full-post')").submit(function (event) {
 
             // Prevent default posting of form - put here to work in case of errors
             event.preventDefault();

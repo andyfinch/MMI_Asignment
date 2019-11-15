@@ -10,7 +10,7 @@
                         <!--{buildTopicTree}-->
                         <ul class="list-group">
                             {foreach $allTopics as $topic}
-                            <li class="list-group-item topic-level-{$topic.level}" id="tree-{$topic.id}"><a href="./index.php?p=content&id={$topic.id}">{$topic.title}</a></li>
+                            <li style="margin-left: {$topic.level}em" class="list-group-item" id="tree-{$topic.id}"><a href="./index.php?p=content&id={$topic.id}">{$topic.title}</a></li>
                             {/foreach}
                         </ul>
                     </div>
@@ -19,17 +19,47 @@
 
 
             <div class="col-9">
+                {$level = 0}
+                {$previous_parent_id = $contentTopics[0].parent_id}
                 {foreach $contentTopics as $topic}
 
+                {if $topic.parent_id != $previous_parent_id}
+                    {$level = $level+1}
+                    {$previous_parent_id = $topic.parent_id}
+                {/if}
                 <div class="container-fluid">
-                    <div class="card mb-1 topic-level-{$topic.level}">
+                    <div style="margin-left: {$level}em" class="card mb-1">
                         <div class="card-header">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-auto mr-auto">
                                     <h5 class="card-title">{$topic.title}</h5>
                                 </div>
-                                <div class="col-md-6 text-right">
-                                    <a class="text-secondary" href="#">
+                                <div class="col-auto">
+                                    <ul class="list-group list-group-horizontal">
+                                        <li class="list-group-item"><a class="text-secondary" href="#">
+                                                <i data-toggle="modal" data-header="Create new subtopic" data-target="#topicModal" data-action="create"
+                                                   data-level="{$topic.level+1}" data-parent_id="{$topic.id}"
+                                                   class="fas fa-plus-square"></i>
+                                            </a></li>
+                                        <li class="list-group-item"><a class="text-secondary" href="#">
+                                                <i data-toggle="modal" data-target="#topicModal"
+                                                   data-header="Edit Topic"
+                                                   data-action="edit" data-id="{$topic.id}" data-title="{$topic.title}"
+                                                   data-description="{$topic.description}"
+                                                   data-content="{$topic.content}"
+                                                   data-level="{$topic.level}" data-parent_id="{$topic.parent_id}"
+                                                   class="fas fa-edit"></i>
+                                            </a></li>
+                                        <li class="list-group-item"><a class="text-secondary" href="#">
+                                                <i data-toggle="modal" data-target="#deleteModal"
+                                                   data-header="Delete Topic"
+                                                   data-action="delete" data-id="{$topic.id}"
+                                                   data-parent_id="{$topic.pa}"
+                                                   class="fas fa-trash-alt"></i>
+                                            </a></li>
+                                    </ul>
+
+                                    {*<a class="text-secondary" href="#">
                                         <i data-toggle="modal" data-target="#topicModal" data-action="create"
                                            data-level="{$topic.level+1}" data-parent_id="{$topic.id}"
                                            class="fas fa-plus-square"></i>
@@ -45,7 +75,7 @@
                                         <i data-toggle="modal" data-target="#deleteModal" data-header="Delete Topic"
                                            data-action="delete" data-id="{$topic.id}" data-parent_id="{$topic.pa}"
                                            class="fas fa-trash-alt"></i>
-                                    </a>
+                                    </a>*}
 
                                 </div>
                             </div>
@@ -111,7 +141,7 @@
             var modal = $('#contentModal');
             $(modal).find('#level').val('{$topic.level + 1}');
             $(modal).find('#parent_id').val('{$topic.id}');
-            $('#tree-' + '{$topics[0].id}').addClass('tree-active');
+            $('#tree-' + '{$contentTopics[0].id}').addClass('tree-active');
 
         });
 
