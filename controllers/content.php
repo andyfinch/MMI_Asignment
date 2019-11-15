@@ -4,9 +4,11 @@ unset($_SESSION['message']);
 
 if ($_GET) {
 
-    $topic = new Topic($Conn);
-    $topic = $topic->getTopic($_GET['id']);
-    $smarty->assign('topic', $topic);
+    $topics = new Topic($Conn);
+    $alltopics = $topics->getTopics();
+    $contentTopics = $topics->getTopic($_GET['id']);
+    $smarty->assign('allTopics', $alltopics);
+    $smarty->assign('contentTopics', $contentTopics);
 }
 
 

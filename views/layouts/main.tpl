@@ -92,16 +92,17 @@
 </footer>
 <form id="contentModal" class="needs-validation" novalidate="" method="post" action="index.php">
     <input type="hidden" name="action" value="topic">
+
     <div class="modal fade" id="topicModal" tabindex="-1" role="dialog" aria-labelledby="topicModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-
+                    <input id="function" type="hidden" name="function" value="create">
                     <div class="container">
                         <div class="text-center">
                             <h2>Topic</h2>
-                            <p class="lead">Create a new topic</p>
+                            <p class="lead header">Create a new topic</p>
                         </div>
 
                         <div class="row">
@@ -141,8 +142,9 @@
                                             Please enter valid content.
                                         </div>
                                     </div>
-                                    <input type="hidden" class="form-control" id="level" name="level" value="0">
-                                    <input type="hidden" class="form-control" id="parent_id" name="parent_id" value="0">
+                                    <input type="hidden" id="id" name="id">
+                                    <input type="hidden" id="level" name="level" value="0">
+                                    <input type="hidden" id="parent_id" name="parent_id" value="0">
 
                                 </form>
                             </div>
@@ -151,7 +153,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Create
+                    <button id="submit" type="submit" class="btn btn-primary">Create
                         <span class="signupSpinner d-none spinner-border spinner-border-sm" role="status"
                               aria-hidden="true"></span>
                     </button>
@@ -183,6 +185,53 @@
 <script src="./bootstrap/bootstrap.bundle.js"></script><!--TODO-->
 <script src="./js/scripts.js"></script>
 {block name="scripts"}{/block}
+<script>
+    $('#contentModal').on('show.bs.modal', function (event) {
+
+        console.log('ere');
+        var modal = $(this).find('.modal-content');
+        $(':input', modal).val('');
+        $(modal).find('#level').val(0);
+        $(modal).find('#parent_id').val(0);
+        $(modal).find('#function').val('create');
+        $(modal).find('.header').val('Create a new topic');
+
+        var button = $(event.relatedTarget);
+        var action = button.data('action');
+
+
+        if ( button.data('header'))
+        {
+            $(modal).find('.header').val(button.data('header'));
+        }
+
+        if ( button.data('id'))
+        {
+            $(modal).find('#id').val(button.data('id'));
+        }
+
+        if ( button.data('level'))
+        {
+            $(modal).find('#level').val(button.data('level'));
+        }
+
+        if ( button.data('parent_id'))
+        {
+            $(modal).find('#parent_id').val(button.data('parent_id'));
+        }
+
+        if (action === 'edit')
+        {
+            $(modal).find('#function').val('edit');
+            $(modal).find('#title').val(button.data('title'));
+            $(modal).find('#description').val(button.data('description'));
+            $(modal).find('#content').val(button.data('content'));
+            $(modal).find('#submit').text('Edit');
+        }
+
+
+    })
+</script>
 <!--<script src="form-validation.js"></script>-->
 
 </body>

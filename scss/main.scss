@@ -34,7 +34,7 @@ body {
 }
 .background-gradient {
 	background: #90ceb0;
-	background: linear-gradient(193deg, #90ceb0 0%, white 64%);
+	background: linear-gradient(130deg, #90ceb0 0%, white 90%);
 	background-position: center;
 	background-repeat: no-repeat;
 	min-height: 100vh;
@@ -79,5 +79,25 @@ body {
 	.tree-active {
 		background-color: #e8f5ee;
 	}
+}
+
+.topic-level-1
+{
+	margin-left: 1em;
+}
+
+.topic-level-2
+{
+	margin-left: 2em;
+}
+
+.topic-level-3
+{
+	margin-left: 3em;
+}
+
+.topic-level-4
+{
+	margin-left: 4em;
 }
 

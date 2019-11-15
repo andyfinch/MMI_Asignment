@@ -28,6 +28,39 @@ class Topic
 
     }
 
+    public function editTopic($topic_data)
+    {
+
+        $user_id = $_SESSION['user_data']['id'];
+        $query = "UPDATE topics set title=:title, description=:description, content=:content where id = :id and user_id = :user_id";
+        $stmt = $this->Conn->prepare($query);
+
+        return $stmt->execute(array(
+            'id' => $topic_data['id'],
+            'title' => $topic_data['title'],
+            'description' => $topic_data['description'],
+            'content' => $topic_data['content'],
+            'user_id' => $user_id
+        ));
+
+
+    }
+
+    public function deleteTopic($topic_data)
+    {
+
+        $user_id = $_SESSION['user_data']['id'];
+        $query = "DELETE from topics where id = :id and user_id = :user_id";
+        $stmt = $this->Conn->prepare($query);
+
+        return $stmt->execute(array(
+            'id' => $topic_data['id'],
+            'user_id' => $user_id
+        ));
+
+
+    }
+
     public function getTopics()
     {
         $user_id = $_SESSION['user_data']['id'];
