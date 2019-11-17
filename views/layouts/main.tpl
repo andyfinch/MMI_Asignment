@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <title>Home</title>
     <link rel="stylesheet" href="./vendor/trumbowyg/dist/ui/trumbowyg.min.css">
+    <link rel="stylesheet" href="./vendor/trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.css">
     <link rel="stylesheet" href="./css/styles.css">
     <script src="https://kit.fontawesome.com/e5d243858b.js" crossorigin="anonymous"></script>
 </head>
@@ -196,10 +197,28 @@
 <script src="./bootstrap/bootstrap.bundle.js"></script><!--TODO-->
 <script src="./js/scripts.js"></script>
 <script src="./vendor/trumbowyg/dist/trumbowyg.min.js"></script>
+<script src="./vendor/trumbowyg/dist/plugins/colors/trumbowyg.colors.min.js"></script>
+<script src="./vendor/trumbowyg/dist/plugins/base64/trumbowyg.base64.min.js"></script>
 
 {block name="scripts"}{/block}
 <script>
-    $('#content').trumbowyg();
+    $('#content').trumbowyg({
+        btns: [['viewHTML'],
+            ['undo', 'redo'], // Only supported in Blink browsers
+            ['formatting'],
+            ['strong', 'em', 'del'],
+            ['superscript', 'subscript'],
+            ['link'],
+            ['insertImage'],
+            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+            ['unorderedList', 'orderedList'],
+            ['horizontalRule'],
+            ['removeformat'],
+            ['fullscreen'],
+            ['foreColor', 'backColor'],
+            ['base64']
+        ]
+    });
     $('#contentModal').on('show.bs.modal', function (event) {
 
         console.log('ere');
