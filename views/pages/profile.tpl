@@ -148,7 +148,9 @@
         </div>
     </div>
 {/block}
-
+{block name="modals"}
+    {include file="../components/content_modal.tpl"}
+{/block}
 {block name="scripts"}
     <script>
         postAjax.init();

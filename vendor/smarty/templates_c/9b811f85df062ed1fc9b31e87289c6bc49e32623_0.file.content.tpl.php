@@ -1,155 +1,134 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-17 17:25:01
+/* Smarty version 3.1.33, created on 2019-11-18 13:32:10
   from 'C:\wamp64\www\MMI_Assignment\views\pages\content.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd1826dc451a7_95787122',
+  'unifunc' => 'content_5dd29d5a35ce59_16483155',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9b811f85df062ed1fc9b31e87289c6bc49e32623' => 
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\pages\\content.tpl',
-      1 => 1574011497,
+      1 => 1574083927,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:../components/content_tree.tpl' => 1,
+    'file:../components/content_modal.tpl' => 1,
   ),
 ),false)) {
-function content_5dd1826dc451a7_95787122 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dd29d5a35ce59_16483155 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19806166445dd1826dbb6348_91095734', "body");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16163474635dd29d5a31e593_90206553', "body");
 ?>
 
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12045741565dd29d5a34be02_06137674', "modals");
+?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8751672955dd1826dc34d13_88767125', "scripts");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17075258995dd29d5a34ff76_26907275', "scripts");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layouts/main.tpl");
 }
 /* {block "body"} */
-class Block_19806166445dd1826dbb6348_91095734 extends Smarty_Internal_Block
+class Block_16163474635dd29d5a31e593_90206553 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'body' => 
   array (
-    0 => 'Block_19806166445dd1826dbb6348_91095734',
+    0 => 'Block_16163474635dd29d5a31e593_90206553',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\MMI_Assignment\\vendor\\smarty\\plugins\\function.buildTopicTree.php','function'=>'smarty_function_buildTopicTree',),));
 ?>
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3">
-                <div class="card">
-                    <div class="card-body content-tree">
-                        <h5 class="card-title">My Content</h5>
-                        <p class="card-text ">With supporting text below as a natural lead-in to additional content.</p>
-                        <!--<?php echo smarty_function_buildTopicTree(array(),$_smarty_tpl);?>
--->
-                        <ul class="list-group">
-                            <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['allTopics']->value, 'topic');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['topic']->value) {
+            <div class="col-sm-4 col-lg-3">
+                <?php $_smarty_tpl->_subTemplateRender("file:../components/content_tree.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-                            <li style="margin-left: <?php echo $_smarty_tpl->tpl_vars['topic']->value['level'];?>
-em" class="list-group-item" id="tree-<?php echo $_smarty_tpl->tpl_vars['topic']->value['id'];?>
-"><a href="./index.php?p=content&id=<?php echo $_smarty_tpl->tpl_vars['topic']->value['id'];?>
-"><?php echo $_smarty_tpl->tpl_vars['topic']->value['title'];?>
-</a></li>
-                            <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                        </ul>
-                    </div>
-                </div>
             </div>
 
 
-            <div class="col-9">
-                <?php $_smarty_tpl->_assignInScope('level', 0);?>
-                <?php $_smarty_tpl->_assignInScope('previous_parent_id', $_smarty_tpl->tpl_vars['contentTopics']->value[0]['parent_id']);?>
+            <div class="col-sm-8 col-lg-9 owl-carousel-disabled">
+
+                <?php $_smarty_tpl->_assignInScope('root_topic_level', $_smarty_tpl->tpl_vars['contentTopics']->value[0]['level']);?>
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['contentTopics']->value, 'topic');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['topic']->value) {
 ?>
-
-                <?php if ($_smarty_tpl->tpl_vars['topic']->value['parent_id'] != $_smarty_tpl->tpl_vars['previous_parent_id']->value) {?>
-                    <?php $_smarty_tpl->_assignInScope('level', $_smarty_tpl->tpl_vars['level']->value+1);?>
-                    <?php $_smarty_tpl->_assignInScope('previous_parent_id', $_smarty_tpl->tpl_vars['topic']->value['parent_id']);?>
-                <?php }?>
-                <div class="container-fluid">
-                    <div style="margin-left: <?php echo $_smarty_tpl->tpl_vars['level']->value;?>
-em" class="card">
-                        <div class="card-header">
-                            <div class="row">
-                                <div class="col-auto mr-auto">
-                                    <h5 class="card-title"><?php echo $_smarty_tpl->tpl_vars['topic']->value['title'];?>
+                    <div style="padding-left: <?php echo $_smarty_tpl->tpl_vars['topic']->value['level']-$_smarty_tpl->tpl_vars['root_topic_level']->value;?>
+%">
+                        <div class="card ">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-auto mr-auto">
+                                        <h5 class="card-title"><?php echo $_smarty_tpl->tpl_vars['topic']->value['title'];?>
 </h5>
-                                </div>
-                                <div class="col-auto">
-                                    <ul class="list-group list-group-horizontal">
-                                        <li class="list-group-item"><a class="text-secondary" href="#">
-                                                <i data-toggle="modal" data-header="Create new subtopic" data-target="#topicModal" data-action="create"
-                                                   data-level="<?php echo $_smarty_tpl->tpl_vars['topic']->value['level']+1;?>
+                                    </div>
+                                    <div class="col-auto">
+                                        <ul class="list-group list-group-horizontal">
+                                            <li class="list-group-item"><a class="text-secondary" href="#">
+                                                    <i data-toggle="modal" data-header="Create new subtopic"
+                                                       data-target="#topicModal" data-action="create"
+                                                       data-level="<?php echo $_smarty_tpl->tpl_vars['topic']->value['level']+1;?>
 " data-parent_id="<?php echo $_smarty_tpl->tpl_vars['topic']->value['id'];?>
 "
-                                                   class="fas fa-plus-square"></i>
-                                            </a></li>
-                                        <li class="list-group-item"><a class="text-secondary" href="#">
-                                                <i data-toggle="modal" data-target="#topicModal"
-                                                   data-header="Edit Topic"
-                                                   data-action="edit" data-id="<?php echo $_smarty_tpl->tpl_vars['topic']->value['id'];?>
+                                                       class="fas fa-plus-square"></i>
+                                                </a></li>
+                                            <li class="list-group-item"><a class="text-secondary" href="#">
+                                                    <i data-toggle="modal" data-target="#topicModal"
+                                                       data-header="Edit Topic"
+                                                       data-action="edit" data-id="<?php echo $_smarty_tpl->tpl_vars['topic']->value['id'];?>
 "
-                                                   data-level="<?php echo $_smarty_tpl->tpl_vars['topic']->value['level'];?>
+                                                       data-level="<?php echo $_smarty_tpl->tpl_vars['topic']->value['level'];?>
 " data-parent_id="<?php echo $_smarty_tpl->tpl_vars['topic']->value['parent_id'];?>
 "
-                                                   class="fas fa-edit"></i>
-                                            </a></li>
-                                        <li class="list-group-item"><a class="text-secondary" href="#">
-                                                <i data-toggle="modal" data-target="#deleteModal"
-                                                   data-header="Delete Topic"
-                                                   data-action="delete" data-id="<?php echo $_smarty_tpl->tpl_vars['topic']->value['id'];?>
+                                                       class="fas fa-edit"></i>
+                                                </a></li>
+                                            <li class="list-group-item"><a class="text-secondary" href="#">
+                                                    <i data-toggle="modal" data-target="#deleteModal"
+                                                       data-header="Delete Topic"
+                                                       data-action="delete" data-id="<?php echo $_smarty_tpl->tpl_vars['topic']->value['id'];?>
 "
-                                                   data-parent_id="<?php echo $_smarty_tpl->tpl_vars['topic']->value['pa'];?>
+                                                       data-parent_id="<?php echo $_smarty_tpl->tpl_vars['topic']->value['pa'];?>
 "
-                                                   class="fas fa-trash-alt"></i>
-                                            </a></li>
-                                    </ul>
+                                                       class="fas fa-trash-alt"></i>
+                                                </a></li>
+                                        </ul>
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <?php if ($_smarty_tpl->tpl_vars['topic']->value['description'] != null || $_smarty_tpl->tpl_vars['topic']->value['content'] != null) {?>
-                        <div class="card-body">
-                            <?php if ($_smarty_tpl->tpl_vars['topic']->value['description'] != null) {?>
-                                <h6 class="card-title"><?php echo $_smarty_tpl->tpl_vars['topic']->value['description'];?>
+                            <?php if ($_smarty_tpl->tpl_vars['topic']->value['description'] != null || $_smarty_tpl->tpl_vars['topic']->value['content'] != null) {?>
+                                <div class="card-body">
+                                    <?php if ($_smarty_tpl->tpl_vars['topic']->value['description'] != null) {?>
+                                        <h6 class="card-title"><?php echo $_smarty_tpl->tpl_vars['topic']->value['description'];?>
 </h6>
-                            <?php }?>
-                            <?php if ($_smarty_tpl->tpl_vars['topic']->value['content'] != null) {?>
-                                <pre class="card-text" style="font-family: inherit"><?php echo $_smarty_tpl->tpl_vars['topic']->value['content'];?>
-</pre>
-                            <?php }?>
+                                    <?php }?>
+                                    <?php if ($_smarty_tpl->tpl_vars['topic']->value['content'] != null) {?>
+                                        <div class="card-text content"
+                                             style="font-family: inherit"><?php echo $_smarty_tpl->tpl_vars['topic']->value['content'];?>
+</div>
+                                    <?php }?>
 
 
+                                </div>
+                            <?php }?>
                         </div>
-                        <?php }?>
                     </div>
-                </div>
                 <?php
 }
 }
@@ -193,13 +172,29 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 }
 /* {/block "body"} */
+/* {block "modals"} */
+class Block_12045741565dd29d5a34be02_06137674 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'modals' => 
+  array (
+    0 => 'Block_12045741565dd29d5a34be02_06137674',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+    <?php $_smarty_tpl->_subTemplateRender("file:../components/content_modal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
+}
+/* {/block "modals"} */
 /* {block "scripts"} */
-class Block_8751672955dd1826dc34d13_88767125 extends Smarty_Internal_Block
+class Block_17075258995dd29d5a34ff76_26907275 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'scripts' => 
   array (
-    0 => 'Block_8751672955dd1826dc34d13_88767125',
+    0 => 'Block_17075258995dd29d5a34ff76_26907275',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -210,6 +205,26 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
         postAjax.init();
 
         $(function () {
+            /*$('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    600: {
+                        items: 3,
+                        nav: false
+                    },
+                    1000: {
+                        items: 5,
+                        nav: true,
+                        loop: false
+                    }
+                }
+            });*/
             var modal = $('#contentModal');
             $(modal).find('#level').val('<?php echo $_smarty_tpl->tpl_vars['topic']->value['level']+1;?>
 ');

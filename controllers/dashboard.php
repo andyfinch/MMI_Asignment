@@ -37,7 +37,7 @@ if ($_POST) {
             if ( $attempt)
             {
                 $_SESSION['message'] = 'Topic created ' . $_POST['title'];;
-                $response->addSuccess('Topic created', 'dashboard');
+                $response->addSuccess('Topic created', 'content&id=' . $_POST['parent_id']);
             }
             else{
                 $response->addError('title', 'failed');

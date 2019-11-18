@@ -102,12 +102,18 @@ class Topic
     public function getTopic($id)
     {
         $user_id = $_SESSION['user_data']['id'];
-        $query = "SELECT * FROM topics where user_id = :user_id and (id = :id or parent_id = :parent_id)";
+        //$query = "SELECT * FROM topics where user_id = :user_id and (id = :id or parent_id = :parent_id)";
+        $query = "select  *
+from    (select * from topics t1
+         order by parent_id, id) topics_sorted,
+        (select @pv := :id) initialisation
+where   (find_in_set(parent_id, @pv) or id = @pv) and user_id = :user_id
+and     length(@pv := concat(@pv, ',', id))
+order by concat(parent_path, id)";
         $stmt = $this->Conn->prepare($query);
         $stmt->execute(array(
                 ':user_id' => $user_id,
-                ':id' => $id,
-                ':parent_id' => $id)
+                ':id' => $id)
         );
         return $result = $stmt->fetchAll();
     }
@@ -118,6 +124,14 @@ from    (select * from topics t1
          order by parent_id, id) topics_sorted,
         (select @pv := '1') initialisation
 where   find_in_set(parent_id, @pv)
+and     length(@pv := concat(@pv, ',', id))
+order by concat(parent_path, id)*/
+
+/*select  *
+from    (select * from topics t1
+         order by parent_id, id) topics_sorted,
+        (select @pv := '1') initialisation
+where   (find_in_set(parent_id, @pv) or id = @pv) and user_id = 1
 and     length(@pv := concat(@pv, ',', id))
 order by concat(parent_path, id)*/
 ?>
