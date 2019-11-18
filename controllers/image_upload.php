@@ -1,15 +1,12 @@
 <?php
 $smarty->assign('message', $_SESSION['message']);
 unset($_SESSION['message']);
-
- var_dump($_FILES);
- var_dump($_POST);
-
+var_dump($_FILES);
 if (isset($_POST['submit'])) {
     $phpFileUploadErrors = array(
         0 => 'There is no error, the file uploaded with success',
-        1 => 'The uploaded file exceeds the max file size of' . ini_get('upload_max_filesize') . 'B',
-        2 => 'The uploaded file exceeds the max file size of' . ini_get('upload_max_filesize') . 'B',
+        1 => 'The uploaded file exceeds the max file size of ' . ini_get('upload_max_filesize') . 'B',
+        2 => 'The uploaded file exceeds the max file size of ' . ini_get('upload_max_filesize') . 'B',
         3 => 'The uploaded file was only partially uploaded',
         4 => 'No file was uploaded',
         6 => 'There was an issue with the file upload',
@@ -18,7 +15,7 @@ if (isset($_POST['submit'])) {
     );
 
     $errorInt = $_FILES['fileToUpload']['error'];
-    
+    var_dump($errorInt);
     if ($errorInt != 0)
     {
         $_SESSION['message'] = $phpFileUploadErrors[$errorInt];

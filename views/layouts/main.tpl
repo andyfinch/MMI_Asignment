@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>Home</title>
+    <link rel="stylesheet" href="./vendor/trumbowyg/dist/ui/trumbowyg.min.css">
+    <link rel="stylesheet" href="./vendor/trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.css">
     <link rel="stylesheet" href="./css/styles.css">
     <script src="https://kit.fontawesome.com/e5d243858b.js" crossorigin="anonymous"></script>
 </head>
@@ -145,6 +147,7 @@
 
                                     <div class="mb-3">
                                         <label for="content">Content </label>
+                                        {*<div id="editor"></div>*}
                                         <textarea rows="10" type="text" class="form-control" id="content"
                                                   name="content"></textarea>
                                         <div class="invalid-feedback">
@@ -193,13 +196,35 @@
 <script src="./bootstrap/popper.js"></script>
 <script src="./bootstrap/bootstrap.bundle.js"></script><!--TODO-->
 <script src="./js/scripts.js"></script>
+<script src="./vendor/trumbowyg/dist/trumbowyg.min.js"></script>
+<script src="./vendor/trumbowyg/dist/plugins/colors/trumbowyg.colors.min.js"></script>
+<script src="./vendor/trumbowyg/dist/plugins/base64/trumbowyg.base64.min.js"></script>
+
 {block name="scripts"}{/block}
 <script>
+    $('#content').trumbowyg({
+        btns: [['viewHTML'],
+            ['undo', 'redo'], // Only supported in Blink browsers
+            ['formatting'],
+            ['strong', 'em', 'del'],
+            ['superscript', 'subscript'],
+            ['link'],
+            ['insertImage'],
+            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+            ['unorderedList', 'orderedList'],
+            ['horizontalRule'],
+            ['removeformat'],
+            ['fullscreen'],
+            ['foreColor', 'backColor'],
+            ['base64']
+        ]
+    });
     $('#contentModal').on('show.bs.modal', function (event) {
 
         console.log('ere');
         var modal = $(this).find('.modal-content');
         $(':input', modal).val('');
+        $('#content', modal).trumbowyg('empty');
         $(modal).find('#level').val(0);
         $(modal).find('#parent_id').val(0);
         $(modal).find('#function').val('create');
@@ -208,6 +233,7 @@
         var button = $(event.relatedTarget);
         var action = button.data('action');
 
+        console.log($(button).closest('div.card').find('.card-header .card-title').text());
 
         if ( button.data('header'))
         {
@@ -231,10 +257,10 @@
 
         if (action === 'edit')
         {
+            $(modal).find('#title').val($(button).closest('div.card').find('.card-header .card-title').text());
+            $(modal).find('#description').val($(button).closest('div.card').find('.card-body .card-title').text());
+            $(modal).find('#content').trumbowyg('html', $(button).closest('div.card').find('.card-body pre').html());
             $(modal).find('#function').val('edit');
-            $(modal).find('#title').val(button.data('title'));
-            $(modal).find('#description').val(button.data('description'));
-            $(modal).find('#content').val(button.data('content'));
             $(modal).find('#submit').text('Edit');
         }
 

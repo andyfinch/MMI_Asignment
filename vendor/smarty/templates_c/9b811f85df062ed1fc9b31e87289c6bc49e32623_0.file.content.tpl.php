@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-15 12:24:59
+/* Smarty version 3.1.33, created on 2019-11-17 17:25:01
   from 'C:\wamp64\www\MMI_Assignment\views\pages\content.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dce991b141ea9_79605825',
+  'unifunc' => 'content_5dd1826dc451a7_95787122',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9b811f85df062ed1fc9b31e87289c6bc49e32623' => 
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\pages\\content.tpl',
-      1 => 1573820698,
+      1 => 1574011497,
       2 => 'file',
     ),
   ),
@@ -20,29 +20,29 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dce991b141ea9_79605825 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dd1826dc451a7_95787122 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_4145887985dce991b0ed9f1_71601688', "body");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19806166445dd1826dbb6348_91095734', "body");
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3221858675dce991b133263_17515595', "scripts");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8751672955dd1826dc34d13_88767125', "scripts");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layouts/main.tpl");
 }
 /* {block "body"} */
-class Block_4145887985dce991b0ed9f1_71601688 extends Smarty_Internal_Block
+class Block_19806166445dd1826dbb6348_91095734 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'body' => 
   array (
-    0 => 'Block_4145887985dce991b0ed9f1_71601688',
+    0 => 'Block_19806166445dd1826dbb6348_91095734',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -94,7 +94,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['topic']->value) {
                 <?php }?>
                 <div class="container-fluid">
                     <div style="margin-left: <?php echo $_smarty_tpl->tpl_vars['level']->value;?>
-em" class="card mb-1">
+em" class="card">
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-auto mr-auto">
@@ -114,11 +114,6 @@ em" class="card mb-1">
                                                 <i data-toggle="modal" data-target="#topicModal"
                                                    data-header="Edit Topic"
                                                    data-action="edit" data-id="<?php echo $_smarty_tpl->tpl_vars['topic']->value['id'];?>
-" data-title="<?php echo $_smarty_tpl->tpl_vars['topic']->value['title'];?>
-"
-                                                   data-description="<?php echo $_smarty_tpl->tpl_vars['topic']->value['description'];?>
-"
-                                                   data-content="<?php echo $_smarty_tpl->tpl_vars['topic']->value['content'];?>
 "
                                                    data-level="<?php echo $_smarty_tpl->tpl_vars['topic']->value['level'];?>
 " data-parent_id="<?php echo $_smarty_tpl->tpl_vars['topic']->value['parent_id'];?>
@@ -136,28 +131,23 @@ em" class="card mb-1">
                                             </a></li>
                                     </ul>
 
-                                    
                                 </div>
                             </div>
-                            <!--<h5 class="card-title"><?php echo $_smarty_tpl->tpl_vars['topic']->value['title'];?>
-</h5>
-                            <div class="col-md-6 text-right">
-                                <a class="text-secondary" onclick="editForm();" href="#"><i class="fas fa-edit"></i></a>
-                            </div>-->
                         </div>
+                        <?php if ($_smarty_tpl->tpl_vars['topic']->value['description'] != null || $_smarty_tpl->tpl_vars['topic']->value['content'] != null) {?>
                         <div class="card-body">
-                            <h6 class="card-title"><?php echo $_smarty_tpl->tpl_vars['topic']->value['description'];?>
+                            <?php if ($_smarty_tpl->tpl_vars['topic']->value['description'] != null) {?>
+                                <h6 class="card-title"><?php echo $_smarty_tpl->tpl_vars['topic']->value['description'];?>
 </h6>
-                            <p class="card-text">
-                            <pre style="font-family: inherit"><?php echo $_smarty_tpl->tpl_vars['topic']->value['content'];?>
+                            <?php }?>
+                            <?php if ($_smarty_tpl->tpl_vars['topic']->value['content'] != null) {?>
+                                <pre class="card-text" style="font-family: inherit"><?php echo $_smarty_tpl->tpl_vars['topic']->value['content'];?>
 </pre>
-                            </p>
-                            <!--<button class="btn btn-primary" onclick="setIds('<?php echo $_smarty_tpl->tpl_vars['topic']->value['level']+1;?>
-', '<?php echo $_smarty_tpl->tpl_vars['topic']->value['id'];?>
-')" type="submit" data-toggle="modal" data-target="#topicModal">
-                                Add Sub-Content
-                            </button>-->
+                            <?php }?>
+
+
                         </div>
+                        <?php }?>
                     </div>
                 </div>
                 <?php
@@ -204,12 +194,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 /* {/block "body"} */
 /* {block "scripts"} */
-class Block_3221858675dce991b133263_17515595 extends Smarty_Internal_Block
+class Block_8751672955dd1826dc34d13_88767125 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'scripts' => 
   array (
-    0 => 'Block_3221858675dce991b133263_17515595',
+    0 => 'Block_8751672955dd1826dc34d13_88767125',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

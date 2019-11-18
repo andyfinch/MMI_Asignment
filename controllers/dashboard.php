@@ -22,9 +22,9 @@ if ($_POST) {
                     $response->addError('title', 'Title must not exceed 255 characters');
                 }
             }
-            if (!$_POST['description']) {
+            /*if (!$_POST['description']) {
                 $response->addError('description', 'description is required');
-            }
+            }*/
             if ($response->hasErrors()) {
                 $response->getJSON();
             }

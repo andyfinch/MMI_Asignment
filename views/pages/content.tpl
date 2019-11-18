@@ -28,7 +28,7 @@
                     {$previous_parent_id = $topic.parent_id}
                 {/if}
                 <div class="container-fluid">
-                    <div style="margin-left: {$level}em" class="card mb-1">
+                    <div style="margin-left: {$level}em" class="card">
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-auto mr-auto">
@@ -44,9 +44,7 @@
                                         <li class="list-group-item"><a class="text-secondary" href="#">
                                                 <i data-toggle="modal" data-target="#topicModal"
                                                    data-header="Edit Topic"
-                                                   data-action="edit" data-id="{$topic.id}" data-title="{$topic.title}"
-                                                   data-description="{$topic.description}"
-                                                   data-content="{$topic.content}"
+                                                   data-action="edit" data-id="{$topic.id}"
                                                    data-level="{$topic.level}" data-parent_id="{$topic.parent_id}"
                                                    class="fas fa-edit"></i>
                                             </a></li>
@@ -59,40 +57,21 @@
                                             </a></li>
                                     </ul>
 
-                                    {*<a class="text-secondary" href="#">
-                                        <i data-toggle="modal" data-target="#topicModal" data-action="create"
-                                           data-level="{$topic.level+1}" data-parent_id="{$topic.id}"
-                                           class="fas fa-plus-square"></i>
-                                    </a>
-                                    <a class="text-secondary" href="#">
-                                        <i data-toggle="modal" data-target="#topicModal" data-header="Edit Topic"
-                                           data-action="edit" data-id="{$topic.id}" data-title="{$topic.title}"
-                                           data-description="{$topic.description}" data-content="{$topic.content}"
-                                           data-level="{$topic.level}" data-parent_id="{$topic.parent_id}"
-                                           class="fas fa-edit"></i>
-                                    </a>
-                                    <a class="text-secondary" href="#">
-                                        <i data-toggle="modal" data-target="#deleteModal" data-header="Delete Topic"
-                                           data-action="delete" data-id="{$topic.id}" data-parent_id="{$topic.pa}"
-                                           class="fas fa-trash-alt"></i>
-                                    </a>*}
-
                                 </div>
                             </div>
-                            <!--<h5 class="card-title">{$topic.title}</h5>
-                            <div class="col-md-6 text-right">
-                                <a class="text-secondary" onclick="editForm();" href="#"><i class="fas fa-edit"></i></a>
-                            </div>-->
                         </div>
+                        {if $topic.description != null || $topic.content != null}
                         <div class="card-body">
-                            <h6 class="card-title">{$topic.description}</h6>
-                            <p class="card-text">
-                            <pre style="font-family: inherit">{$topic.content}</pre>
-                            </p>
-                            <!--<button class="btn btn-primary" onclick="setIds('{$topic.level+1}', '{$topic.id}')" type="submit" data-toggle="modal" data-target="#topicModal">
-                                Add Sub-Content
-                            </button>-->
+                            {if $topic.description != null}
+                                <h6 class="card-title">{$topic.description}</h6>
+                            {/if}
+                            {if $topic.content != null}
+                                <pre class="card-text" style="font-family: inherit">{$topic.content}</pre>
+                            {/if}
+
+
                         </div>
+                        {/if}
                     </div>
                 </div>
                 {/foreach}
