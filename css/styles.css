@@ -7698,4 +7698,13 @@ body.bg-light {
 .topic-level-4 {
   margin-left: 4em; }
 
+.toast {
+  left: 50%;
+  position: fixed;
+  transform: translate(-50%, 0px);
+  z-index: 9999;
+  top: 10px;
+  width: 500px;
+}
+
 /*# sourceMappingURL=styles.css.map */

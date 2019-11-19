@@ -44,3 +44,11 @@ if (isset($_POST['submit'])) {
         header('Location: ./index.php?p=profile');
     }
 }
+else if (isset($_POST['remove'])) {
+
+    $user = new User($Conn);
+    $user->updateImageURL(null, $_SESSION['user_data']['id']);
+    unset($_SESSION['user_data']['image_url']);
+    $_SESSION['message'] = 'Profile image removed';
+    header('Location: ./index.php?p=profile');
+}
