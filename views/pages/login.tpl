@@ -1,10 +1,17 @@
 {extends file="layouts/main.tpl"}
 {block name="body"}
     <div class="container">
-        <div class="row pt-5 h-100" style="margin-top: 10em">
-            <div class="col-4 offset-1">
-                <div class=""><h1 class="">The best revision content site for students</h1>
-                    <p class="">RevisionIT is designed to allow students to create revision content, annotate it, edit
+        <div class="row d-sm-none">
+            <div class="col">
+                <div class="learning-image mx-auto">
+                </div>
+            </div>
+        </div>
+        <div class="d-none d-sm-block" style="margin-top: 10em"></div>
+        <div class="row pt-5 h-100">
+            <div class="col-sm-4 offset-sm-1">
+                <div class=""><h1 class="text-center">The best revision content site for students</h1>
+                    <p class="text-center">RevisionIT is designed to allow students to create revision content, annotate it, edit
                         it
                         and know it.<br></p>
                     <button class="btn btn-primary btn-lg btn-block" type="submit" data-toggle="modal"
@@ -13,7 +20,7 @@
                 </div>
             </div>
 
-            <div class="col-5 offset-2">
+            <div class="col-sm-5 offset-sm-2 d-none d-sm-block">
                 <div class="learning-image">
                 </div>
             </div>

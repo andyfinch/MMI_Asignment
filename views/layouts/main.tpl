@@ -14,7 +14,7 @@
 <body class="background-gradient" cz-shortcut-listen="true">
 <header class="container-fluid">
     {if !$smarty.get.p || $smarty.get.p == 'login' || !$smarty.session.user_data}
-        <nav class="navbar navbar-expand-lg navbar-light bg-lightx">
+        <nav class="navbar navbar-expand navbar-light">
             <a class="navbar-brand" href="./index.php">
                 <img src="./images/list-logo.png" width="30" height="30" class="d-inline-block align-top"
                      alt="">
@@ -25,7 +25,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2 id="navbarSupportedContent"">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <!--<a class="nav-link" href="./login.html">Sign in</a>-->
@@ -42,7 +42,7 @@
             </div>
         </nav>
         {else}
-        <nav class="navbar navbar-expand-lg navbar-light bg-lightx">
+        <nav class="navbar navbar-expand-sm navbar-light bg-lightx">
             <a class="navbar-brand" href="./index.php">
                 <img src="./images/list-logo.png" width="30" height="30" class="d-inline-block align-top"
                      alt="">
@@ -84,18 +84,6 @@
                         <a class="dropdown-item" href="./index.php?p=login&logout=Y">Log out</a>
                     </div>
                 </div>
-
-                {*<a href="./index.php?p=profile"><i class="user-profile fas fa-user-circle"></i></a>*}
-                {*{if $smarty.session.user_data.image_url != null}
-                    <a href="./index.php?p=profile"><img style="width: 50px; height: 50px;border-radius: 50%"
-                                src="./{$smarty.session.user_data.image_url}"
-                                class="user-profile fas fa-user-circle"/></a>
-                    {else}
-                    <a href="./index.php?p=profile"><img
-                                src="https://robohash.org/{$smarty.session.user_data.full_name}?size=50x50"
-                                class="user-profile fas fa-user-circle"/></a>
-                {/if}*}
-
 
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
