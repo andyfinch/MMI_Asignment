@@ -24,7 +24,7 @@
                                                     <i data-toggle="modal" data-header="Create new subtopic"
                                                        data-target="#topicModal" data-action="create"
                                                        data-level="{$topic.level+1}" data-parent_id="{$topic.id}"
-                                                       class="fas fa-plus-square"></i>
+                                                       class="fas fa-folder-plus"></i>
                                                 </a></li>
                                             <li class="list-group-item"><a class="text-secondary" href="#">
                                                     <i data-toggle="modal" data-target="#topicModal"
@@ -103,6 +103,7 @@
 {block name="scripts"}
     <script>
         postAjax.init();
+        contentTree.init();
 
         $(function () {
             /*$('.owl-carousel').owlCarousel({

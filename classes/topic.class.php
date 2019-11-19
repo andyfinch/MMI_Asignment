@@ -32,7 +32,7 @@ class Topic
         }
         else{
             $query = "INSERT INTO topics (title, description,content,level,parent_id, user_id, parent_path) 
-                  SELECT :title, :description,:content,:level,:parent_id, :user_id, concat(parent_path, :parent_id_path)
+                  SELECT :title, :description,:content,:level,:parent_id, :user_id, concat(parent_path, '-', :parent_id_path)
                   FROM topics where id = :parent_id_select";
             $stmt = $this->Conn->prepare($query);
 
@@ -93,7 +93,14 @@ class Topic
     public function getTopics()
     {
         $user_id = $_SESSION['user_data']['id'];
-        $query = "SELECT * FROM topics where user_id = :user_id order by concat(parent_path, id)";
+        $query = "SELECT *,
+                   (
+               CASE WHEN EXISTS(SELECT id FROM topics t2 WHERE t2.parent_id=t1.id)
+                  THEN 'Y' 
+                  ELSE 'N'
+               END 
+              )AS has_child 
+       FROM topics t1 where t1.user_id = :user_id order by concat(t1.parent_path,'-', t1.id)";
         $stmt = $this->Conn->prepare($query);
         $stmt->execute(array(':user_id' => $user_id));
         return $result = $stmt->fetchAll();
@@ -104,12 +111,12 @@ class Topic
         $user_id = $_SESSION['user_data']['id'];
         //$query = "SELECT * FROM topics where user_id = :user_id and (id = :id or parent_id = :parent_id)";
         $query = "select  *
-from    (select * from topics t1
-         order by parent_id, id) topics_sorted,
-        (select @pv := :id) initialisation
-where   (find_in_set(parent_id, @pv) or id = @pv) and user_id = :user_id
-and     length(@pv := concat(@pv, ',', id))
-order by concat(parent_path, id)";
+                    from    (select * from topics t1
+                             order by parent_id, id) topics_sorted,
+                            (select @pv := :id) initialisation
+                    where   (find_in_set(parent_id, @pv) or id = @pv) and user_id = :user_id
+                    and     length(@pv := concat(@pv, ',', id))
+                    order by concat(parent_path,'-', id)";
         $stmt = $this->Conn->prepare($query);
         $stmt->execute(array(
                 ':user_id' => $user_id,

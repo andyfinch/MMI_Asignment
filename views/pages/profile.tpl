@@ -141,6 +141,7 @@
                         <span class="signupSpinner d-none spinner-border spinner-border-sm" role="status"
                               aria-hidden="true"></span>
                     </button>
+                    <button type="submit" name="remove" class="btn btn-secondary">Remove image</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 </div>
             </div>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-18 14:29:16
+/* Smarty version 3.1.33, created on 2019-11-19 15:00:03
   from 'C:\wamp64\www\MMI_Assignment\views\layouts\main.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd2aabce28c77_17645589',
+  'unifunc' => 'content_5dd4037342e643_74006755',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '93f01204e9286350166d91478c3ceabe6bee5860' => 
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\layouts\\main.tpl',
-      1 => 1574087356,
+      1 => 1574175601,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dd2aabce28c77_17645589 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dd4037342e643_74006755 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -39,7 +39,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 </head>
 <body class="background-gradient" cz-shortcut-listen="true">
 <header class="container-fluid">
-    <?php if (!$_GET['p'] || $_GET['p'] == 'login') {?>
+    <?php if (!$_GET['p'] || $_GET['p'] == 'login' || !$_SESSION['user_data']) {?>
         <nav class="navbar navbar-expand-lg navbar-light bg-lightx">
             <a class="navbar-brand" href="./index.php">
                 <img src="./images/list-logo.png" width="30" height="30" class="d-inline-block align-top"
@@ -90,26 +90,36 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
                         </button>
                     </li>
                     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10239445515dd2aabce10ab8_27539311', "leftlinks");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_5597044365dd40373416574_44060569', "leftlinks");
 ?>
 
                 </ul>
                 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7443774955dd2aabce13350_17259229', "rightlinks");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9947927175dd40373418bf6_74958661', "rightlinks");
 ?>
 
-                                <?php if ($_SESSION['user_data']['image_url'] != null) {?>
-                    <a href="./index.php?p=profile"><img style="width: 50px; height: 50px;border-radius: 50%"
-                                src="./<?php echo $_SESSION['user_data']['image_url'];?>
+                
+                <div class="dropdown">
+                    <?php if ($_SESSION['user_data']['image_url'] != null) {?>
+                        <a data-toggle="dropdown" href="#" aria-haspopup="true"
+                           aria-expanded="false"><img style="width: 50px; height: 50px;border-radius: 50%" src="./<?php echo $_SESSION['user_data']['image_url'];?>
 "
-                                class="user-profile fas fa-user-circle"/></a>
+                                                             class="user-profile fas fa-user-circle"/></a>
                     <?php } else { ?>
-                    <a href="./index.php?p=profile"><img
-                                src="https://robohash.org/<?php echo $_SESSION['user_data']['full_name'];?>
+                        <a href="#" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false"><img
+                                    src="https://robohash.org/<?php echo $_SESSION['user_data']['full_name'];?>
 ?size=50x50"
-                                class="user-profile fas fa-user-circle"/></a>
-                <?php }?>
+                                    class="user-profile fas fa-user-circle"
+                                    /></a>
+                    <?php }?>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="./index.php?p=profile">Edit Profile</a>
+                        <a class="dropdown-item" href="./index.php?p=login&logout=Y">Log out</a>
+                    </div>
+                </div>
 
+                                
 
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -120,13 +130,13 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7443774955dd2aabce
         </nav>
     <?php }?>
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20863132475dd2aabce1fb00_44751522', "nav");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2523151195dd40373425ab7_01779086', "nav");
 ?>
 
 </header>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20408423505dd2aabce21c54_04753210', "body");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12891933965dd40373427ff9_26810973', "body");
 ?>
 
 
@@ -142,8 +152,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20408423505dd2aabc
     </div>
 </footer>
 
-<div class="toast hide" data-autohide="true" data-delay="5000" data-animation="true"
-     style="position: fixed; width: 500px; top: 10px; left: 50%;margin-left: -250px">
+<div class="toast hide" data-autohide="true" data-delay="5000" data-animation="true">
     <div class="toast-header">
         <strong class="mr-auto text-primary content">RevisionIT</strong>
 
@@ -186,35 +195,18 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20408423505dd2aabc
 >
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1971733555dd2aabce23ea5_11568897', "modals");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_5716423285dd4037342a691_83630266', "modals");
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14715988645dd2aabce25fd1_89403198', "scripts");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12194604975dd4037342c890_32632862', "scripts");
 ?>
+
 
 <?php echo '<script'; ?>
 >
-    $("span.tree-x").on("click", function () {
-        var currentParent = parseInt($(this).closest('li').attr('data-parent-id'));
-        var nextLis = $(this).closest('li').nextAll();
 
-        for (const nextLi of nextLis) {
-            console.log('sdsd');
-            if ( parseInt($(nextLi).attr('data-parent-id')) > currentParent )
-            {
-                $(nextLi).toggle();
-
-                
-            }
-            else
-                {
-                    break;
-                }
-        }
-        //console.log(($(this).closest('li').nextAll()));
-    });
 <?php echo '</script'; ?>
 >
 <!--<?php echo '<script'; ?>
@@ -225,12 +217,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14715988645dd2aabc
 </html>
 <?php }
 /* {block "leftlinks"} */
-class Block_10239445515dd2aabce10ab8_27539311 extends Smarty_Internal_Block
+class Block_5597044365dd40373416574_44060569 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'leftlinks' => 
   array (
-    0 => 'Block_10239445515dd2aabce10ab8_27539311',
+    0 => 'Block_5597044365dd40373416574_44060569',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -238,12 +230,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "leftlinks"} */
 /* {block "rightlinks"} */
-class Block_7443774955dd2aabce13350_17259229 extends Smarty_Internal_Block
+class Block_9947927175dd40373418bf6_74958661 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'rightlinks' => 
   array (
-    0 => 'Block_7443774955dd2aabce13350_17259229',
+    0 => 'Block_9947927175dd40373418bf6_74958661',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -251,12 +243,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "rightlinks"} */
 /* {block "nav"} */
-class Block_20863132475dd2aabce1fb00_44751522 extends Smarty_Internal_Block
+class Block_2523151195dd40373425ab7_01779086 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'nav' => 
   array (
-    0 => 'Block_20863132475dd2aabce1fb00_44751522',
+    0 => 'Block_2523151195dd40373425ab7_01779086',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -264,12 +256,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "nav"} */
 /* {block "body"} */
-class Block_20408423505dd2aabce21c54_04753210 extends Smarty_Internal_Block
+class Block_12891933965dd40373427ff9_26810973 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'body' => 
   array (
-    0 => 'Block_20408423505dd2aabce21c54_04753210',
+    0 => 'Block_12891933965dd40373427ff9_26810973',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -277,12 +269,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "body"} */
 /* {block "modals"} */
-class Block_1971733555dd2aabce23ea5_11568897 extends Smarty_Internal_Block
+class Block_5716423285dd4037342a691_83630266 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'modals' => 
   array (
-    0 => 'Block_1971733555dd2aabce23ea5_11568897',
+    0 => 'Block_5716423285dd4037342a691_83630266',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -290,12 +282,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "modals"} */
 /* {block "scripts"} */
-class Block_14715988645dd2aabce25fd1_89403198 extends Smarty_Internal_Block
+class Block_12194604975dd4037342c890_32632862 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'scripts' => 
   array (
-    0 => 'Block_14715988645dd2aabce25fd1_89403198',
+    0 => 'Block_12194604975dd4037342c890_32632862',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

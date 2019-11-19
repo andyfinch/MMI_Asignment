@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-18 13:32:10
+/* Smarty version 3.1.33, created on 2019-11-19 08:40:25
   from 'C:\wamp64\www\MMI_Assignment\views\pages\content.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd29d5a35ce59_16483155',
+  'unifunc' => 'content_5dd3aa79afee71_00998399',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9b811f85df062ed1fc9b31e87289c6bc49e32623' => 
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\pages\\content.tpl',
-      1 => 1574083927,
+      1 => 1574152824,
       2 => 'file',
     ),
   ),
@@ -22,32 +22,32 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../components/content_modal.tpl' => 1,
   ),
 ),false)) {
-function content_5dd29d5a35ce59_16483155 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dd3aa79afee71_00998399 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16163474635dd29d5a31e593_90206553', "body");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3748725305dd3aa79ac22f4_71937567', "body");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12045741565dd29d5a34be02_06137674', "modals");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_4481947585dd3aa79aef546_86597417', "modals");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17075258995dd29d5a34ff76_26907275', "scripts");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11405196545dd3aa79af30a5_25828658', "scripts");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layouts/main.tpl");
 }
 /* {block "body"} */
-class Block_16163474635dd29d5a31e593_90206553 extends Smarty_Internal_Block
+class Block_3748725305dd3aa79ac22f4_71937567 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'body' => 
   array (
-    0 => 'Block_16163474635dd29d5a31e593_90206553',
+    0 => 'Block_3748725305dd3aa79ac22f4_71937567',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -86,7 +86,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['topic']->value) {
                                                        data-level="<?php echo $_smarty_tpl->tpl_vars['topic']->value['level']+1;?>
 " data-parent_id="<?php echo $_smarty_tpl->tpl_vars['topic']->value['id'];?>
 "
-                                                       class="fas fa-plus-square"></i>
+                                                       class="fas fa-folder-plus"></i>
                                                 </a></li>
                                             <li class="list-group-item"><a class="text-secondary" href="#">
                                                     <i data-toggle="modal" data-target="#topicModal"
@@ -173,12 +173,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 /* {/block "body"} */
 /* {block "modals"} */
-class Block_12045741565dd29d5a34be02_06137674 extends Smarty_Internal_Block
+class Block_4481947585dd3aa79aef546_86597417 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'modals' => 
   array (
-    0 => 'Block_12045741565dd29d5a34be02_06137674',
+    0 => 'Block_4481947585dd3aa79aef546_86597417',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -189,12 +189,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "modals"} */
 /* {block "scripts"} */
-class Block_17075258995dd29d5a34ff76_26907275 extends Smarty_Internal_Block
+class Block_11405196545dd3aa79af30a5_25828658 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'scripts' => 
   array (
-    0 => 'Block_17075258995dd29d5a34ff76_26907275',
+    0 => 'Block_11405196545dd3aa79af30a5_25828658',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -203,6 +203,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
     <?php echo '<script'; ?>
 >
         postAjax.init();
+        contentTree.init();
 
         $(function () {
             /*$('.owl-carousel').owlCarousel({

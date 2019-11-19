@@ -13,7 +13,7 @@
 </head>
 <body class="background-gradient" cz-shortcut-listen="true">
 <header class="container-fluid">
-    {if !$smarty.get.p || $smarty.get.p == 'login'}
+    {if !$smarty.get.p || $smarty.get.p == 'login' || !$smarty.session.user_data}
         <nav class="navbar navbar-expand-lg navbar-light bg-lightx">
             <a class="navbar-brand" href="./index.php">
                 <img src="./images/list-logo.png" width="30" height="30" class="d-inline-block align-top"
@@ -66,8 +66,27 @@
                     {block name="leftlinks"}{/block}
                 </ul>
                 {block name="rightlinks"}{/block}
+                
+                <div class="dropdown">
+                    {if $smarty.session.user_data.image_url != null}
+                        <a data-toggle="dropdown" href="#" aria-haspopup="true"
+                           aria-expanded="false"><img style="width: 50px; height: 50px;border-radius: 50%" src="./{$smarty.session.user_data.image_url}"
+                                                             class="user-profile fas fa-user-circle"/></a>
+                    {else}
+                        <a href="#" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false"><img
+                                    src="https://robohash.org/{$smarty.session.user_data.full_name}?size=50x50"
+                                    class="user-profile fas fa-user-circle"
+                                    /></a>
+                    {/if}
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="./index.php?p=profile">Edit Profile</a>
+                        <a class="dropdown-item" href="./index.php?p=login&logout=Y">Log out</a>
+                    </div>
+                </div>
+
                 {*<a href="./index.php?p=profile"><i class="user-profile fas fa-user-circle"></i></a>*}
-                {if $smarty.session.user_data.image_url != null}
+                {*{if $smarty.session.user_data.image_url != null}
                     <a href="./index.php?p=profile"><img style="width: 50px; height: 50px;border-radius: 50%"
                                 src="./{$smarty.session.user_data.image_url}"
                                 class="user-profile fas fa-user-circle"/></a>
@@ -75,7 +94,7 @@
                     <a href="./index.php?p=profile"><img
                                 src="https://robohash.org/{$smarty.session.user_data.full_name}?size=50x50"
                                 class="user-profile fas fa-user-circle"/></a>
-                {/if}
+                {/if}*}
 
 
                 <form class="form-inline my-2 my-lg-0">
@@ -103,8 +122,7 @@
     </div>
 </footer>
 
-<div class="toast hide" data-autohide="true" data-delay="5000" data-animation="true"
-     style="position: fixed; width: 500px; top: 10px; left: 50%;margin-left: -250px">
+<div class="toast hide" data-autohide="true" data-delay="5000" data-animation="true">
     <div class="toast-header">
         <strong class="mr-auto text-primary content">RevisionIT</strong>
 
@@ -129,26 +147,9 @@
 {block name="modals"}{/block}
 
 {block name="scripts"}{/block}
+
 <script>
-    $("span.tree-x").on("click", function () {
-        var currentParent = parseInt($(this).closest('li').attr('data-parent-id'));
-        var nextLis = $(this).closest('li').nextAll();
 
-        for (const nextLi of nextLis) {
-            console.log('sdsd');
-            if ( parseInt($(nextLi).attr('data-parent-id')) > currentParent )
-            {
-                $(nextLi).toggle();
-
-                
-            }
-            else
-                {
-                    break;
-                }
-        }
-        //console.log(($(this).closest('li').nextAll()));
-    });
 </script>
 <!--<script src="form-validation.js"></script>-->
 

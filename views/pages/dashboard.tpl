@@ -89,7 +89,7 @@
 {block name="scripts"}
     <script>
         postAjax.init();
-
+        contentTree.init();
     </script>
     {if $message}
         <script>
