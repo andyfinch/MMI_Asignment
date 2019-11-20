@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 19, 2019 at 03:26 PM
+-- Generation Time: Nov 20, 2019 at 02:40 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -60,33 +60,39 @@ CREATE TABLE IF NOT EXISTS `topics` (
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `level` int(11) NOT NULL,
   `parent_id` int(11) DEFAULT NULL,
-  `parent_path` varchar(5000) DEFAULT NULL,
+  `path` varchar(100) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_topics_users_user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `topics`
 --
 
-INSERT INTO `topics` (`id`, `title`, `description`, `content`, `created`, `level`, `parent_id`, `parent_path`, `user_id`) VALUES
-(1, 'Uni', '', '', '2019-11-19 13:37:41', 0, 0, '0', 1),
-(2, 'Work', '', '', '2019-11-19 13:37:46', 0, 0, '0', 1),
-(3, 'Home', '', '', '2019-11-19 13:37:51', 0, 0, '0', 1),
-(4, 'Modules', '', '<p>sadsafdsfdsfff<span style=\"font-size: 1rem;\">sadsafdsfdsfff</span><span style=\"font-size: 1rem;\">sadsafdsfdsfff</span><span style=\"font-size: 1rem;\">sadsafdsfdsfff</span><span style=\"font-size: 1rem;\">sadsafdsfdsfff</span><span style=\"font-size: 1rem;\">sadsafdsfdsfff</span><span style=\"font-size: 1rem;\">sadsafdsfdsfff</span><span style=\"font-size: 1rem;\">sadsafdsfdsfff</span><br></p><p>sadsafdsfdsfff<span style=\"font-size: 1rem;\">sadsafdsfdsfff</span><span style=\"font-size: 1rem;\"><br></span></p><p><span style=\"font-size: 1rem;\"><br></span></p><p>sadsafdsfdsfff<span style=\"font-size: 1rem;\"><br></span></p><p>sadsafdsfdsfff<br></p><p>sadsafdsfdsfff<br></p><p><br></p><p><br></p><p>sadsafdsfdsfff<br></p><p>sadsafdsfdsfff<br></p><p>sadsafdsfdsfff<br></p>', '2019-11-19 13:38:01', 1, 1, '0-1', 1),
-(5, 'Car Parks', '', '', '2019-11-19 13:38:19', 1, 1, '0-1', 1),
-(6, 'CDS', '', '', '2019-11-19 13:38:36', 1, 2, '0-2', 1),
-(7, 'Testing', '', '', '2019-11-19 13:38:49', 2, 6, '0-2-6', 1),
-(8, 'Bills', '', '', '2019-11-19 13:38:57', 1, 3, '0-3', 1),
-(9, 'Cooking', '', '', '2019-11-19 13:39:09', 1, 3, '0-3', 1),
-(10, 'Recipes', '', '', '2019-11-19 13:39:17', 2, 9, '0-3-9', 1),
-(11, 'Chicken ', '', '<p><ul><li>fdsf</li><li>ds</li><li>f</li><li>dsf</li><li>dsf</li><li>dsf</li></ul></p>', '2019-11-19 13:39:33', 3, 10, '0-3-9-10', 1),
-(12, 'Pork', '', '<p><ul><li>dsfds</li><li>f</li><li>dsf</li><li>dsf</li><li>ds</li><li>fs</li><li>fd</li></ul></p>', '2019-11-19 13:39:45', 3, 10, '0-3-9-10', 1),
-(13, 'ssd', '', '', '2019-11-19 13:53:59', 0, 0, '0', 1),
-(14, 'ssd', 'sdsd', '', '2019-11-19 14:05:08', 0, 0, '0', 1),
-(15, 'test', '', '', '2019-11-19 14:12:48', 1, 13, '0-13', 1),
-(16, 'aaaaaaaaaaaaaaaaa', '', '', '2019-11-19 14:17:44', 1, 14, '0-14', 1);
+INSERT INTO `topics` (`id`, `title`, `description`, `content`, `created`, `level`, `parent_id`, `path`, `user_id`) VALUES
+(2, 'Uni', '', '', '2019-11-20 11:28:39', 0, 0, '0.2', 1),
+(3, 'List of Car parks', '', '', '2019-11-20 11:29:02', 1, 2, '0.2.3', 1),
+(4, 'Work', '', '', '2019-11-20 11:29:17', 0, 0, '0.4', 1),
+(5, 'Home', '', '', '2019-11-20 11:29:22', 0, 0, '0.5', 1),
+(6, 'Fines', '', '', '2019-11-20 11:29:29', 2, 3, '0.2.3.6', 1),
+(7, 'Stuff', '', '<p><ul><li>fsdsf</li><li>sd</li><li>f</li><li>dsf</li><li>dsf</li><li>fds</li></ul></p>', '2019-11-20 11:29:41', 3, 6, '0.2.3.6.7', 1),
+(8, 'Personal', '', '', '2019-11-20 11:29:49', 0, 0, '0.8', 1),
+(9, 'sasad', '', '<p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saadsv<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p>', '2019-11-20 14:22:45', 3, 6, '0.2.3.6.9', 1);
+
+--
+-- Triggers `topics`
+--
+DROP TRIGGER IF EXISTS `set_path`;
+DELIMITER $$
+CREATE TRIGGER `set_path` BEFORE INSERT ON `topics` FOR EACH ROW SET NEW.path = 
+  CONCAT(IFNULL((select path from topics where id = NEW.parent_id), '0'), '.', (select auto_increment
+    from information_schema.tables
+   where table_name = 'topics'
+     and table_schema = database())
+)
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -111,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `user_name`, `password`, `email`, `full_name`, `city`, `image_url`) VALUES
-(1, 'testuser1', '$2y$10$StZtP58fnRZM5ZPJuwb3/uHAz0j2YcD02ffW.0Fpxe2ff.aB9NUA2', 'pinchy1978@googlemail.com', 'Andrew Finch', 'Felixstowes', NULL),
+(1, 'testuser1', '$2y$10$StZtP58fnRZM5ZPJuwb3/uHAz0j2YcD02ffW.0Fpxe2ff.aB9NUA2', 'pinchy1978@googlemail.com', 'Andrew Finchp', 'Felixstowes', NULL),
 (2, 'testuser2', '$2y$10$ozYVgVjxuEDZv0gagOC4m.Bdckkd4ptQTVKWHYMD1uyEYASnLDz1S', 'andrewfinch@mcpplc.com', 'Andrew Finch', 'Ipswich', NULL),
 (3, 'testuser2', '$2y$10$LFx0F/VcddMd2Iy/T2wh0uJZ8OBQPW0Wcw0B3911DO286auev22V2', 'andrewfinch@mcpplc.com', 'Andrew Finch', 'Felixstowe', NULL),
 (4, 'testuser2', '$2y$10$CZgoQmBLZCy0qfD4wb15deYbmz3I/zwhBcIeBEKJ38ZnKAug3yvBK', 'andrewfinch@mcpplc.com', 'Andrew Finch', 'Felixstowe', NULL),

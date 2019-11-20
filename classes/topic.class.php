@@ -15,45 +15,18 @@ class Topic
         $user_id = $_SESSION['user_data']['id'];
         $parent_id = $topic_data['parent_id'];
 
-        if ( $parent_id == 0)
-        {
-            $query = "INSERT INTO topics (title, description,content,level,parent_id, user_id, parent_path) VALUES (:title, :description,:content,:level,:parent_id, :user_id, '0')";
-            $stmt = $this->Conn->prepare($query);
+        $query = "INSERT INTO topics (title, description,content,level,parent_id, user_id) VALUES (:title, :description,:content,:level,:parent_id, :user_id)";
+        $stmt = $this->Conn->prepare($query);
 
 
-            return $stmt->execute(array(
-                'title' => $topic_data['title'],
-                'description' => $topic_data['description'],
-                'content' => $topic_data['content'],
-                'level' => $topic_data['level'],
-                'parent_id' => $parent_id,
-                'user_id' => $user_id
-            ));
-        }
-        else{
-            $query = "INSERT INTO topics (title, description,content,level,parent_id, user_id, parent_path) 
-                  SELECT :title, :description,:content,:level,:parent_id, :user_id, concat(parent_path, '-', :parent_id_path)
-                  FROM topics where id = :parent_id_select";
-            $stmt = $this->Conn->prepare($query);
-
-
-            return $stmt->execute(array(
-                'title' => $topic_data['title'],
-                'description' => $topic_data['description'],
-                'content' => $topic_data['content'],
-                'level' => $topic_data['level'],
-                'parent_id' => $parent_id,
-                'user_id' => $user_id,
-                'parent_id_select' => $parent_id,
-                'parent_id_path' => $parent_id
-            ));
-        }
-        
-
-
-        
-
-
+        return $stmt->execute(array(
+            'title' => $topic_data['title'],
+            'description' => $topic_data['description'],
+            'content' => $topic_data['content'],
+            'level' => $topic_data['level'],
+            'parent_id' => $parent_id,
+            'user_id' => $user_id
+        ));
 
     }
 
@@ -100,7 +73,7 @@ class Topic
                   ELSE 'N'
                END 
               )AS has_child 
-       FROM topics t1 where t1.user_id = :user_id order by concat(t1.parent_path,'-', t1.id)";
+       FROM topics t1 where t1.user_id = :user_id order by path";
         $stmt = $this->Conn->prepare($query);
         $stmt->execute(array(':user_id' => $user_id));
         return $result = $stmt->fetchAll();
@@ -110,13 +83,16 @@ class Topic
     {
         $user_id = $_SESSION['user_data']['id'];
         //$query = "SELECT * FROM topics where user_id = :user_id and (id = :id or parent_id = :parent_id)";
-        $query = "select  *
+        /*$query = "select  *
                     from    (select * from topics t1
                              order by parent_id, id) topics_sorted,
                             (select @pv := :id) initialisation
                     where   (find_in_set(parent_id, @pv) or id = @pv) and user_id = :user_id
                     and     length(@pv := concat(@pv, ',', id))
-                    order by concat(parent_path,'-', id)";
+                    order by path";*/
+        $query = "select  * from topics                    
+                    where   path like concat( (select path from topics st where st.id = :id),'%') and user_id = :user_id                   
+                    order by path";
         $stmt = $this->Conn->prepare($query);
         $stmt->execute(array(
                 ':user_id' => $user_id,

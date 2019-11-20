@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-19 22:28:47
+/* Smarty version 3.1.33, created on 2019-11-20 14:23:41
   from 'C:\wamp64\www\MMI_Assignment\views\layouts\main.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd46c9fd687f5_88543189',
+  'unifunc' => 'content_5dd54c6d250798_34618197',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '93f01204e9286350166d91478c3ceabe6bee5860' => 
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\layouts\\main.tpl',
-      1 => 1574202526,
+      1 => 1574259821,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dd46c9fd687f5_88543189 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dd54c6d250798_34618197 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -68,78 +68,95 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
             </div>
         </nav>
         <?php } else { ?>
-        <nav class="navbar navbar-expand-sm navbar-light bg-lightx">
+        <nav class="navbar navbar-expand-sm navbar-light">
             <a class="navbar-brand" href="./index.php">
                 <img src="./images/list-logo.png" width="30" height="30" class="d-inline-block align-top"
                      alt="">
                 RevisionIT
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div class="d-flex">
+                <button class="d-block d-sm-none btn btn-primary" type="submit" data-toggle="modal"
+                        data-target="#topicModal">
+                    Create Topic
+                </button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                </div>
+            
 
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2" id="navbarSupportedContent">
+                
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a href="./index.php?p=dashboard" class="nav-link">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-none d-sm-block">
                         <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#topicModal">
                             Create Topic
                         </button>
                     </li>
                     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12331886395dd46c9fd3eea6_35562101', "leftlinks");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9048317745dd54c6d237b14_54459197', "leftlinks");
 ?>
 
                 </ul>
-                <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17497456535dd46c9fd42593_14426264', "rightlinks");
-?>
+
 
                 
-                <div class="dropdown">
+                <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_5328281245dd54c6d23a396_29184882', "rightlinks");
+?>
+
+
+                <div class="navbar-nav">
+                <div class="dropdown nav-item ">
+
                     <?php if ($_SESSION['user_data']['image_url'] != null) {?>
-                        <a data-toggle="dropdown" href="#" aria-haspopup="true"
+                        <a class="d-none d-sm-block" data-toggle="dropdown" href="#" aria-haspopup="true"
                            aria-expanded="false"><img style="width: 50px; height: 50px;border-radius: 50%" src="./<?php echo $_SESSION['user_data']['image_url'];?>
 "
                                                              class="user-profile fas fa-user-circle"/></a>
                     <?php } else { ?>
-                        <a href="#" data-toggle="dropdown" aria-haspopup="true"
+                        <a class="d-none d-sm-block" href="#" data-toggle="dropdown" aria-haspopup="true"
                            aria-expanded="false"><img
                                     src="https://robohash.org/<?php echo $_SESSION['user_data']['full_name'];?>
 ?size=50x50"
                                     class="user-profile fas fa-user-circle"
                                     /></a>
                     <?php }?>
+                    <a class="nav-link d-block d-sm-none" href="#" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"><h6>Profile Options</h6></a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="./index.php?p=profile">Edit Profile</a>
                         <a class="dropdown-item" href="./index.php?p=login&logout=Y">Log out</a>
                     </div>
                 </div>
+                </div>
 
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-primary btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <input class="col-10 col-sm form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="col-2 col-sm btn btn-primary btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
+
 
         </nav>
     <?php }?>
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9871227725dd46c9fd53d72_63686622', "nav");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2564610445dd54c6d247836_57910186', "nav");
 ?>
 
 </header>
-
+<hr>
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3869274745dd46c9fd58603_40362243', "body");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8345502135dd54c6d249dc5_09698399', "body");
 ?>
 
 
 
-<footer class="my-5 pt-5 text-muted text-center text-small" style="position: relative; bottom: 0; width: 100%">
+<footer class="my-5 pt-5 text-muted text-center text-small" style="position: static; bottom: 0; width: 100%">
     <div>
         <p class="mb-1">&copy; 2019 AJF Plc</p>
         <ul class="list-inline">
@@ -193,12 +210,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3869274745dd46c9fd
 >
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11480047465dd46c9fd5f763_36247449', "modals");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_13115846735dd54c6d24c5c4_11287319', "modals");
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6377478635dd46c9fd64e00_66024183', "scripts");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_576154545dd54c6d24ec53_39279557', "scripts");
 ?>
 
 
@@ -215,12 +232,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6377478635dd46c9fd
 </html>
 <?php }
 /* {block "leftlinks"} */
-class Block_12331886395dd46c9fd3eea6_35562101 extends Smarty_Internal_Block
+class Block_9048317745dd54c6d237b14_54459197 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'leftlinks' => 
   array (
-    0 => 'Block_12331886395dd46c9fd3eea6_35562101',
+    0 => 'Block_9048317745dd54c6d237b14_54459197',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -228,12 +245,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "leftlinks"} */
 /* {block "rightlinks"} */
-class Block_17497456535dd46c9fd42593_14426264 extends Smarty_Internal_Block
+class Block_5328281245dd54c6d23a396_29184882 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'rightlinks' => 
   array (
-    0 => 'Block_17497456535dd46c9fd42593_14426264',
+    0 => 'Block_5328281245dd54c6d23a396_29184882',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -241,12 +258,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "rightlinks"} */
 /* {block "nav"} */
-class Block_9871227725dd46c9fd53d72_63686622 extends Smarty_Internal_Block
+class Block_2564610445dd54c6d247836_57910186 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'nav' => 
   array (
-    0 => 'Block_9871227725dd46c9fd53d72_63686622',
+    0 => 'Block_2564610445dd54c6d247836_57910186',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -254,12 +271,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "nav"} */
 /* {block "body"} */
-class Block_3869274745dd46c9fd58603_40362243 extends Smarty_Internal_Block
+class Block_8345502135dd54c6d249dc5_09698399 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'body' => 
   array (
-    0 => 'Block_3869274745dd46c9fd58603_40362243',
+    0 => 'Block_8345502135dd54c6d249dc5_09698399',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -267,12 +284,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "body"} */
 /* {block "modals"} */
-class Block_11480047465dd46c9fd5f763_36247449 extends Smarty_Internal_Block
+class Block_13115846735dd54c6d24c5c4_11287319 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'modals' => 
   array (
-    0 => 'Block_11480047465dd46c9fd5f763_36247449',
+    0 => 'Block_13115846735dd54c6d24c5c4_11287319',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -280,12 +297,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "modals"} */
 /* {block "scripts"} */
-class Block_6377478635dd46c9fd64e00_66024183 extends Smarty_Internal_Block
+class Block_576154545dd54c6d24ec53_39279557 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'scripts' => 
   array (
-    0 => 'Block_6377478635dd46c9fd64e00_66024183',
+    0 => 'Block_576154545dd54c6d24ec53_39279557',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

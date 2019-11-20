@@ -7,7 +7,7 @@
             <div class="col-md-4">
 
                 <div data-toggle="modal" data-target="#imageModal"
-                     class="card border-secondary" style="width: 18rem;">
+                     class="card border-secondary">
                     <a href="#" title="Change Profile Picture">
                     {if $smarty.session.user_data.image_url != null}
                         <img class="card-img-top"

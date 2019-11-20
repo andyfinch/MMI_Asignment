@@ -42,64 +42,81 @@
             </div>
         </nav>
         {else}
-        <nav class="navbar navbar-expand-sm navbar-light bg-lightx">
+        <nav class="navbar navbar-expand-sm navbar-light">
             <a class="navbar-brand" href="./index.php">
                 <img src="./images/list-logo.png" width="30" height="30" class="d-inline-block align-top"
                      alt="">
                 RevisionIT
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div class="d-flex">
+                <button class="d-block d-sm-none btn btn-primary" type="submit" data-toggle="modal"
+                        data-target="#topicModal">
+                    Create Topic
+                </button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                </div>
+            
 
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2" id="navbarSupportedContent">
+                
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a href="./index.php?p=dashboard" class="nav-link">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-none d-sm-block">
                         <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#topicModal">
                             Create Topic
                         </button>
                     </li>
                     {block name="leftlinks"}{/block}
                 </ul>
-                {block name="rightlinks"}{/block}
+
+
                 
-                <div class="dropdown">
+                {block name="rightlinks"}{/block}
+
+                <div class="navbar-nav">
+                <div class="dropdown nav-item ">
+
                     {if $smarty.session.user_data.image_url != null}
-                        <a data-toggle="dropdown" href="#" aria-haspopup="true"
+                        <a class="d-none d-sm-block" data-toggle="dropdown" href="#" aria-haspopup="true"
                            aria-expanded="false"><img style="width: 50px; height: 50px;border-radius: 50%" src="./{$smarty.session.user_data.image_url}"
                                                              class="user-profile fas fa-user-circle"/></a>
                     {else}
-                        <a href="#" data-toggle="dropdown" aria-haspopup="true"
+                        <a class="d-none d-sm-block" href="#" data-toggle="dropdown" aria-haspopup="true"
                            aria-expanded="false"><img
                                     src="https://robohash.org/{$smarty.session.user_data.full_name}?size=50x50"
                                     class="user-profile fas fa-user-circle"
                                     /></a>
                     {/if}
+                    <a class="nav-link d-block d-sm-none" href="#" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"><h6>Profile Options</h6></a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="./index.php?p=profile">Edit Profile</a>
                         <a class="dropdown-item" href="./index.php?p=login&logout=Y">Log out</a>
                     </div>
                 </div>
+                </div>
 
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-primary btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <input class="col-10 col-sm form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="col-2 col-sm btn btn-primary btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
+
 
         </nav>
     {/if}
     {block name="nav"}{/block}
 </header>
-
+<hr>
 {block name="body"}{/block}
 
 
-<footer class="my-5 pt-5 text-muted text-center text-small" style="position: relative; bottom: 0; width: 100%">
+<footer class="my-5 pt-5 text-muted text-center text-small" style="position: static; bottom: 0; width: 100%">
     <div>
         <p class="mb-1">&copy; 2019 AJF Plc</p>
         <ul class="list-inline">
