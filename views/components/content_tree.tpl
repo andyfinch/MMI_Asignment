@@ -1,7 +1,13 @@
 <div class="card">
     <div class="card-body content-tree">
-        <h5 class="card-title">My Content Tree</h5>
+        <h5 class="card-title">My Content Tree
+            <a class="btn btn-primary" data-toggle="collapse" href="#contentTree" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Hide
+            </a>
+        </h5>
+        <div id="contentTree">
         <p class="card-text ">A hierarchical view of your content</p>
+
         <ul class="list-group">
             {foreach $allTopics as $topic}
                 <li data-parent-id="{$topic.parent_id}" data-level="{$topic.level}"  style="margin-left: {$topic.level}vw" class="list-group-item parent-id-{$topic.parent_id}" id="tree-{$topic.id}"><a
@@ -13,6 +19,7 @@
 
             {/foreach}
         </ul>
+        </div>
     </div>
 </div>
 
