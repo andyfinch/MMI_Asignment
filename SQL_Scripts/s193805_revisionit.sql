@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 20, 2019 at 02:40 PM
+-- Generation Time: Nov 21, 2019 at 03:22 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -25,25 +25,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `test`
+-- Table structure for table `content_types`
 --
 
-DROP TABLE IF EXISTS `test`;
-CREATE TABLE IF NOT EXISTS `test` (
-  `Title` varchar(255) DEFAULT NULL,
-  `Description` varchar(255) DEFAULT NULL,
-  `Created` datetime DEFAULT NULL,
-  `Test` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `content_types`;
+CREATE TABLE IF NOT EXISTS `content_types` (
+  `id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `test`
+-- Dumping data for table `content_types`
 --
 
-INSERT INTO `test` (`Title`, `Description`, `Created`, `Test`) VALUES
-('TitleTest', 'DescTest', '2019-10-01 00:00:00', 1),
-('Test', 'Desc', '2019-10-25 13:26:38', 1),
-('Test', 'Desc', '2019-10-25 13:26:53', 1);
+INSERT INTO `content_types` (`id`, `name`) VALUES
+(1, 'text'),
+(2, 'image'),
+(3, 'video'),
+(4, 'map');
 
 -- --------------------------------------------------------
 
@@ -61,24 +61,31 @@ CREATE TABLE IF NOT EXISTS `topics` (
   `level` int(11) NOT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `path` varchar(100) DEFAULT NULL,
+  `content_type` int(11) NOT NULL DEFAULT '1',
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_topics_users_user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `topics`
 --
 
-INSERT INTO `topics` (`id`, `title`, `description`, `content`, `created`, `level`, `parent_id`, `path`, `user_id`) VALUES
-(2, 'Uni', '', '', '2019-11-20 11:28:39', 0, 0, '0.2', 1),
-(3, 'List of Car parks', '', '', '2019-11-20 11:29:02', 1, 2, '0.2.3', 1),
-(4, 'Work', '', '', '2019-11-20 11:29:17', 0, 0, '0.4', 1),
-(5, 'Home', '', '', '2019-11-20 11:29:22', 0, 0, '0.5', 1),
-(6, 'Fines', '', '', '2019-11-20 11:29:29', 2, 3, '0.2.3.6', 1),
-(7, 'Stuff', '', '<p><ul><li>fsdsf</li><li>sd</li><li>f</li><li>dsf</li><li>dsf</li><li>fds</li></ul></p>', '2019-11-20 11:29:41', 3, 6, '0.2.3.6.7', 1),
-(8, 'Personal', '', '', '2019-11-20 11:29:49', 0, 0, '0.8', 1),
-(9, 'sasad', '', '<p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saadsv<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p>', '2019-11-20 14:22:45', 3, 6, '0.2.3.6.9', 1);
+INSERT INTO `topics` (`id`, `title`, `description`, `content`, `created`, `level`, `parent_id`, `path`, `content_type`, `user_id`) VALUES
+(2, 'Uni', '', '', '2019-11-20 11:28:39', 0, 0, '0.2', 1, 1),
+(3, 'List of Car parks', '', '', '2019-11-20 11:29:02', 1, 2, '0.2.3', 1, 1),
+(4, 'Work', '', '', '2019-11-20 11:29:17', 0, 0, '0.4', 1, 1),
+(5, 'Home', '', '', '2019-11-20 11:29:22', 0, 0, '0.5', 1, 1),
+(6, 'Fines', '', '', '2019-11-20 11:29:29', 2, 3, '0.2.3.6', 1, 1),
+(7, 'Stuff', '', '<p><ul><li>fsdsf</li><li>sd</li><li>f</li><li>dsf</li><li>dsf</li><li>fds</li></ul></p>', '2019-11-20 11:29:41', 3, 6, '0.2.3.6.7', 1, 1),
+(8, 'Personal', '', '', '2019-11-20 11:29:49', 0, 0, '0.8', 1, 1),
+(9, 'sasad', '', '<p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saadsv<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p>', '2019-11-20 14:22:45', 3, 6, '0.2.3.6.9', 1, 1),
+(10, 'Test', '', '', '2019-11-21 14:01:44', 0, 0, '0.10', 1, 1),
+(14, 'sdfsdf', '', '', '2019-11-21 14:25:41', 2, 3, '0.2.3.14', 1, 1),
+(15, 'fgdfd', '', '', '2019-11-21 14:26:21', 1, 4, '0.4.15', 1, 1),
+(16, 'dfgdf', '', '', '2019-11-21 14:26:24', 1, 4, '0.4.16', 1, 1),
+(17, 'bvbcv', '', '<p><ul><li>sdfsdfdsf</li></ul></p>', '2019-11-21 14:28:50', 3, 14, '0.2.3.14.17', 1, 1),
+(18, 'dffd', '', '', '2019-11-21 14:41:31', 4, 7, '0.2.3.6.7.18', 1, 1);
 
 --
 -- Triggers `topics`
