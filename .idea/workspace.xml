@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="52862c20-1360-49bc-9220-c31fe192d616" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/topic.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/topic.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/93f01204e9286350166d91478c3ceabe6bee5860_0.file.main.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/93f01204e9286350166d91478c3ceabe6bee5860_0.file.main.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/f79ebb2320963d50a029af679b5febd34301793f_0.file.profile.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/f79ebb2320963d50a029af679b5febd34301793f_0.file.profile.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/9b811f85df062ed1fc9b31e87289c6bc49e32623_0.file.content.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/9b811f85df062ed1fc9b31e87289c6bc49e32623_0.file.content.tpl.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/layouts/main.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/main.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/profile.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/profile.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/content.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/content.tpl" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,12 +65,6 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
-  </component>
   <component name="ProjectId" id="1SxyFdVigfqYXmESYNfucOvXwSW" />
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -186,6 +179,7 @@
       <workItem from="1572521046886" duration="11577000" />
       <workItem from="1573119878222" duration="19616000" />
       <workItem from="1573724560466" duration="17902000" />
+      <workItem from="1574328730056" duration="8626000" />
     </task>
     <servers />
   </component>

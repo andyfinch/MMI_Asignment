@@ -1,4 +1,12 @@
 {extends file="layouts/main.tpl"}
+{block name="leftlinks"}
+<li class="nav-item">
+    <a href="#" id="carouselLink" class="nav-link">
+        Enable Carousel View
+    </a>
+</li>
+{/block}
+
 {block name="body"}
     <div class="container-fluid">
         <div class="row">
@@ -7,12 +15,20 @@
             </div>
 
 
-            <div class="col-sm-8 col-lg-9 owl-carousel-disabled">
+            <div class="col-sm-8 col-lg-9 ">
 
                 {$root_topic_level = $contentTopics[0].level}
+                {$previousParent = 0}
+                {$index = 0}
                 {foreach $contentTopics as $topic}
+
+                    {if $previousParent != $topic.parent_id}
+                    {$previousParent = $topic.parent_id}
+                    <div class="for-owl-carousel">
+                    {/if}
+
                     <div style="padding-left: {$topic.level - $root_topic_level}%">
-                        <div class="card ">
+                        <div class="card">
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-auto mr-auto">
@@ -60,6 +76,12 @@
                             {/if}
                         </div>
                     </div>
+
+                        {if $topic.parent_id != $contentTopics[$index+1].parent_id}
+
+                    </div>
+                {/if}
+                {$index = $index +1}
                 {/foreach}
 
             </div>
@@ -104,28 +126,60 @@
     <script>
         postAjax.init();
         contentTree.init();
+        function enableCarousel()
+        {
+            $('.for-owl-carousel').addClass('owl-carousel');
 
-        $(function () {
-            /*$('.owl-carousel').owlCarousel({
-                loop: true,
+            $('.owl-carousel').owlCarousel({
+                stagePadding: 30,
+                loop: false,
                 margin: 10,
                 responsiveClass: true,
+                nav:true,
                 responsive: {
                     0: {
                         items: 1,
                         nav: true
-                    },
-                    600: {
-                        items: 3,
-                        nav: false
-                    },
-                    1000: {
-                        items: 5,
-                        nav: true,
-                        loop: false
                     }
                 }
-            });*/
+            });
+        }
+
+        $(function () {
+
+            $('#carouselLink').on('click', function (event) {
+                if ($(this).text().indexOf('Enable') > 0)
+                {
+                    $(this).text('Disable Carousel View');
+                    $('.for-owl-carousel').addClass('owl-carousel');
+
+                    $('.owl-carousel').owlCarousel({
+                        stagePadding: 0,
+                        autoWidth: false,
+                        loop: false,
+                        margin: 0,
+                        responsiveClass: true,
+                        nav:true,
+                        responsive: {
+                            0: {
+                                items: 1,
+                                nav: true
+                            }
+                        }
+                    });
+                }
+                else
+                {
+                    $(this).text('Disable Carousel View');
+                    var owl = $('.owl-carousel');
+                    owl.owlCarousel();
+                    owl.trigger('destroy.owl.carousel');
+                    $('.for-owl-carousel').removeClass('owl-carousel');
+                }
+
+
+            });
+
             var modal = $('#contentModal');
             $(modal).find('#level').val('{$topic.level + 1}');
             $(modal).find('#parent_id').val('{$topic.id}');
