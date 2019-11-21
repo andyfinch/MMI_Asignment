@@ -20,10 +20,12 @@
                 {$root_topic_level = $contentTopics[0].level}
                 {$previousParent = 0}
                 {$index = 0}
+                {$inGroup = false}
                 {foreach $contentTopics as $topic}
 
                     {if $previousParent != $topic.parent_id}
                     {$previousParent = $topic.parent_id}
+                    {$inGroup = true}
                     <div class="for-owl-carousel">
                     {/if}
 
@@ -77,8 +79,8 @@
                         </div>
                     </div>
 
-                        {if $topic.parent_id != $contentTopics[$index+1].parent_id}
-
+                        {if $topic.parent_id != $contentTopics[$index+1].parent_id && $inGroup}
+                        {$inGroup = false}
                     </div>
                 {/if}
                 {$index = $index +1}
@@ -148,7 +150,8 @@
         $(function () {
 
             $('#carouselLink').on('click', function (event) {
-                if ($(this).text().indexOf('Enable') > 0)
+                console.log('ff');
+                if ($(this).text().indexOf('Enable') > -1)
                 {
                     $(this).text('Disable Carousel View');
                     $('.for-owl-carousel').addClass('owl-carousel');
@@ -170,7 +173,7 @@
                 }
                 else
                 {
-                    $(this).text('Disable Carousel View');
+                    $(this).text('Enable Carousel View');
                     var owl = $('.owl-carousel');
                     owl.owlCarousel();
                     owl.trigger('destroy.owl.carousel');
