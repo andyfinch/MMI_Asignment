@@ -1,11 +1,11 @@
 <div class="card">
     <div class="card-body content-tree">
         <h5 class="card-title">My Content Tree
-            <a class="btn btn-primary" data-toggle="collapse" href="#contentTree" role="button" aria-expanded="false" aria-controls="collapseExample">
-                Hide
+            <a class="btn btn-primary d-block d-sm-none" data-toggle="collapse" href="#contentTree" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Toggle Tree
             </a>
         </h5>
-        <div id="contentTree">
+        <div id="contentTree" class="collapse show">
         <p class="card-text ">A hierarchical view of your content</p>
 
         <ul class="list-group">

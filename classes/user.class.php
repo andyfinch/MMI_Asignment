@@ -68,8 +68,8 @@ class User
 
         $query = "SELECT * FROM users WHERE user_name = :user_name";
         $stmt = $this->Conn->prepare($query);
-
-        $stmt->execute(array(':user_name' => $user_name));
+        $stmt->bindParam(':user_name', $user_name);
+        $stmt->execute();
         $attempt = $stmt->fetch();
         if ($attempt) {
             return $attempt;
@@ -87,6 +87,7 @@ class User
 
         $query = "INSERT INTO users (user_name, password, email, full_name, city) VALUES (:user_name, :password, :email, :full_name, :city)";
         $stmt = $this->Conn->prepare($query);
+
 
         return $stmt->execute(array(
             'user_name' => $user_data['userName'],

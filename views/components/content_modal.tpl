@@ -9,8 +9,7 @@
                     <input id="function" type="hidden" name="function" value="create">
                     <div class="container">
                         <div class="text-center">
-                            <h2>Topic</h2>
-                            <p class="lead header">Create a new topic</p>
+                            <h2>Create new content</h2>
                         </div>
 
                         <div class="row">
@@ -43,12 +42,29 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="content">Content </label>
-                                        {*<div id="editor"></div>*}
-                                        <textarea rows="10" type="text" class="form-control" id="content"
-                                                  name="content"></textarea>
-                                        <div class="invalid-feedback">
-                                            Please enter valid content.
+                                        <label class="col-form-label" for="content">Content Type</label>
+                                        <select class="form-control" name="contentType" id="contentSelect">
+                                            <option selected value="1">Text</option>
+                                            <option value="2">Image</option>
+                                            <option value="3">Video</option>
+                                            <option value="4">Map</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3" id="contentArea">
+                                        <div id="textContent" class="content" data-content-type="1">
+                                            <textarea rows="10" type="text" class="form-control" id="content"
+                                                      name="content"></textarea>
+                                            <div class="invalid-feedback">
+                                                Please enter valid content.
+                                            </div>
+                                        </div>
+                                        <div id="imageContent" style="display: none" class="content" data-content-type="2">
+                                            <input type="hidden" name="action" value="image_upload">
+                                            <div class="form-group">
+                                                <label for="upload">Select image to upload:</label>
+                                                <input type="file" multiple class="form-control-file" name="fileToUpload" id="fileToUpload">
+                                            </div>
                                         </div>
                                     </div>
                                     <input type="hidden" id="id" name="id">
@@ -74,6 +90,13 @@
 </form>
 
 <script>
+
+    $('#contentSelect').on('change', function() {
+        console.log( this.value );
+        $('#contentArea .content').hide();
+        $( "#contentArea .content[data-content-type="+this.value+"]").show();
+    });
+
     $('#content').trumbowyg({
         btns: [['viewHTML'],
             ['undo', 'redo'], // Only supported in Blink browsers
@@ -88,8 +111,7 @@
             ['horizontalRule'],
             ['removeformat'],
             ['fullscreen'],
-            ['foreColor', 'backColor'],
-            ['base64']
+            ['foreColor', 'backColor']
         ]
     });
     $('#contentModal').on('show.bs.modal', function (event) {
