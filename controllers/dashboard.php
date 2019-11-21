@@ -22,9 +22,9 @@ if ($_POST) {
                     $response->addError('title', 'Title must not exceed 255 characters');
                 }
             }
-            if (!$_POST['description']) {
+            /*if (!$_POST['description']) {
                 $response->addError('description', 'description is required');
-            }
+            }*/
             if ($response->hasErrors()) {
                 $response->getJSON();
             }
@@ -37,7 +37,7 @@ if ($_POST) {
             if ( $attempt)
             {
                 $_SESSION['message'] = 'Topic created ' . $_POST['title'];;
-                $response->addSuccess('Topic created', 'dashboard');
+                $response->addSuccess('Topic created', 'content&id=' . $_POST['parent_id']);
             }
             else{
                 $response->addError('title', 'failed');

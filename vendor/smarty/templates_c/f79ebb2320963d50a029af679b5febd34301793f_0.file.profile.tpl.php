@@ -1,48 +1,52 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-13 17:14:31
+/* Smarty version 3.1.33, created on 2019-11-20 14:03:38
   from 'C:\wamp64\www\MMI_Assignment\views\pages\profile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dcc39f710a584_46673011',
+  'unifunc' => 'content_5dd547bad87ea4_19802769',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f79ebb2320963d50a029af679b5febd34301793f' => 
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\pages\\profile.tpl',
-      1 => 1573665270,
+      1 => 1574258618,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:../components/content_modal.tpl' => 1,
   ),
 ),false)) {
-function content_5dcc39f710a584_46673011 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dd547bad87ea4_19802769 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_5363563855dcc39f70eb2b2_13246019', "body");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19633070785dd547bad5f434_87980521', "body");
 ?>
 
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3911424685dd547bad7d836_78251029', "modals");
+?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7453600065dcc39f71035e0_89212329', "scripts");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21133801785dd547bad826e1_89201628', "scripts");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layouts/main.tpl");
 }
 /* {block "body"} */
-class Block_5363563855dcc39f70eb2b2_13246019 extends Smarty_Internal_Block
+class Block_19633070785dd547bad5f434_87980521 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'body' => 
   array (
-    0 => 'Block_5363563855dcc39f70eb2b2_13246019',
+    0 => 'Block_19633070785dd547bad5f434_87980521',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -54,11 +58,25 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
             <div class="col-md-4">
 
-                <div class="card border-secondary" style="width: 18rem;">
-                    <img class="card-img-top"
-                         src="https://robohash.org/<?php echo $_SESSION['user_data']['full_name'];?>
+                <div data-toggle="modal" data-target="#imageModal"
+                     class="card border-secondary">
+                    <a href="#" title="Change Profile Picture">
+                    <?php if ($_SESSION['user_data']['image_url'] != null) {?>
+                        <img class="card-img-top"
+                             src="./<?php echo $_SESSION['user_data']['image_url'];?>
+"
+                             alt="Card image cap">
+                    <?php } else { ?>
+                        <img class="card-img-top"
+                             src="https://robohash.org/<?php echo $_SESSION['user_data']['full_name'];?>
 ?size=150x150"
-                         alt="Card image cap">
+                             alt="Card image cap">
+                    <?php }?>
+
+                    </a>
+
+
+
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $_SESSION['user_data']['full_name'];?>
 </h5>
@@ -110,7 +128,6 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                                 </div>
                             </div>
 
-                            
                             <div class="row">
                                 <div class="col mb-3">
                                     <label for="fullName">Full name</label>
@@ -154,17 +171,71 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
             </div>
         </div>
     </div>
+
+
+    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="topicModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <form class="full-post" action="index.php" method="post" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <input id="function" type="hidden" name="function" value="create">
+                    <div class="container">
+                        <div class="text-center">
+                            <h2>Upload profile picture</h2>
+                        </div>
+
+                        <div class="row">
+
+                                <input type="hidden" name="action" value="image_upload">
+                            <div class="form-group">
+                                <label for="upload">Select image to upload:</label>
+                                <input type="file" class="form-control-file" name="fileToUpload" id="fileToUpload">
+                            </div>                             
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="submit" type="submit" name="submit" class="btn btn-primary">Upload Image
+                        <span class="signupSpinner d-none spinner-border spinner-border-sm" role="status"
+                              aria-hidden="true"></span>
+                    </button>
+                    <button type="submit" name="remove" class="btn btn-secondary">Remove image</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
 <?php
 }
 }
 /* {/block "body"} */
+/* {block "modals"} */
+class Block_3911424685dd547bad7d836_78251029 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'modals' => 
+  array (
+    0 => 'Block_3911424685dd547bad7d836_78251029',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+    <?php $_smarty_tpl->_subTemplateRender("file:../components/content_modal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
+}
+/* {/block "modals"} */
 /* {block "scripts"} */
-class Block_7453600065dcc39f71035e0_89212329 extends Smarty_Internal_Block
+class Block_21133801785dd547bad826e1_89201628 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'scripts' => 
   array (
-    0 => 'Block_7453600065dcc39f71035e0_89212329',
+    0 => 'Block_21133801785dd547bad826e1_89201628',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

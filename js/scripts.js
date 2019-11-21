@@ -2,11 +2,11 @@
 var postAjax = {
     request: null,
     
-    init: function (test) {
+    init: function () {
         postAjax.bind();
     },
     bind: function() {
-        $("form").submit(function (event) {
+        $("form:not('.full-post')").submit(function (event) {
 
             // Prevent default posting of form - put here to work in case of errors
             event.preventDefault();
@@ -94,6 +94,104 @@ var postAjax = {
                 $('.signupSpinner').toggleClass('d-none');
             });
 
+        });
+    }
+};
+
+
+var contentTree = {
+
+    init: function () {
+        contentTree.bind();
+    },
+    bind: function () {
+        $(".content-tree i.fas").on("click", function () {
+            //$(this).toggleClass('fa-plus').toggleClass('fa-minus');
+            var collapsing = $(this).hasClass('fa-minus');
+            if ( collapsing)
+            {
+                $(this).removeClass('fa-minus').addClass('fa-plus');
+            }
+            else
+            {
+                $(this).removeClass('fa-plus').addClass('fa-minus');
+            }
+
+            //$(this)
+            var currentParent = parseInt($(this).closest('li').attr('data-parent-id'));
+            var nextLis = $(this).closest('li').nextAll();
+            var visible = $(nextLis.get(0)).is(':visible');
+            var level = $(nextLis.get(0)).attr('data-level');
+
+            for (const nextLi of nextLis) {
+               
+                if (parseInt($(nextLi).attr('data-parent-id')) > currentParent) {
+
+                    if ( collapsing)
+                    {
+                        if ($(nextLi).attr('data-level') - level === 0) {
+                            $(nextLi).hide();
+                            if (!$(nextLi).hasClass('hidden-directly'))
+                            {
+                                $(nextLi).addClass('hidden-directly');
+                            }
+
+                        }
+                        else if ($(nextLi).attr('data-level') - level > 0) {
+                            $(nextLi).hide();
+
+                            
+                            if (!$(nextLi).hasClass('hidden-directly')) {
+                                $(nextLi).addClass('hidden-indirectly');
+                            }
+                            if (!$(nextLi).hasClass('hidden-indirectly')) {
+                                $(nextLi).addClass('hidden-directly');
+                            }
+                            
+
+
+                        }
+                    }
+                    else
+                    {
+                        if ($(nextLi).attr('data-level') - level === 0) {
+                            $(nextLi).show();
+                            $(nextLi).removeClass('hidden-directly').removeClass('hidden-indirectly');
+                        }
+                        if ($(nextLi).attr('data-level') - level > 0) {
+                            if ($(nextLi).hasClass('hidden-indirectly'))
+                            {
+                                $(nextLi).show();
+                                $(nextLi).removeClass('hidden-indirectly');
+                            }
+                            
+                        }
+                    }
+
+
+
+                    /*if ($(nextLi).hasClass('hidden-by-parent') )
+                    {
+                        $(nextLi).show();
+                        $(nextLi).removeClass('hidden-by-parent');
+                    }
+                    else if (visible) {
+                        $(nextLi).hide();
+                        $(nextLi).addClass('hidden-by-parent')
+                    } else {
+                        if ($(nextLi).attr('data-level') === level) {
+                            $(nextLi).show();
+
+                        }
+
+                    }*/
+
+
+                } else {
+                    break;
+                }
+            }
+            //console.log(($(this).closest('li').nextAll()));
         });
     }
 };

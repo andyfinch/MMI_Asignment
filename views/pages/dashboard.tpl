@@ -3,24 +3,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3">
-                <div class="card">
-                    <div class="card-body content-tree">
-                        <h5 class="card-title">My Content</h5>
-                        <p class="card-text ">With supporting text below as a natural lead-in to additional content.</p>
-                        <!--{buildTopicTree}-->
-                        <ul class="list-group">
-                            {foreach $allTopics as $topic}
-                            <li class="list-group-item topic-level-{$topic.level}" id="tree-{$topic.id}"><a href="./index.php?p=content&id={$topic.id}">{$topic.title}</a></li>
-                            {/foreach}
-                        </ul>
-                    </div>
-                </div>
+                {include file="../components/content_tree.tpl"}
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-9">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">My Content</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <h5 class="card-title">My Content List</h5>
+                        <p class="card-text">A list view of your content</p>
                         <table class="table table-striped">
                             <thead>
                             <tr>
@@ -40,11 +29,11 @@
                             </tbody>
                         </table>
 
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        {*<a href="#" class="btn btn-primary">Go somewhere</a>*}
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
+            {*<div class="col-sm-3">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Recent activity</h5>
@@ -90,84 +79,17 @@
                         <a href="#" class="btn btn-primary">Go somewhereX</a>
                     </div>
                 </div>
-            </div>
+            </div>*}
         </div>
     </div>
 {/block}
 {block name="modals"}
-{*<form class="needs-validation" novalidate="" method="post" action="index.php">
-    <input type="hidden" name="action" value="topic">
-<div class="modal fade" id="topicModal" tabindex="-1" role="dialog" aria-labelledby="topicModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-
-                <div class="container">
-                    <div class="text-center">
-                        <h2>Topic</h2>
-                        <p class="lead">Create a new topic</p>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12 order-md-1">
-                            <form class="needs-validation" novalidate="">
-
-                                <div class="mb-3">
-                                    <label for="title">Title </label>
-                                    <input type="text" class="form-control" id="title" name="title">
-                                    <div class="invalid-feedback">
-                                        Please enter a valid title.
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="description">Description </label>
-                                    <input type="text" class="form-control" id="description" name="description">
-                                    <div class="invalid-feedback">
-                                        Please enter a valid title.
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="category">Categorise </label>
-                                    <input type="text" class="form-control" id="category" name="category">
-                                    <!--todo change to dropdown-->
-                                    <div class="invalid-feedback">
-                                        Please enter a valid category.
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="content">Content </label>
-                                    <textarea rows="15" type="text" class="form-control" id="content" name="content"></textarea>
-                                    <div class="invalid-feedback">
-                                        Please enter valid content.
-                                    </div>
-                                </div>
-
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Create
-                    <span class="signupSpinner d-none spinner-border spinner-border-sm" role="status"
-                          aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
-</form>*}
+    {include file="../components/content_modal.tpl"}
 {/block}
 {block name="scripts"}
     <script>
         postAjax.init();
-
+        contentTree.init();
     </script>
     {if $message}
         <script>

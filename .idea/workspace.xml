@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="52862c20-1360-49bc-9220-c31fe192d616" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/topic.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/topic.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/93f01204e9286350166d91478c3ceabe6bee5860_0.file.main.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/93f01204e9286350166d91478c3ceabe6bee5860_0.file.main.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/f79ebb2320963d50a029af679b5febd34301793f_0.file.profile.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/f79ebb2320963d50a029af679b5febd34301793f_0.file.profile.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/main.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/main.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/profile.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/profile.tpl" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,6 +66,12 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
   <component name="ProjectId" id="1SxyFdVigfqYXmESYNfucOvXwSW" />
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -76,7 +87,7 @@
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571913212575" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/Change Language" value="JSON" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JSON&#10;XML" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -143,6 +154,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand />
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />

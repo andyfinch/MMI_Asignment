@@ -2,69 +2,64 @@
 {block name="body"}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3">
-                <div class="card">
-                    <div class="card-body content-tree">
-                        <h5 class="card-title">My Content</h5>
-                        <p class="card-text ">With supporting text below as a natural lead-in to additional content.</p>
-                        <!--{buildTopicTree}-->
-                        <ul class="list-group">
-                            {foreach $allTopics as $topic}
-                            <li class="list-group-item topic-level-{$topic.level}" id="tree-{$topic.id}"><a href="./index.php?p=content&id={$topic.id}">{$topic.title}</a></li>
-                            {/foreach}
-                        </ul>
-                    </div>
-                </div>
+            <div class="col-sm-4 col-lg-3">
+                {include file="../components/content_tree.tpl"}
             </div>
 
 
-            <div class="col-9">
+            <div class="col-sm-8 col-lg-9 owl-carousel-disabled">
+
+                {$root_topic_level = $contentTopics[0].level}
                 {foreach $contentTopics as $topic}
+                    <div style="padding-left: {$topic.level - $root_topic_level}%">
+                        <div class="card ">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-auto mr-auto">
+                                        <h5 class="card-title">{$topic.title}</h5>
+                                    </div>
+                                    <div class="col-auto">
+                                        <ul class="list-group list-group-horizontal">
+                                            <li class="list-group-item"><a class="text-secondary" href="#">
+                                                    <i data-toggle="modal" data-header="Create new subtopic"
+                                                       data-target="#topicModal" data-action="create"
+                                                       data-level="{$topic.level+1}" data-parent_id="{$topic.id}"
+                                                       class="fas fa-folder-plus"></i>
+                                                </a></li>
+                                            <li class="list-group-item"><a class="text-secondary" href="#">
+                                                    <i data-toggle="modal" data-target="#topicModal"
+                                                       data-header="Edit Topic"
+                                                       data-action="edit" data-id="{$topic.id}"
+                                                       data-level="{$topic.level}" data-parent_id="{$topic.parent_id}"
+                                                       class="fas fa-edit"></i>
+                                                </a></li>
+                                            <li class="list-group-item"><a class="text-secondary" href="#">
+                                                    <i data-toggle="modal" data-target="#deleteModal"
+                                                       data-header="Delete Topic"
+                                                       data-action="delete" data-id="{$topic.id}"
+                                                       data-parent_id="{$topic.pa}"
+                                                       class="fas fa-trash-alt"></i>
+                                                </a></li>
+                                        </ul>
 
-                <div class="container-fluid">
-                    <div class="card mb-1 topic-level-{$topic.level}">
-                        <div class="card-header">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h5 class="card-title">{$topic.title}</h5>
-                                </div>
-                                <div class="col-md-6 text-right">
-                                    <a class="text-secondary" href="#">
-                                        <i data-toggle="modal" data-target="#topicModal" data-action="create"
-                                           data-level="{$topic.level+1}" data-parent_id="{$topic.id}"
-                                           class="fas fa-plus-square"></i>
-                                    </a>
-                                    <a class="text-secondary" href="#">
-                                        <i data-toggle="modal" data-target="#topicModal" data-header="Edit Topic"
-                                           data-action="edit" data-id="{$topic.id}" data-title="{$topic.title}"
-                                           data-description="{$topic.description}" data-content="{$topic.content}"
-                                           data-level="{$topic.level}" data-parent_id="{$topic.parent_id}"
-                                           class="fas fa-edit"></i>
-                                    </a>
-                                    <a class="text-secondary" href="#">
-                                        <i data-toggle="modal" data-target="#deleteModal" data-header="Delete Topic"
-                                           data-action="delete" data-id="{$topic.id}" data-parent_id="{$topic.pa}"
-                                           class="fas fa-trash-alt"></i>
-                                    </a>
-
+                                    </div>
                                 </div>
                             </div>
-                            <!--<h5 class="card-title">{$topic.title}</h5>
-                            <div class="col-md-6 text-right">
-                                <a class="text-secondary" onclick="editForm();" href="#"><i class="fas fa-edit"></i></a>
-                            </div>-->
-                        </div>
-                        <div class="card-body">
-                            <h6 class="card-title">{$topic.description}</h6>
-                            <p class="card-text">
-                            <pre style="font-family: inherit">{$topic.content}</pre>
-                            </p>
-                            <!--<button class="btn btn-primary" onclick="setIds('{$topic.level+1}', '{$topic.id}')" type="submit" data-toggle="modal" data-target="#topicModal">
-                                Add Sub-Content
-                            </button>-->
+                            {if $topic.description != null || $topic.content != null}
+                                <div class="card-body">
+                                    {if $topic.description != null}
+                                        <h6 class="card-title">{$topic.description}</h6>
+                                    {/if}
+                                    {if $topic.content != null}
+                                        <div class="card-text content"
+                                             style="font-family: inherit">{$topic.content}</div>
+                                    {/if}
+
+
+                                </div>
+                            {/if}
                         </div>
                     </div>
-                </div>
                 {/foreach}
 
             </div>
@@ -102,16 +97,39 @@
     </div>
 </form>
 {/block}
-
+{block name="modals"}
+    {include file="../components/content_modal.tpl"}
+{/block}
 {block name="scripts"}
     <script>
         postAjax.init();
+        contentTree.init();
 
         $(function () {
+            /*$('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    600: {
+                        items: 3,
+                        nav: false
+                    },
+                    1000: {
+                        items: 5,
+                        nav: true,
+                        loop: false
+                    }
+                }
+            });*/
             var modal = $('#contentModal');
             $(modal).find('#level').val('{$topic.level + 1}');
             $(modal).find('#parent_id').val('{$topic.id}');
-            $('#tree-' + '{$topics[0].id}').addClass('tree-active');
+            $('#tree-' + '{$contentTopics[0].id}').addClass('tree-active');
 
         });
 

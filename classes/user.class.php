@@ -118,6 +118,21 @@ class User
 
     }
 
+    public function updateImageURL($url, $user_id)
+    {
+
+
+        $query = "Update users set image_url=:image_url where id = :id";
+        $stmt = $this->Conn->prepare($query);
+
+        return $stmt->execute(array(
+            'id' => $user_id,
+            'image_url' => $url,
+        ));
+
+
+    }
+
     public function loginUser($user_name, $user_password)
     {
 
