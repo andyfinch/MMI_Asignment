@@ -16,7 +16,7 @@
     {if !$smarty.get.p || $smarty.get.p == 'login' || !$smarty.session.user_data}
         <nav class="navbar navbar-expand navbar-light">
             <a class="navbar-brand" href="./index.php">
-                <img src="./images/list-logo.png" width="30" height="30" class="d-inline-block align-top"
+                <img src="./images/list-logo.png" width="35" height="35" class="d-inline-block align-top"
                      alt="">
                 RevisionIT
             </a>
@@ -44,12 +44,12 @@
         {else}
         <nav class="navbar navbar-expand-sm navbar-light">
             <a class="navbar-brand" href="./index.php">
-                <img src="./images/list-logo.png" width="30" height="30" class="d-inline-block align-top"
+                <img src="./images/list-logo.png" width="35" height="35" class="d-inline-block align-top"
                      alt="">
-                RevisionIT
+                <span class="d-none d-sm-inline-block">RevisionIT</span>
             </a>
-            <div class="d-flex">
-                <button class="d-block d-sm-none btn btn-primary" type="submit" data-toggle="modal"
+            <div class="d-block d-sm-none ">
+                <button class="btn btn-primary" type="submit" data-toggle="modal"
                         data-target="#topicModal">
                     Create Topic
                 </button>
@@ -102,8 +102,8 @@
                 </div>
 
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="col-10 col-sm form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="col-2 col-sm btn btn-primary btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <input class="col-8 col-sm form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="col-4 col-sm btn btn-primary btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
 
