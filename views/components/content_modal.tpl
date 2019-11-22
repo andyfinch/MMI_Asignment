@@ -1,4 +1,4 @@
-<form id="contentModal" class="needs-validation" novalidate="" method="post" action="index.php">
+<form id="contentModal" class="needs-validation" novalidate="" enctype="multipart/form-data" method="post" action="index.php">
     <input type="hidden" name="action" value="topic">
 
     <div class="modal fade" id="topicModal" tabindex="-1" role="dialog" aria-labelledby="topicModalLabel"
@@ -43,12 +43,27 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="content">Content </label>
+                                        <label for="content">Content Type </label>
+                                        <select id="contentType" class="form-control">
+                                            <option value="1">Text</option>
+                                            <option value="2">Images</option>
+                                            <option value="3">Video</option>
+                                            <option value="4">Map</option>
+                                        </select>
                                         {*<div id="editor"></div>*}
-                                        <textarea rows="10" type="text" class="form-control" id="content"
-                                                  name="content"></textarea>
-                                        <div class="invalid-feedback">
-                                            Please enter valid content.
+                                        <div class="content" data-content-type="1">
+                                            <textarea rows="10" type="text" class="form-control" id="content"
+                                                      name="content"></textarea>
+                                            <div class="invalid-feedback">
+                                                Please enter valid content.
+                                            </div>
+                                        </div>
+                                        <div style="display: none" class="content mt-3" data-content-type="2">
+                                            <div class="form-group">
+                                                <label for="upload">Select image to upload:</label>
+                                                <input type="file" multiple class="form-control-file" name="filesToUpload[]"
+                                                       id="filesToUpload">
+                                            </div>
                                         </div>
                                     </div>
                                     <input type="hidden" id="id" name="id">
@@ -74,6 +89,14 @@
 </form>
 
 <script>
+
+    $('#contentType').on('change', function (event) {
+        $('.content').hide();
+        $('.content[data-content-type=' + this.value + ']').show();
+
+    });
+
+
     $('#content').trumbowyg({
         btns: [['viewHTML'],
             ['undo', 'redo'], // Only supported in Blink browsers

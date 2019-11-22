@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 20, 2019 at 02:40 PM
+-- Generation Time: Nov 22, 2019 at 04:32 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -21,6 +21,66 @@ SET time_zone = "+00:00";
 --
 -- Database: `s193805_revisionit`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contentmedia`
+--
+
+DROP TABLE IF EXISTS `contentmedia`;
+CREATE TABLE IF NOT EXISTS `contentmedia` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `content_id` int(11) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contents`
+--
+
+DROP TABLE IF EXISTS `contents`;
+CREATE TABLE IF NOT EXISTS `contents` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` int(11) NOT NULL,
+  `content` text NOT NULL,
+  `topic_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_topics_id_topics_id` (`topic_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `contents`
+--
+
+INSERT INTO `contents` (`id`, `type`, `content`, `topic_id`) VALUES
+(1, 1, '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contenttypes`
+--
+
+DROP TABLE IF EXISTS `contenttypes`;
+CREATE TABLE IF NOT EXISTS `contenttypes` (
+  `id` int(11) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `contenttypes`
+--
+
+INSERT INTO `contenttypes` (`id`, `type`) VALUES
+(1, 'text'),
+(2, 'image'),
+(3, 'video'),
+(4, 'map');
 
 -- --------------------------------------------------------
 
@@ -56,29 +116,22 @@ CREATE TABLE IF NOT EXISTS `topics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `content` text NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `level` int(11) NOT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `path` varchar(100) DEFAULT NULL,
+  `type` int(11) NOT NULL DEFAULT '1',
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_topics_users_user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `topics`
 --
 
-INSERT INTO `topics` (`id`, `title`, `description`, `content`, `created`, `level`, `parent_id`, `path`, `user_id`) VALUES
-(2, 'Uni', '', '', '2019-11-20 11:28:39', 0, 0, '0.2', 1),
-(3, 'List of Car parks', '', '', '2019-11-20 11:29:02', 1, 2, '0.2.3', 1),
-(4, 'Work', '', '', '2019-11-20 11:29:17', 0, 0, '0.4', 1),
-(5, 'Home', '', '', '2019-11-20 11:29:22', 0, 0, '0.5', 1),
-(6, 'Fines', '', '', '2019-11-20 11:29:29', 2, 3, '0.2.3.6', 1),
-(7, 'Stuff', '', '<p><ul><li>fsdsf</li><li>sd</li><li>f</li><li>dsf</li><li>dsf</li><li>fds</li></ul></p>', '2019-11-20 11:29:41', 3, 6, '0.2.3.6.7', 1),
-(8, 'Personal', '', '', '2019-11-20 11:29:49', 0, 0, '0.8', 1),
-(9, 'sasad', '', '<p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saadsv<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads<span style=\"font-size: 1rem;\">dsadsa</span></p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p><p>dsadsa</p><p>saads</p>', '2019-11-20 14:22:45', 3, 6, '0.2.3.6.9', 1);
+INSERT INTO `topics` (`id`, `title`, `description`, `created`, `level`, `parent_id`, `path`, `type`, `user_id`) VALUES
+(1, 'Uni', '', '2019-11-22 16:06:04', 0, 0, '0.1', 1, 1);
 
 --
 -- Triggers `topics`
@@ -117,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `user_name`, `password`, `email`, `full_name`, `city`, `image_url`) VALUES
-(1, 'testuser1', '$2y$10$StZtP58fnRZM5ZPJuwb3/uHAz0j2YcD02ffW.0Fpxe2ff.aB9NUA2', 'pinchy1978@googlemail.com', 'Andrew Finchp', 'Felixstowes', NULL),
+(1, 'testuser1', '$2y$10$StZtP58fnRZM5ZPJuwb3/uHAz0j2YcD02ffW.0Fpxe2ff.aB9NUA2', 'pinchy1978@googlemail.com', 'Andrew Finchp', 'Felixstowes', 'uploads/5dd7e18aad63420190718_121407.jpg'),
 (2, 'testuser2', '$2y$10$ozYVgVjxuEDZv0gagOC4m.Bdckkd4ptQTVKWHYMD1uyEYASnLDz1S', 'andrewfinch@mcpplc.com', 'Andrew Finch', 'Ipswich', NULL),
 (3, 'testuser2', '$2y$10$LFx0F/VcddMd2Iy/T2wh0uJZ8OBQPW0Wcw0B3911DO286auev22V2', 'andrewfinch@mcpplc.com', 'Andrew Finch', 'Felixstowe', NULL),
 (4, 'testuser2', '$2y$10$CZgoQmBLZCy0qfD4wb15deYbmz3I/zwhBcIeBEKJ38ZnKAug3yvBK', 'andrewfinch@mcpplc.com', 'Andrew Finch', 'Felixstowe', NULL),
@@ -132,6 +185,12 @@ INSERT INTO `users` (`id`, `user_name`, `password`, `email`, `full_name`, `city`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `contents`
+--
+ALTER TABLE `contents`
+  ADD CONSTRAINT `fk_contents_topic_id_topics_id` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `topics`
