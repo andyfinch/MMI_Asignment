@@ -43,9 +43,9 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="content">Content Type </label>
-                                        <select id="contentType" class="form-control">
-                                            <option value="1">Text</option>
+                                        <label for="contentType">Content Type </label>
+                                        <select name="contentType" id="contentType" class="form-control">
+                                            <option value="1" selected="selected">Text</option>
                                             <option value="2">Images</option>
                                             <option value="3">Video</option>
                                             <option value="4">Map</option>
@@ -61,8 +61,8 @@
                                         <div style="display: none" class="content mt-3" data-content-type="2">
                                             <div class="form-group">
                                                 <label for="upload">Select image to upload:</label>
-                                                <input type="file" multiple class="form-control-file" name="filesToUpload[]"
-                                                       id="filesToUpload">
+                                                <input type="file" multiple class="form-control-file" name="fileToUpload[]"
+                                                       id="fileToUpload">
                                             </div>
                                         </div>
                                     </div>
@@ -119,7 +119,7 @@
 
         console.log('ere');
         var modal = $(this).find('.modal-content');
-        $(':input', modal).val('');
+        $(modal).closest('form')[0].reset();
         $('#content', modal).trumbowyg('empty');
         $(modal).find('#level').val(0);
         $(modal).find('#parent_id').val(0);

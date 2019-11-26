@@ -131,18 +131,18 @@
                             <div class="form-group">
                                 <label for="upload">Select image to upload:</label>
                                 <input type="file" class="form-control-file" name="fileToUpload[]" id="fileToUpload">
-                            </div>                             
+                            </div>
 
                         </div>
 
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="submit" type="submit" name="submit" class="btn btn-primary" onclick="$('#function').val('createImage')">Upload Image
+                    <button id="submit" type="submit" name="submit" class="btn btn-primary">Upload Image
                         <span class="signupSpinner d-none spinner-border spinner-border-sm" role="status"
                               aria-hidden="true"></span>
                     </button>
-                    <button type="submit" name="remove" class="btn btn-secondary" onclick="$('#function').val('deleteImage')">Remove image</button>
+                    <button type="submit" name="remove" class="btn btn-secondary">Remove image</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 </div>
             </div>

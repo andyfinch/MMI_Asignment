@@ -3,7 +3,7 @@ $smarty->assign('message', $_SESSION['message']);
 unset($_SESSION['message']);
 $response = new Response();
 if ($_POST) {
-
+    
     if (($_POST['function']) == 'editProfile') {
         $User = new User($Conn);
         /*Validate user data requirements common to sign up/ sign in and profile amend*/
@@ -39,32 +39,39 @@ if ($_POST) {
     } else if (($_POST['function']) == 'createImage') {
 
         $image = new Image($Conn);
-        $uploadResponse = $image->uploadImage($_FILES);
+       
+        if ($_FILES['fileToUpload']['name'][0] != '' )
+        {
+            $uploadResponse = $image->uploadImage($_FILES);
 
-        if ($uploadResponse['success'] == true) {
+            if ($uploadResponse['success'] == true) {
 
+                $user = new User($Conn);
+                $user->updateImageURL('uploads/' . $uploadResponse['filesAdded'][0], $_SESSION['user_data']['id']);
+                $_SESSION['user_data']['image_url'] = 'uploads/' . $uploadResponse['filesAdded'][0];
+                $_SESSION['message'] = 'Profile image uploaded successfully ';
+                $response->addSuccess('Profile image uploaded successfully', 'profile');
+                //header('Location: ./index.php?p=profile');
+
+            } else {
+
+                $_SESSION['message'] = 'There was an issue with the file upload';
+                $response->addSuccess('Profile image not uploaded successfully', 'profile');
+                //header('Location: ./index.php?p=profile');
+            }
+        }
+        else{
             $user = new User($Conn);
-            $user->updateImageURL('uploads/' . $uploadResponse['filesAdded'][0], $_SESSION['user_data']['id']);
-            $_SESSION['user_data']['image_url'] = 'uploads/' . $uploadResponse['filesAdded'][0];
-            $_SESSION['message'] = 'Profile image uploaded successfully ';
-            $response->addSuccess('Profile image uploaded successfully', 'profile');
-            //header('Location: ./index.php?p=profile');
-
-        } else {
-
-            $_SESSION['message'] = 'There was an issue with the file upload';
-            $response->addSuccess('Profile image not uploaded successfully', 'profile');
-            //header('Location: ./index.php?p=profile');
+            $user->updateImageURL(null, $_SESSION['user_data']['id']);
+            unset($_SESSION['user_data']['image_url']);
+            $_SESSION['message'] = 'Profile image removed';
+            $response->addSuccess('Profile image removed', 'profile');
         }
 
-    } else if (($_POST['function']) == 'deleteImage') {
 
-        $user = new User($Conn);
-        $user->updateImageURL(null, $_SESSION['user_data']['id']);
-        unset($_SESSION['user_data']['image_url']);
-        $_SESSION['message'] = 'Profile image removed';
-        $response->addSuccess('Profile image removed', 'profile');
-    }
+
+
+    } 
 
 
     $response->getJSON();

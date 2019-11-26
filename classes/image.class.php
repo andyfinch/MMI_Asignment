@@ -55,12 +55,15 @@ class Image
                 $file_tmp = $myFile["tmp_name"][$i];
                 $uniqueFileName = uniqid() . $file_name;
 
-                if (move_uploaded_file($file_tmp, $target_dir . $uniqueFileName)) {
+                $success = move_uploaded_file($file_tmp, $target_dir . $uniqueFileName);
+
+                if ($success) {
 
                     $response_object['success'] = true;
                     $response_object['errorCode'] = 0;
                     $response_object['errorMessage'] = $this->phpFileUploadErrors[0];
                     array_push($response_object['filesAdded'], $uniqueFileName);
+                    
 
                 }
                 else{
