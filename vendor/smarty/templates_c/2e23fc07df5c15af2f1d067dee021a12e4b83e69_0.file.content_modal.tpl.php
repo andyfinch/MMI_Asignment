@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-18 12:11:01
+/* Smarty version 3.1.33, created on 2019-11-26 13:59:53
   from 'C:\wamp64\www\MMI_Assignment\views\components\content_modal.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd28a55da2d91_48752815',
+  'unifunc' => 'content_5ddd2fd97df076_23065034',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2e23fc07df5c15af2f1d067dee021a12e4b83e69' => 
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\components\\content_modal.tpl',
-      1 => 1574079059,
+      1 => 1574776792,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dd28a55da2d91_48752815 (Smarty_Internal_Template $_smarty_tpl) {
-?><form id="contentModal" class="needs-validation" novalidate="" method="post" action="index.php">
+function content_5ddd2fd97df076_23065034 (Smarty_Internal_Template $_smarty_tpl) {
+?><form id="contentModal" class="needs-validation" novalidate="" enctype="multipart/form-data" method="post" action="index.php">
     <input type="hidden" name="action" value="topic">
 
     <div class="modal fade" id="topicModal" tabindex="-1" role="dialog" aria-labelledby="topicModalLabel"
@@ -66,11 +66,26 @@ function content_5dd28a55da2d91_48752815 (Smarty_Internal_Template $_smarty_tpl)
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="content">Content </label>
-                                                                                <textarea rows="10" type="text" class="form-control" id="content"
-                                                  name="content"></textarea>
-                                        <div class="invalid-feedback">
-                                            Please enter valid content.
+                                        <label for="contentType">Content Type </label>
+                                        <select name="contentType" id="contentType" class="form-control">
+                                            <option value="1" selected="selected">Text</option>
+                                            <option value="2">Images</option>
+                                            <option value="3">Video</option>
+                                            <option value="4">Map</option>
+                                        </select>
+                                                                                <div class="content" data-content-type="1">
+                                            <textarea rows="10" type="text" class="form-control" id="content"
+                                                      name="content"></textarea>
+                                            <div class="invalid-feedback">
+                                                Please enter valid content.
+                                            </div>
+                                        </div>
+                                        <div style="display: none" class="content mt-3" data-content-type="2">
+                                            <div class="form-group">
+                                                <label for="upload">Select image to upload:</label>
+                                                <input type="file" multiple class="form-control-file" name="fileToUpload[]"
+                                                       id="fileToUpload">
+                                            </div>
                                         </div>
                                     </div>
                                     <input type="hidden" id="id" name="id">
@@ -97,6 +112,14 @@ function content_5dd28a55da2d91_48752815 (Smarty_Internal_Template $_smarty_tpl)
 
 <?php echo '<script'; ?>
 >
+
+    $('#contentType').on('change', function (event) {
+        $('.content').hide();
+        $('.content[data-content-type=' + this.value + ']').show();
+
+    });
+
+
     $('#content').trumbowyg({
         btns: [['viewHTML'],
             ['undo', 'redo'], // Only supported in Blink browsers
@@ -119,7 +142,7 @@ function content_5dd28a55da2d91_48752815 (Smarty_Internal_Template $_smarty_tpl)
 
         console.log('ere');
         var modal = $(this).find('.modal-content');
-        $(':input', modal).val('');
+        $(modal).closest('form')[0].reset();
         $('#content', modal).trumbowyg('empty');
         $(modal).find('#level').val(0);
         $(modal).find('#parent_id').val(0);

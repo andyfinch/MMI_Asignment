@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-20 14:03:38
+/* Smarty version 3.1.33, created on 2019-11-26 13:13:19
   from 'C:\wamp64\www\MMI_Assignment\views\pages\profile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd547bad87ea4_19802769',
+  'unifunc' => 'content_5ddd24efac3569_43747059',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f79ebb2320963d50a029af679b5febd34301793f' => 
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\pages\\profile.tpl',
-      1 => 1574258618,
+      1 => 1574773996,
       2 => 'file',
     ),
   ),
@@ -21,32 +21,32 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../components/content_modal.tpl' => 1,
   ),
 ),false)) {
-function content_5dd547bad87ea4_19802769 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ddd24efac3569_43747059 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19633070785dd547bad5f434_87980521', "body");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18274078195ddd24efa930c1_69079789', "body");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3911424685dd547bad7d836_78251029', "modals");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20584282145ddd24efab7a08_49169668', "modals");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21133801785dd547bad826e1_89201628', "scripts");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_4670872225ddd24efabcfb0_18646004', "scripts");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layouts/main.tpl");
 }
 /* {block "body"} */
-class Block_19633070785dd547bad5f434_87980521 extends Smarty_Internal_Block
+class Block_18274078195ddd24efa930c1_69079789 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'body' => 
   array (
-    0 => 'Block_19633070785dd547bad5f434_87980521',
+    0 => 'Block_18274078195ddd24efa930c1_69079789',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -91,7 +91,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
             <div class="col-md-8">
                 <form id="form" class="needs-validation" novalidate="" action="index.php" method="post">
                     <input type="hidden" name="action" value="profile">
-
+                    <input id="function" type="hidden" name="function" value="editProfile">
                     <!-- front content -->
                     <div class="card border-secondary">
                         <div class="card-header">
@@ -176,10 +176,11 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
     <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="topicModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <form class="full-post" action="index.php" method="post" enctype="multipart/form-data">
+            <form action="index.php" method="post" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-body">
-                    <input id="function" type="hidden" name="function" value="create">
+                    <input id="function" type="hidden" name="function" value="createImage">
+                    <input type="hidden" name="action" value="profile">
                     <div class="container">
                         <div class="text-center">
                             <h2>Upload profile picture</h2>
@@ -187,11 +188,11 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
                         <div class="row">
 
-                                <input type="hidden" name="action" value="image_upload">
+
                             <div class="form-group">
                                 <label for="upload">Select image to upload:</label>
-                                <input type="file" class="form-control-file" name="fileToUpload" id="fileToUpload">
-                            </div>                             
+                                <input type="file" class="form-control-file" name="fileToUpload[]" id="fileToUpload">
+                            </div>
 
                         </div>
 
@@ -214,12 +215,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "body"} */
 /* {block "modals"} */
-class Block_3911424685dd547bad7d836_78251029 extends Smarty_Internal_Block
+class Block_20584282145ddd24efab7a08_49169668 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'modals' => 
   array (
-    0 => 'Block_3911424685dd547bad7d836_78251029',
+    0 => 'Block_20584282145ddd24efab7a08_49169668',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -230,12 +231,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "modals"} */
 /* {block "scripts"} */
-class Block_21133801785dd547bad826e1_89201628 extends Smarty_Internal_Block
+class Block_4670872225ddd24efabcfb0_18646004 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'scripts' => 
   array (
-    0 => 'Block_21133801785dd547bad826e1_89201628',
+    0 => 'Block_4670872225ddd24efabcfb0_18646004',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

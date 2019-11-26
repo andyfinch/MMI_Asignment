@@ -35,7 +35,7 @@
             <div class="col-md-8">
                 <form id="form" class="needs-validation" novalidate="" action="index.php" method="post">
                     <input type="hidden" name="action" value="profile">
-
+                    <input id="function" type="hidden" name="function" value="editProfile">
                     <!-- front content -->
                     <div class="card border-secondary">
                         <div class="card-header">
@@ -115,10 +115,11 @@
     <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="topicModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <form class="full-post" action="index.php" method="post" enctype="multipart/form-data">
+            <form action="index.php" method="post" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-body">
-                    <input id="function" type="hidden" name="function" value="create">
+                    <input id="function" type="hidden" name="function" value="createImage">
+                    <input type="hidden" name="action" value="profile">
                     <div class="container">
                         <div class="text-center">
                             <h2>Upload profile picture</h2>
@@ -126,11 +127,11 @@
 
                         <div class="row">
 
-                                <input type="hidden" name="action" value="image_upload">
+
                             <div class="form-group">
                                 <label for="upload">Select image to upload:</label>
-                                <input type="file" class="form-control-file" name="fileToUpload" id="fileToUpload">
-                            </div>                             
+                                <input type="file" class="form-control-file" name="fileToUpload[]" id="fileToUpload">
+                            </div>
 
                         </div>
 

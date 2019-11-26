@@ -24,7 +24,9 @@ var postAjax = {
             var $inputs = $form.find("input, select, button, textarea");
 
             // Serialize the data in the form
-            var serializedData = $form.serialize();
+            //var serializedData = $form.serialize();
+            var fd = new FormData($form[0]);
+
 
             // Let's disable the inputs for the duration of the Ajax request.
             // Note: we disable elements AFTER the form data has been serialized.
@@ -35,7 +37,10 @@ var postAjax = {
             this.request = $.ajax({
                 url: "index.php",
                 type: "post",
-                data: serializedData
+                data: fd,
+                cache: false,
+                contentType: false,
+                processData: false
             });
 
             // Callback handler that will be called on success

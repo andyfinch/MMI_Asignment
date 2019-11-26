@@ -18,16 +18,9 @@
             <div class="col-sm-8 col-lg-9 ">
 
                 {$root_topic_level = $contentTopics[0].level}
-                {$previousParent = 0}
                 {$index = 0}
-                {$inGroup = false}
-                {foreach $contentTopics as $topic}
 
-                    {if $previousParent != $topic.parent_id}
-                    {$previousParent = $topic.parent_id}
-                    {$inGroup = true}
-                    <div class="for-owl-carousel">
-                    {/if}
+                {foreach $contentTopics as $topic}
 
                     <div style="padding-left: {$topic.level - $root_topic_level}%">
                         <div class="card">
@@ -39,20 +32,26 @@
                                     <div class="col-auto">
                                         <ul class="list-group list-group-horizontal">
                                             <li class="list-group-item"><a class="text-secondary" href="#">
-                                                    <i data-toggle="modal" data-header="Create new subtopic"
+                                                    <i title="Add Content" data-toggle="modal" data-header="Create new subtopic"
+                                                       data-target="#topicModal" data-action="create"
+                                                       data-level="{$topic.level+1}" data-parent_id="{$topic.id}"
+                                                       class="fas fa-file"></i>
+                                                </a></li>
+                                            <li class="list-group-item"><a class="text-secondary" href="#">
+                                                    <i title="Add Sub Topic" data-toggle="modal" data-header="Create new subtopic"
                                                        data-target="#topicModal" data-action="create"
                                                        data-level="{$topic.level+1}" data-parent_id="{$topic.id}"
                                                        class="fas fa-folder-plus"></i>
                                                 </a></li>
                                             <li class="list-group-item"><a class="text-secondary" href="#">
-                                                    <i data-toggle="modal" data-target="#topicModal"
+                                                    <i title="Edit Topic" data-toggle="modal" data-target="#topicModal"
                                                        data-header="Edit Topic"
                                                        data-action="edit" data-id="{$topic.id}"
                                                        data-level="{$topic.level}" data-parent_id="{$topic.parent_id}"
                                                        class="fas fa-edit"></i>
                                                 </a></li>
                                             <li class="list-group-item"><a class="text-secondary" href="#">
-                                                    <i data-toggle="modal" data-target="#deleteModal"
+                                                    <i title="Delete Topic" data-toggle="modal" data-target="#deleteModal"
                                                        data-header="Delete Topic"
                                                        data-action="delete" data-id="{$topic.id}"
                                                        data-parent_id="{$topic.pa}"
@@ -63,6 +62,29 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-auto ml-auto">
+                                        <ul class="list-group list-group-horizontal">
+                                            
+                                            <li class="list-group-item"><a class="text-secondary" href="#">
+                                                    <i title="Edit Content" data-toggle="modal" data-target="#topicModal"
+                                                       data-header="Edit Topic"
+                                                       data-action="edit" data-id="{$topic.id}"
+                                                       data-level="{$topic.level}" data-parent_id="{$topic.parent_id}"
+                                                       class="fas fa-edit"></i>
+                                                </a></li>
+                                            <li class="list-group-item"><a class="text-secondary" href="#">
+                                                    <i title="Delete Content" data-toggle="modal"
+                                                       data-target="#deleteModal"
+                                                       data-header="Delete Topic"
+                                                       data-action="delete" data-id="{$topic.id}"
+                                                       data-parent_id="{$topic.pa}"
+                                                       class="fas fa-trash-alt"></i>
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             {if $topic.description != null || $topic.content != null}
                                 <div class="card-body">
                                     {if $topic.description != null}
@@ -76,13 +98,23 @@
 
                                 </div>
                             {/if}
+                            {if $topic.type == '2'}
+
+                                <div class="card-body">
+
+                                    <div class="owl-carousel">
+                                    {foreach $mediaURLS[$topic.content_id] as $url}
+                                        <img width="250" height="250" src="{$url}" alt="{$url}"/>
+                                    {/foreach}
+                                    </div>
+
+                                </div>
+                            {/if}
+                            </div>
                         </div>
                     </div>
 
-                        {if $topic.parent_id != $contentTopics[$index+1].parent_id && $inGroup}
-                        {$inGroup = false}
-                    </div>
-                {/if}
+
                 {$index = $index +1}
                 {/foreach}
 
@@ -148,6 +180,24 @@
         }
 
         $(function () {
+
+            $('.owl-carousel').owlCarousel({
+                items: 1,
+                merge: false,
+                loop: true,
+                margin: 10,
+                video: false,
+                lazyLoad: true,
+                center: true,
+                responsive: {
+                    480: {
+                        items: 2
+                    },
+                    600: {
+                        items: 4
+                    }
+                }
+            });
 
             $('#carouselLink').on('click', function (event) {
                 console.log('ff');
