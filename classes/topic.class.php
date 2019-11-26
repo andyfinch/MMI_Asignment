@@ -26,7 +26,9 @@ class Topic
             'user_id' => $user_id,
         ));
 
-        if (isset($topic_data['content']) )
+        $result = $this->insertContent($this->Conn->lastInsertId(), $topic_data['contentType'], $topic_data['content']);
+
+        /*if (isset($topic_data['content']) )
         {
             $query = "INSERT INTO contents (type, content, topic_id) VALUES (:type, :content, LAST_INSERT_ID());";
             $stmt = $this->Conn->prepare($query);
@@ -67,7 +69,7 @@ class Topic
 
 
             } 
-        }
+        }*/
 
 
         $this->Conn->commit();
@@ -122,6 +124,53 @@ class Topic
 
 
     }
+
+    public function insertContent($topicID, $type, $content)
+    {
+        $query = "INSERT INTO contents (type, content, topic_id) VALUES (:type, :content, :topic_id);";
+        $stmt = $this->Conn->prepare($query);
+
+        $result = $stmt->execute(array(
+            'content' =>$content,
+            'type' => $type,
+            'topic_id' => $topicID
+        ));
+
+        $contentID = $this->Conn->lastInsertId();
+
+        if ($_FILES['fileToUpload']['name'][0] != '')
+        {
+            $image = new Image($this->Conn);
+
+            $uploadResponse = $image->uploadImage($_FILES);
+
+            if ($uploadResponse['success'] == true) {
+
+
+                $fileCount = count($uploadResponse['filesAdded']);
+
+                for ($i = 0; $i < $fileCount; $i++) {
+
+                    $fileAdded = 'uploads/' . $uploadResponse['filesAdded'][$i];
+
+                    $query = "INSERT INTO contentmedia (content_id, url) VALUES (:content_id, :fileAdded)";
+                    $stmt = $this->Conn->prepare($query);
+
+                    $result = $stmt->execute(array(
+                        'fileAdded' => $fileAdded,
+                        'content_id' => $contentID
+
+                    ));
+                }
+
+
+            }
+        }
+
+        return $result;
+    }
+
+
     /*DELETE FROM topics
 WHERE id = 1 and user_id = 1 and path like (
     SELECT path FROM (
@@ -151,12 +200,12 @@ WHERE id = 1 and user_id = 1 and path like (
 
         if ( $id == 0)
         {
-            $query = "select  t.*, c.content, c.type, c.id as 'content_id'  from topics t LEFT OUTER JOIN contents c on c.topic_id = t.id                   
+            $query = "select  t.* from topics t                 
                     where user_id = :user_id                   
                     order by path, :id";
         }
         else{
-            $query = "select  t.*, c.content, c.type,c.id as 'content_id' from topics t LEFT OUTER JOIN contents c on c.topic_id = t.id                   
+            $query = "select  t.* from topics t                  
                     where   path like concat( (select path from topics st where st.id = :id),'%') and user_id = :user_id                   
                     order by path";
         }
@@ -166,6 +215,19 @@ WHERE id = 1 and user_id = 1 and path like (
                 ':user_id' => $user_id,
                 ':id' => $id)
         );
+        return $result = $stmt->fetchAll();
+    }
+
+    public function getContents($topic_id)
+    {
+        //$user_id = $_SESSION['user_data']['id'];
+        $query = "select  * from contents                     
+                    where topic_id = :topic_id                      
+                    order by id";
+        $stmt = $this->Conn->prepare($query);
+        $stmt->execute(array(
+                ':topic_id' => $topic_id
+        ));
         return $result = $stmt->fetchAll();
     }
 

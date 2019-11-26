@@ -22,11 +22,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     }
 } else {
-    if ($_POST['action'] == 'signin' || $_POST['action'] == 'signup') {
+    if ($_POST['controller'] == 'signin' || $_POST['controller'] == 'signup') {
         require_once('controllers/login.php');
-    } else if ($_POST['action'] == 'topic') {
+    }
+    else if ($_POST['controller'] == 'topic') {
         require_once('controllers/dashboard.php');
-    } else if ($_POST['action'] == 'profile') {
+    }
+    else if ($_POST['controller'] == 'content') {
+        require_once('controllers/content.php');
+    }
+    else if ($_POST['controller'] == 'profile') {
         require_once('controllers/profile.php');
     }
 }
