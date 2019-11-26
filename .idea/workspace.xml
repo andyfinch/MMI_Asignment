@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="52862c20-1360-49bc-9220-c31fe192d616" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/26498276816593f55f4662efbfa753fb3dd036a7_0.file.content_tree.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/26498276816593f55f4662efbfa753fb3dd036a7_0.file.content_tree.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/components/content_tree.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/components/content_tree.tpl" afterDir="false" />
-    </list>
+    <list default="true" id="52862c20-1360-49bc-9220-c31fe192d616" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +29,7 @@
     <session id="-380933931">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -71,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/views/components/content_tree.tpl">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="154" lean-forward="true" selection-start-line="3" selection-start-column="154" selection-end-line="3" selection-end-column="154" />
+              <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -276,12 +274,12 @@
       <workItem from="1573119878222" duration="19616000" />
       <workItem from="1573724560466" duration="17902000" />
       <workItem from="1574328730056" duration="9713000" />
-      <workItem from="1574340183217" duration="1093000" />
+      <workItem from="1574340183217" duration="1350000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1093000" />
+    <option name="totallyTimeSpent" value="1350000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -294,7 +292,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" />
       <window_info id="Favorites" side_tool="true" />
@@ -363,7 +360,7 @@
     <entry file="file://$PROJECT_DIR$/views/components/content_tree.tpl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="154" lean-forward="true" selection-start-line="3" selection-start-column="154" selection-end-line="3" selection-end-column="154" />
+          <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
         </state>
       </provider>
     </entry>
