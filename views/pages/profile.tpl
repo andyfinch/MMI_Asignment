@@ -34,7 +34,7 @@
 
             <div class="col-md-8">
                 <form id="form" class="needs-validation" novalidate="" action="index.php" method="post">
-                    <input type="hidden" name="action" value="profile">
+                    <input type="hidden" name="controller" value="profile">
                     <input id="function" type="hidden" name="function" value="editProfile">
                     <!-- front content -->
                     <div class="card border-secondary">
@@ -119,7 +119,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <input id="function" type="hidden" name="function" value="createImage">
-                    <input type="hidden" name="action" value="profile">
+                    <input type="hidden" name="controller" value="profile">
                     <div class="container">
                         <div class="text-center">
                             <h2>Upload profile picture</h2>

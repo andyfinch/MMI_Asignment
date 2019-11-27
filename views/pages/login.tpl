@@ -30,7 +30,7 @@
 {/block}
 {block name="modals"}
 <form id="signUpForm" class="needs-validation" novalidate="" method="post" action="index.php">
-    <input type="hidden" name="action" value="signup">
+    <input type="hidden" name="controller" value="signup">
  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered" role="document">
@@ -136,7 +136,7 @@
 
  <!-- Modal -->
 <form class="needs-validation" novalidate="" method="post" action="index.php">
-    <input type="hidden" name="action" value="signin">
+    <input type="hidden" name="controller" value="signin">
  <div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered" role="document">
