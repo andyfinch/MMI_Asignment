@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-26 13:59:53
+/* Smarty version 3.1.33, created on 2019-11-26 16:24:15
   from 'C:\wamp64\www\MMI_Assignment\views\components\content_modal.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5ddd2fd97df076_23065034',
+  'unifunc' => 'content_5ddd51af6bb370_62863840',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2e23fc07df5c15af2f1d067dee021a12e4b83e69' => 
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\components\\content_modal.tpl',
-      1 => 1574776792,
+      1 => 1574785454,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ddd2fd97df076_23065034 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ddd51af6bb370_62863840 (Smarty_Internal_Template $_smarty_tpl) {
 ?><form id="contentModal" class="needs-validation" novalidate="" enctype="multipart/form-data" method="post" action="index.php">
     <input type="hidden" name="action" value="topic">
 
@@ -80,7 +80,7 @@ function content_5ddd2fd97df076_23065034 (Smarty_Internal_Template $_smarty_tpl)
                                                 Please enter valid content.
                                             </div>
                                         </div>
-                                        <div style="display: none" class="content mt-3" data-content-type="2">
+                                        <div style="display: block" class="content mt-3" data-content-type="2">
                                             <div class="form-group">
                                                 <label for="upload">Select image to upload:</label>
                                                 <input type="file" multiple class="form-control-file" name="fileToUpload[]"
@@ -113,7 +113,7 @@ function content_5ddd2fd97df076_23065034 (Smarty_Internal_Template $_smarty_tpl)
 <?php echo '<script'; ?>
 >
 
-    $('#contentType').on('change', function (event) {
+    $('#contentTypex').on('change', function (event) {
         $('.content').hide();
         $('.content[data-content-type=' + this.value + ']').show();
 

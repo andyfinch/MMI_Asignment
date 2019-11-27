@@ -3,22 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="52862c20-1360-49bc-9220-c31fe192d616" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/image.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/image.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/topic.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/topic.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/content.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/content.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/5dd7cb0123f5720190718_121407.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/5dd7cb244cb6020190718_121407.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/5dd7cc00dc08d20190718_121407.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/5dd7cc538708620190718_121407.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/5dd7e10485aa020190718_121407.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/5dd7e18aad63420190718_121407.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/2e23fc07df5c15af2f1d067dee021a12e4b83e69_0.file.content_modal.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/2e23fc07df5c15af2f1d067dee021a12e4b83e69_0.file.content_modal.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/9b811f85df062ed1fc9b31e87289c6bc49e32623_0.file.content.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/9b811f85df062ed1fc9b31e87289c6bc49e32623_0.file.content.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/f79ebb2320963d50a029af679b5febd34301793f_0.file.profile.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/f79ebb2320963d50a029af679b5febd34301793f_0.file.profile.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/components/content_modal.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/components/content_modal.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/content.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/content.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/profile.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/profile.tpl" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -194,7 +179,7 @@
       <workItem from="1574328730056" duration="9713000" />
       <workItem from="1574340183217" duration="1093000" />
       <workItem from="1574693835870" duration="5866000" />
-      <workItem from="1574763182468" duration="19356000" />
+      <workItem from="1574763182468" duration="20288000" />
     </task>
     <servers />
   </component>
