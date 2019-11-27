@@ -7,42 +7,42 @@ if ($_GET) {
     $topics = new Topic($Conn);
     $alltopics = $topics->getTopics();
     $contentTopics = $topics->getTopic($_GET['id']);
-    $mediaURLS = array();
-    $contents = array();
 
     for ($i = 0; $i < count($contentTopics); $i++) {
 
+        //get contents for each topic
         $result = $topics->getContents($contentTopics[$i]['id']);
+        //Add to topic
+        $contentTopics[$i]['contents'] = $result;
 
-        for ($j = 0; $j < count($result); $j++) {
+        //loop round each content to get any media urls
+        for ($j = 0; $j < count($contentTopics[$i]['contents']); $j++) {
 
 
-            $contents[$result[$j]['topic_id']][$result[$j]['id']] = $result[$j]['content'];
+            $mediaResult = $topics->getMediaUrls($contentTopics[$i]['contents'][$j]['id'], 1);
+            $contentTopics[$i]['contents'][$j]['images'] = $mediaResult;
+
+            $mediaResult = $topics->getMediaUrls($contentTopics[$i]['contents'][$j]['id'], 2);
+            $contentTopics[$i]['contents'][$j]['videos'] = $mediaResult;
+
         }
 
-        if ($contentTopics[$i]['type'] == 2) {
-            $result = $topics->getMediaUrls($contentTopics[$i]['content_id']);
-            for ($j = 0; $j < count($result); $j++) {
-
-                $mediaURLS[$contentTopics[$i]['content_id']][$j] = $result[$j]['url'];
-            }
-
-        }
     }
-
-    $smarty->assign('mediaURLS', $mediaURLS);
-    $smarty->assign('contents', $contents);
+    /*ini_set('xdebug.var_display_max_depth', '10');
+    ini_set('xdebug.var_display_max_children', '256');
+    ini_set('xdebug.var_display_max_data', '1024');
+    var_dump($contentTopics);*/
     $smarty->assign('allTopics', $alltopics);
     $smarty->assign('contentTopics', $contentTopics);
 }
 
 if ($_POST) {
-
+   
     $response = new Response();
     $topic = new Topic($Conn);
     //$topic = new Topic($Conn);
     if ($_POST['function'] == 'create') {
-        $attempt = $topic->insertContent($_POST['topic_id'], $_POST['contentType'], $_POST['content']);
+        $attempt = $topic->insertContent($_POST['topic_id'], $_POST['content']);
         if ($attempt) {
             $_SESSION['message'] = 'Content created ';
             $response->addSuccess('Content created', 'content&id=' . $_POST['topic_id']);
@@ -50,18 +50,20 @@ if ($_POST) {
             $response->addError('title', 'failed');
         }
     } else if ($_POST['function'] == 'edit') {
-        $attempt = $topic->editTopic($_POST);
+
+
+        $attempt = $topic->editContent($_POST['id'], $_POST['content']);
         if ($attempt) {
-            $_SESSION['message'] = 'Topic Edited ' . $_POST['title'];;
-            $response->addSuccess('Topic Edited', 'content&id=' . $_POST['id']);
+            $_SESSION['message'] = 'Content Edited ';
+            $response->addSuccess('Content Edited', 'content&id=' . $_POST['topic_id']);
         } else {
             $response->addError('title', 'failed');
         }
     } else if ($_POST['function'] == 'delete') {
-        $attempt = $topic->deleteTopic($_POST);
+        $attempt = $topic->deleteContent($_POST['id']);
         if ($attempt) {
-            $_SESSION['message'] = 'Topic Deleted ' . $_POST['title'];;
-            $response->addSuccess('Topic Deleted', 'content&id=' . $_POST['id']);
+            $_SESSION['message'] = 'Content Deleted ';
+            $response->addSuccess('Content Deleted', 'content&id=' . $_POST['topic_id']);
         } else {
             $response->addError('title', 'failed');
         }

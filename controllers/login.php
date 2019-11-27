@@ -5,7 +5,7 @@ if ( isset($_GET['logout']))
     session_unset();
     //exit();
 }
-
+//var_dump($_POST);
 if($_POST) {
 
     $User = new User($Conn);
@@ -16,7 +16,7 @@ if($_POST) {
         $response->addError('password', 'Password is required');
     }
     /*validate specific sign up requirements*/
-    if ( $_POST['action'] == 'signup')
+    if ( $_POST['controller'] == 'signup')
     {
                 
         if ($_POST['password'] != $_POST['confirmPassword']) {
@@ -48,7 +48,7 @@ if($_POST) {
     }
 
 
-    if ($_POST['action'] == 'signup') {
+    if ($_POST['controller'] == 'signup') {
         //$User = new User($Conn);
 
         $attempt = $User->checkUserExists($_POST['userName']);
@@ -68,7 +68,7 @@ if($_POST) {
         else{
             $response->addError('userName', 'THere was an error, please try again later');
         }
-    } else if ($_POST['action'] == 'signin') {
+    } else if ($_POST['controller'] == 'signin') {
         $User = new User($Conn);
         $user_data = $User->loginUser($_POST['userName'], $_POST['password']);
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-19 23:09:05
+/* Smarty version 3.1.33, created on 2019-11-27 08:47:59
   from 'C:\wamp64\www\MMI_Assignment\views\pages\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd47611f13c44_47490413',
+  'unifunc' => 'content_5dde383f5a2902_02669462',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '52a4acf047d2f899a8e53b368104f94e4379c9ad' => 
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\pages\\login.tpl',
-      1 => 1574204942,
+      1 => 1574844305,
       2 => 'file',
     ),
   ),
@@ -20,32 +20,32 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dd47611f13c44_47490413 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dde383f5a2902_02669462 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21163470735dd47611efc443_27006635', "body");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17232130815dde383f58c045_32121403', "body");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9918820965dd47611f00b34_95265521', "modals");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3772366655dde383f58f668_39421826', "modals");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2712115305dd47611f0cfd2_95334773', "scripts");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10106068335dde383f59b891_02998755', "scripts");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layouts/main.tpl");
 }
 /* {block "body"} */
-class Block_21163470735dd47611efc443_27006635 extends Smarty_Internal_Block
+class Block_17232130815dde383f58c045_32121403 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'body' => 
   array (
-    0 => 'Block_21163470735dd47611efc443_27006635',
+    0 => 'Block_17232130815dde383f58c045_32121403',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -83,19 +83,19 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "body"} */
 /* {block "modals"} */
-class Block_9918820965dd47611f00b34_95265521 extends Smarty_Internal_Block
+class Block_3772366655dde383f58f668_39421826 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'modals' => 
   array (
-    0 => 'Block_9918820965dd47611f00b34_95265521',
+    0 => 'Block_3772366655dde383f58f668_39421826',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <form id="signUpForm" class="needs-validation" novalidate="" method="post" action="index.php">
-    <input type="hidden" name="action" value="signup">
+    <input type="hidden" name="controller" value="signup">
  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered" role="document">
@@ -202,7 +202,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
  <!-- Modal -->
 <form class="needs-validation" novalidate="" method="post" action="index.php">
-    <input type="hidden" name="action" value="signin">
+    <input type="hidden" name="controller" value="signin">
  <div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered" role="document">
@@ -266,12 +266,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "modals"} */
 /* {block "scripts"} */
-class Block_2712115305dd47611f0cfd2_95334773 extends Smarty_Internal_Block
+class Block_10106068335dde383f59b891_02998755 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'scripts' => 
   array (
-    0 => 'Block_2712115305dd47611f0cfd2_95334773',
+    0 => 'Block_10106068335dde383f59b891_02998755',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

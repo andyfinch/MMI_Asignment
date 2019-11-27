@@ -10,7 +10,7 @@ $smarty->assign('allTopics', $alltopics);
 if ($_POST) {
     //var_dump($_POST);
     $response = new Response();
-    if ($_POST['action'] == 'topic') {
+    if ($_POST['controller'] == 'topic') {
 
 
         if ($_POST['function'] != 'delete') {

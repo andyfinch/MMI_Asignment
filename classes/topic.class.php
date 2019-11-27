@@ -26,50 +26,7 @@ class Topic
             'user_id' => $user_id,
         ));
 
-        $result = $this->insertContent($this->Conn->lastInsertId(), $topic_data['contentType'], $topic_data['content']);
-
-        /*if (isset($topic_data['content']) )
-        {
-            $query = "INSERT INTO contents (type, content, topic_id) VALUES (:type, :content, LAST_INSERT_ID());";
-            $stmt = $this->Conn->prepare($query);
-
-            $result = $stmt->execute(array(
-                'content' => $topic_data['content'],
-                'type' => $topic_data['contentType']
-            ));
-
-            $contentID = $this->Conn->lastInsertId();
-
-        }
-
-        if ($_FILES['fileToUpload']['name'][0] != '')
-        {
-            $image = new Image($this->Conn);
-
-            $uploadResponse = $image->uploadImage($_FILES);
-
-            if ($uploadResponse['success'] == true) {
-
-
-                $fileCount = count($uploadResponse['filesAdded']);
-
-                for ($i = 0; $i < $fileCount; $i++) {
-
-                    $fileAdded = 'uploads/' . $uploadResponse['filesAdded'][$i];
-
-                    $query = "INSERT INTO contentmedia (content_id, url) VALUES (:content_id, :fileAdded)";
-                    $stmt = $this->Conn->prepare($query);
-
-                    $result = $stmt->execute(array(
-                        'fileAdded' => $fileAdded,
-                        'content_id' => $contentID
-
-                    ));
-                }
-
-
-            } 
-        }*/
+        $result = $this->insertContent($this->Conn->lastInsertId(), $topic_data['content']);
 
 
         $this->Conn->commit();
@@ -125,14 +82,13 @@ class Topic
 
     }
 
-    public function insertContent($topicID, $type, $content)
+    public function insertContent($topicID, $content)
     {
-        $query = "INSERT INTO contents (type, content, topic_id) VALUES (:type, :content, :topic_id);";
+        $query = "INSERT INTO contents (content, topic_id) VALUES (:content, :topic_id);";
         $stmt = $this->Conn->prepare($query);
 
         $result = $stmt->execute(array(
             'content' =>$content,
-            'type' => $type,
             'topic_id' => $topicID
         ));
 
@@ -153,7 +109,7 @@ class Topic
 
                     $fileAdded = 'uploads/' . $uploadResponse['filesAdded'][$i];
 
-                    $query = "INSERT INTO contentmedia (content_id, url) VALUES (:content_id, :fileAdded)";
+                    $query = "INSERT INTO contentmedia (content_id, url, type) VALUES (:content_id, :fileAdded, 1)";
                     $stmt = $this->Conn->prepare($query);
 
                     $result = $stmt->execute(array(
@@ -166,10 +122,101 @@ class Topic
 
             }
         }
+        if (($_POST['video'][0]) != '') 
+        {
+            for ($i = 0; $i < count($_POST['video']); $i++) {
+                $query = "INSERT INTO contentmedia (content_id, url, type) VALUES (:content_id, :url, 2)";
+                $stmt = $this->Conn->prepare($query);
+
+                $result = $stmt->execute(array(
+                    'url' => $_POST['video'][$i],
+                    'content_id' => $contentID
+
+                ));
+
+            }
+
+        }
 
         return $result;
     }
 
+    public function editContent($contentID, $content)
+    {
+        $query = "UPDATE contents set content = :content where id = :id;";
+        $stmt = $this->Conn->prepare($query);
+
+        $result = $stmt->execute(array(
+            'content' => $content,
+            'id' => $contentID
+        ));
+
+        //$contentID = $this->Conn->lastInsertId();
+
+        if ($_FILES['fileToUpload']['name'][0] != '') {
+            $image = new Image($this->Conn);
+
+            $uploadResponse = $image->uploadImage($_FILES);
+
+            if ($uploadResponse['success'] == true) {
+
+
+                $fileCount = count($uploadResponse['filesAdded']);
+
+                for ($i = 0; $i < $fileCount; $i++) {
+
+                    $fileAdded = 'uploads/' . $uploadResponse['filesAdded'][$i];
+
+                    $query = "INSERT INTO contentmedia (content_id, url, type) VALUES (:content_id, :fileAdded, 1)";
+                    $stmt = $this->Conn->prepare($query);
+
+                    $result = $stmt->execute(array(
+                        'fileAdded' => $fileAdded,
+                        'content_id' => $contentID
+
+                    ));
+                }
+
+
+            }
+        }
+       
+        if (($_POST['video'][0]) != '') {
+            for ($i = 0; $i < count($_POST['video']); $i++) {
+                $query = "INSERT INTO contentmedia (content_id, url, type) VALUES (:content_id, :url, 2)";
+                $stmt = $this->Conn->prepare($query);
+
+                $result = $stmt->execute(array(
+                    'url' => $_POST['video'][$i],
+                    'content_id' => $contentID
+
+                ));
+
+            }
+
+        }
+       
+
+        return $result;
+    }
+
+    public function deleteContent($content_id)
+    {
+
+        $user_id = $_SESSION['user_data']['id'];
+
+        $query = "DELETE c
+                    FROM contents c
+                    INNER JOIN topics on topics.id = c.topic_id
+                    WHERE c.id = :id and topics.user_id = :user_id";
+        $stmt = $this->Conn->prepare($query);
+        return $stmt->execute(array(
+            'id' => $content_id,
+            'user_id' => $user_id
+        ));
+
+
+    }
 
     /*DELETE FROM topics
 WHERE id = 1 and user_id = 1 and path like (
@@ -231,7 +278,7 @@ WHERE id = 1 and user_id = 1 and path like (
         return $result = $stmt->fetchAll();
     }
 
-    public function getMediaUrls($contentID)
+    public function getMediaUrls($contentID, $type)
     {
         $user_id = $_SESSION['user_data']['id'];
         $query = "select  cm.* from contentMedia cm 
@@ -239,10 +286,12 @@ WHERE id = 1 and user_id = 1 and path like (
                     INNER JOIN topics t on t.id = c.topic_id
                     where user_id = :user_id  
                     and cm.content_id = :content_id
+                    and cm.type = :type
                     order by id";
         $stmt = $this->Conn->prepare($query);
         $stmt->execute(array(
                 ':user_id' => $user_id,
+                ':type' => $type,
                 ':content_id' => $contentID)
         );
         return $result = $stmt->fetchAll();

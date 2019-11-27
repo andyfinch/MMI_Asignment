@@ -1,4 +1,5 @@
-<form id="contentModal" class="needs-validation" novalidate="" enctype="multipart/form-data" method="post" action="index.php">
+<form id="contentModal" class="needs-validation" novalidate="" enctype="multipart/form-data" method="post"
+      action="index.php">
 
 
     <div class="modal fade" id="topicModal" tabindex="-1" role="dialog" aria-labelledby="topicModalLabel"
@@ -10,7 +11,6 @@
                     <input id="function" type="hidden" name="function" value="create">
                     <div class="container">
                         <div class="text-center">
-                            <h2>Topic</h2>
                             <p class="lead header">Create a new topic</p>
                         </div>
 
@@ -18,7 +18,7 @@
                             <div class="col-md-12 order-md-1">
                                 <form class="needs-validation" novalidate="">
 
-                                    <div class="mb-3">
+                                    <div class="mb-3 title toggleable">
                                         <label for="title">Title </label>
                                         <input type="text" class="form-control" id="title" name="title">
                                         <div class="invalid-feedback">
@@ -26,7 +26,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="mb-3">
+                                    <div class="mb-3 description toggleable">
                                         <label for="description">Description </label>
                                         <input type="text" class="form-control" id="description" name="description">
                                         <div class="invalid-feedback">
@@ -34,7 +34,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="mb-3">
+                                    <div class="mb-3 categories toggleable">
                                         <label for="category">Categorise </label>
                                         <input type="text" class="form-control" id="category" name="category">
                                         <!--todo change to dropdown-->
@@ -43,27 +43,32 @@
                                         </div>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <label for="contentType">Content Type </label>
-                                        <select name="contentType" id="contentType" class="form-control">
-                                            <option value="1" selected="selected">Text</option>
-                                            <option value="2">Images</option>
-                                            <option value="3">Video</option>
-                                            <option value="4">Map</option>
-                                        </select>
-                                        {*<div id="editor"></div>*}
-                                        <div class="content" data-content-type="1">
+                                    <div class="mb-3 contents toggleable">
+                                        <div class="content" >
                                             <textarea rows="10" type="text" class="form-control" id="content"
                                                       name="content"></textarea>
                                             <div class="invalid-feedback">
                                                 Please enter valid content.
                                             </div>
                                         </div>
-                                        <div style="display: none" class="content mt-3" data-content-type="2">
+                                        <div class="content mt-3">
                                             <div class="form-group">
-                                                <label for="upload">Select image to upload:</label>
-                                                <input type="file" multiple class="form-control-file" name="fileToUpload[]"
+                                                <label for="fileToUpload">Select image to upload:</label>
+                                                <input type="file" multiple class="form-control-file"
+                                                       name="fileToUpload[]"
                                                        id="fileToUpload">
+                                            </div>
+                                        </div>
+                                        <div class="content mt-3">
+                                            <div class="form-group">
+                                                <label for="upload">Add Video links:</label>
+                                                <div class="input-group videoGroup">
+                                                    <input placeholder="URL for YouTube Embedded video" type="text" class="video form-control" name="video[]">
+                                                    <div class="input-group-append ml-2">
+                                                    <a id="videoAdd" href="#"><i class="fas fa-plus input-group-text"></i></a>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -71,6 +76,7 @@
                                     <input type="hidden" id="level" name="level" value="0">
                                     <input type="hidden" id="parent_id" name="parent_id" value="0">
                                     <input type="hidden" id="topic_id" name="topic_id" value="0">
+                                    <input type="hidden" id="content_id" name="content_id" value="0">
 
                                 </form>
                             </div>
@@ -92,12 +98,18 @@
 
 <script>
 
-    $('#contentType').on('change', function (event) {
+    /*$('#contentType').on('change', function (event) {
         $('.content').hide();
         $('.content[data-content-type=' + this.value + ']').show();
 
-    });
+    });*/
+    $('#videoAdd').on('click', function (event) {
 
+       $('.videoGroup').last().after('<input placeholder="URL for YouTube Embedded video" type="text" class="video form-control videoGroup" name="video[]">')
+
+
+
+    });
 
     $('#content').trumbowyg({
         btns: [['viewHTML'],
@@ -127,15 +139,24 @@
         $(modal).find('#function').val('create');
         $(modal).find('.header').text('Create a new topic');
         $(modal).find('#topic_id').val(0);
+        $(modal).find('.toggleable').show();
 
         var button = $(event.relatedTarget);
         var action = button.data('action');
 
-        console.log($(button).closest('div.card').find('.card-header .card-title').text());
-
         if (button.data('controller')) {
             $(modal).find('#controller').val(button.data('controller'));
+
+            if (button.data('controller') === 'topic' && button.data('action') !== 'create') {
+                $(modal).find('.contents').hide();
+            } else if (button.data('controller') === 'content') {
+                $(modal).find('.title, .description, .categories').hide();
+            }
         }
+
+        /*if (button.data('content_id')) {
+            $(modal).find('#content_id').val(button.data('content_id'));
+        }*/
 
         if (button.data('topic_id')) {
             $(modal).find('#topic_id').val(button.data('topic_id'));
@@ -158,9 +179,18 @@
         }
 
         if (action === 'edit') {
-            $(modal).find('#title').val($(button).closest('div.card').find('.card-header .card-title').text());
-            $(modal).find('#description').val($(button).closest('div.card').find('.card-body .card-title').text());
-            $(modal).find('#content').trumbowyg('html', $(button).closest('div.card').find('.card-body .content').html());
+            $(modal).find('#title').val($(button).closest('div.card').find('.card-header .card-title.title').text());
+            console.log(1);
+            $(modal).find('#description').val($(button).closest('div.card').find('.card-header .card-title.description').text());
+
+            if (button.data('controller') === 'topic') {
+                $(modal).find('#content').trumbowyg('html', $(button).closest('div.card').find('.card-body .content').html());
+            }
+            else if (button.data('controller') === 'content') {
+                $(modal).find('#content').trumbowyg('html', $(button).closest('div.card-body').find('.card-text').html());
+            }
+
+
             $(modal).find('#function').val('edit');
             $(modal).find('#submit').text('Edit');
         }
