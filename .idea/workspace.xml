@@ -4,16 +4,10 @@
     <list default="true" id="52862c20-1360-49bc-9220-c31fe192d616" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/topic.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/topic.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/content.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/content.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/26498276816593f55f4662efbfa753fb3dd036a7_0.file.content_tree.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/26498276816593f55f4662efbfa753fb3dd036a7_0.file.content_tree.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/2e23fc07df5c15af2f1d067dee021a12e4b83e69_0.file.content_modal.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/2e23fc07df5c15af2f1d067dee021a12e4b83e69_0.file.content_modal.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/52a4acf047d2f899a8e53b368104f94e4379c9ad_0.file.login.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/52a4acf047d2f899a8e53b368104f94e4379c9ad_0.file.login.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/9b811f85df062ed1fc9b31e87289c6bc49e32623_0.file.content.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/9b811f85df062ed1fc9b31e87289c6bc49e32623_0.file.content.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/components/content_modal.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/components/content_modal.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/components/content_tree.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/components/content_tree.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/content.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/content.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/163c9a5312c0cad1df65c0d69c5da444f07b4b2e_0.file.dashboard.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/163c9a5312c0cad1df65c0d69c5da444f07b4b2e_0.file.dashboard.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/smarty/templates_c/93f01204e9286350166d91478c3ceabe6bee5860_0.file.main.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/smarty/templates_c/93f01204e9286350166d91478c3ceabe6bee5860_0.file.main.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/main.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/main.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/dashboard.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/dashboard.tpl" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -189,7 +183,7 @@
       <workItem from="1574328730056" duration="9713000" />
       <workItem from="1574340183217" duration="1350000" />
       <workItem from="1574805420081" duration="5658000" />
-      <workItem from="1574844400747" duration="18358000" />
+      <workItem from="1574844400747" duration="21650000" />
     </task>
     <servers />
   </component>

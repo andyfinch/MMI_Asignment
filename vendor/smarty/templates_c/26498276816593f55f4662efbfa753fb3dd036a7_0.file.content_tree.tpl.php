@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-27 11:49:49
+/* Smarty version 3.1.33, created on 2019-11-27 15:57:47
   from 'C:\wamp64\www\MMI_Assignment\views\components\content_tree.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dde62dd56af97_57565846',
+  'unifunc' => 'content_5dde9cfbb8bb65_50482473',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '26498276816593f55f4662efbfa753fb3dd036a7' => 
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\components\\content_tree.tpl',
-      1 => 1574855381,
+      1 => 1574870267,
       2 => 'file',
     ),
   ),
@@ -20,16 +20,16 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dde62dd56af97_57565846 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dde9cfbb8bb65_50482473 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="card">
     <div class="card-body content-tree">
-        <h5 class="card-title">My Content Tree
+        <h5 class="card-title">My Topic Tree
             <a class="btn btn-primary" data-toggle="collapse" href="#contentTree" role="button" aria-expanded="false" aria-controls="collapseExample">
                 Hide
             </a>
         </h5>
         <div id="contentTree" class="collapse show">
-        <p class="card-text ">A hierarchical view of your content</p>
+        <p class="card-text ">A hierarchical view of your Topics</p>
 
         <ul class="list-group">
             <?php

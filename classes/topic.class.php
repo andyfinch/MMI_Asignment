@@ -26,7 +26,11 @@ class Topic
             'user_id' => $user_id,
         ));
 
-        $result = $this->insertContent($this->Conn->lastInsertId(), $topic_data['content']);
+        if ( $topic_data['content'] != '' || $_FILES['fileToUpload']['name'][0] != '' || $_POST['video'][0] != '')
+        {
+            $result = $this->insertContent($this->Conn->lastInsertId(), $topic_data['content']);
+        }
+
 
 
         $this->Conn->commit();
@@ -234,7 +238,8 @@ WHERE id = 1 and user_id = 1 and path like (
                   THEN 'Y' 
                   ELSE 'N'
                END 
-              )AS has_child 
+              )AS has_child,
+       (select count(*) from contents c where c.topic_id = t1.id) as 'contentCount'
        FROM topics t1 where t1.user_id = :user_id order by path";
         $stmt = $this->Conn->prepare($query);
         $stmt->execute(array(':user_id' => $user_id));

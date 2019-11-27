@@ -43,7 +43,7 @@
         </nav>
         {else}
         <nav class="navbar navbar-expand-sm navbar-light">
-            <a class="navbar-brand" href="./index.php">
+            <a class="navbar-brand" href="./index.php?p=dashboard">
                 <img src="./images/list-logo.png" width="35" height="35" class="d-inline-block align-top"
                      alt="">
                 <span class="d-none d-sm-inline-block">RevisionIT</span>

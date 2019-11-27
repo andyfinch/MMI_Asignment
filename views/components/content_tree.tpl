@@ -1,12 +1,12 @@
 <div class="card">
     <div class="card-body content-tree">
-        <h5 class="card-title">My Content Tree
+        <h5 class="card-title">My Topic Tree
             <a class="btn btn-primary" data-toggle="collapse" href="#contentTree" role="button" aria-expanded="false" aria-controls="collapseExample">
                 Hide
             </a>
         </h5>
         <div id="contentTree" class="collapse show">
-        <p class="card-text ">A hierarchical view of your content</p>
+        <p class="card-text ">A hierarchical view of your Topics</p>
 
         <ul class="list-group">
             {foreach $allTopics as $topic}
