@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" style="position: sticky;top: 0">
     <div class="card-body content-tree">
         <h5 class="card-title">My Topic Tree
             <a class="btn btn-primary" data-toggle="collapse" href="#contentTree" role="button" aria-expanded="false" aria-controls="collapseExample">

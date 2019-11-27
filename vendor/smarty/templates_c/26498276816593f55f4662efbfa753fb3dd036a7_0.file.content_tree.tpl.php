@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-27 15:57:47
+/* Smarty version 3.1.33, created on 2019-11-27 18:02:23
   from 'C:\wamp64\www\MMI_Assignment\views\components\content_tree.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dde9cfbb8bb65_50482473',
+  'unifunc' => 'content_5ddeba2fb2ef74_41582329',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '26498276816593f55f4662efbfa753fb3dd036a7' => 
     array (
       0 => 'C:\\wamp64\\www\\MMI_Assignment\\views\\components\\content_tree.tpl',
-      1 => 1574870267,
+      1 => 1574877743,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dde9cfbb8bb65_50482473 (Smarty_Internal_Template $_smarty_tpl) {
-?><div class="card">
+function content_5ddeba2fb2ef74_41582329 (Smarty_Internal_Template $_smarty_tpl) {
+?><div class="card" style="position: sticky;top: 0">
     <div class="card-body content-tree">
         <h5 class="card-title">My Topic Tree
             <a class="btn btn-primary" data-toggle="collapse" href="#contentTree" role="button" aria-expanded="false" aria-controls="collapseExample">
